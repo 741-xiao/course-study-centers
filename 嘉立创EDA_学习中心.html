@@ -1,0 +1,2004 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="嘉立创EDA 分步备考学习中心：知识讲解、引导式教学、客观题与大题专练、模拟考试、错题重练与学习报告。离线可用。">
+<title>嘉立创EDA · 完整学习中心</title>
+<style>:root{
+  --bg:#f4f6fb; --card:#fff; --line:#e2e8f2; --line2:#eef2f9;
+  --ink:#16202f; --muted:#5d6b80; --dim:#8a95a6;
+  --navy:#0f2440; --navy2:#17365e; --brand:#2f6fdb; --brand-d:#1d4ed8;
+  --teal:#0f766e; --purple:#6846bd; --amber:#b45309;
+  --blue-bg:#eef4ff; --green-bg:#ecfdf5; --purple-bg:#f5f3ff; --amber-bg:#fff7ed;
+  --ok:#15803d; --bad:#b91c1c;
+  --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace;
+  --shadow:0 1px 2px rgba(22,32,47,.05);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--brand);text-decoration:none}
+button{font:inherit;cursor:pointer}
+input,select,textarea{font:inherit;color:inherit}
+code{font-family:var(--mono);background:#eef1f5;border:1px solid #e0e5ec;border-radius:4px;padding:1px 5px;font-size:.9em;color:#243b6b}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* ---------- 顶栏 ---------- */
+.top{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);height:52px;display:flex;align-items:center;gap:14px;padding:0 18px}
+.top .mk{width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,var(--navy),#2f6fdb);display:grid;place-items:center;color:#fff;font-size:11px;font-weight:800;flex:none}
+.top b{font-size:13.5px;letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top .sep{color:#c8d2e2}
+.top .sub{font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top .right{margin-left:auto;display:flex;align-items:center;gap:12px;font-size:12px;color:var(--dim)}
+.top .right a{color:var(--muted)}
+.top .menu{display:none;background:none;border:1px solid var(--line);border-radius:8px;padding:4px 9px}
+
+/* ---------- 三栏 ---------- */
+.layout{display:grid;grid-template-columns:250px minmax(0,1fr) 296px;max-width:1380px;margin:0 auto;align-items:start}
+aside.side{position:sticky;top:52px;height:calc(100vh - 52px);overflow-y:auto;background:#fff;border-right:1px solid var(--line);padding:20px 14px 36px}
+.side .brand{font-size:15px;font-weight:800;letter-spacing:.3px;line-height:1.35}
+.side .brand small{display:block;font-weight:400;color:var(--muted);font-size:11.5px;margin-top:4px;letter-spacing:.4px}
+.prog{background:linear-gradient(135deg,#eef4ff,#f7faff);border:1px solid #dbe7ff;border-radius:10px;padding:10px 12px;margin:14px 0 12px;font-size:12px;color:#274a8c}
+.prog .pt{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.prog .pt span{font-size:11.5px;line-height:1.4}
+.prog .pt b{font-size:17px;line-height:1.2;font-variant-numeric:tabular-nums;flex:none}
+.progbar{height:5px;background:#d5e2fb;border-radius:5px;margin-top:7px;overflow:hidden}
+.progbar i{display:block;height:100%;background:linear-gradient(90deg,#2f6fdb,#5b9bff);border-radius:5px;transition:width .3s}
+.side .grp{margin:16px 0 5px;font-size:11px;font-weight:800;color:var(--dim);letter-spacing:.9px;padding-left:6px;text-transform:uppercase}
+.side a.toc{display:flex;gap:7px;align-items:baseline;font-size:12.8px;line-height:1.45;color:#3b4657;padding:5px 8px;border-radius:6px;border-left:2px solid transparent}
+.side a.toc:hover{background:var(--blue-bg);color:var(--brand-d)}
+.side a.toc.on{background:var(--blue-bg);color:var(--brand-d);border-left-color:var(--brand);font-weight:700}
+.side a.toc .num{font-family:var(--mono);color:#9aa4b2;font-size:10.5px;min-width:15px}
+.side .tip{margin-top:20px;font-size:11.4px;color:var(--dim);line-height:1.7;border-top:1px dashed var(--line);padding-top:12px}
+
+main{padding:0 28px 80px;min-width:0}
+main:focus{outline:none}
+aside.rail{position:sticky;top:52px;height:calc(100vh - 52px);overflow-y:auto;padding:20px 18px 40px;border-left:1px solid var(--line);background:#fbfcff}
+.rail .k{font-size:9.5px;letter-spacing:1.6px;color:var(--dim);font-weight:800;text-transform:uppercase}
+.rail h3{margin:4px 0 12px;font-size:17px}
+.rail .big{font-size:30px;font-weight:800;color:var(--navy);line-height:1.1;font-variant-numeric:tabular-nums}
+.rail .big small{font-size:13px;color:var(--dim);font-weight:400}
+.rail .row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed var(--line2);font-size:12.5px;color:var(--muted)}
+.rail .row b{color:var(--ink);font-variant-numeric:tabular-nums}
+#saveWarn{background:#fff8ec;border-bottom:1px solid #f6dfb6;color:#8a5a12;padding:7px 14px;font-size:12.5px;text-align:center;position:sticky;top:52px;z-index:35}
+.rail .blk{background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 14px;margin-bottom:12px;box-shadow:var(--shadow)}
+.rail .q{font-size:12px;color:var(--muted);line-height:1.65}
+.rail .next{display:block;margin-top:10px;padding:9px 12px;border-radius:9px;background:var(--navy);color:#fff;text-align:center;font-size:12.5px;font-weight:700}
+.rail .mini{display:flex;gap:6px;flex-wrap:nowrap;margin-top:8px}
+.rail .mini a{flex:1 1 0;min-width:0;text-align:center;border:1px solid var(--line);border-radius:8px;padding:6px 2px;font-size:11px;color:var(--muted);background:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ---------- 首页 ---------- */
+.hero{position:relative;margin:22px 0 18px;border-radius:16px;overflow:hidden;background:linear-gradient(120deg,#0d2140 0%,#123059 62%,#1b4476 100%);color:#fff;padding:28px 30px 26px;box-shadow:0 6px 24px rgba(15,36,64,.16)}
+.hero .kick{font-size:10.5px;letter-spacing:2.2px;color:#9fc0ea;font-weight:700;text-transform:uppercase}
+.hero h1{margin:7px 0 8px;font-size:30px;letter-spacing:.5px;line-height:1.25}
+.hero p{margin:0;color:#c9d8ec;font-size:13.6px;max-width:560px}
+.hero .met{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.hero .met span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:20px;padding:3px 11px;font-size:11.5px;color:#dce8f8}
+.hero .acts{display:flex;gap:9px;margin-top:18px;flex-wrap:wrap;position:relative;z-index:2}
+.hero .acts a,.hero .acts button{border-radius:9px;padding:8px 15px;font-size:13px;font-weight:700;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff}
+.hero .acts .pri{background:#fff;color:var(--navy);border-color:#fff}
+.hero .deco{position:absolute;right:0;top:0;bottom:0;width:42%;opacity:.55;pointer-events:none}
+
+.groups{margin-top:8px}
+.chead{display:flex;align-items:baseline;gap:10px;margin:22px 0 9px;border-bottom:1px solid var(--line);padding-bottom:7px}
+.chead h2{margin:0;font-size:14.5px;letter-spacing:.4px}
+.chead h2 .n{color:var(--dim);font-family:var(--mono);font-size:12px;margin-right:7px}
+.chead small{margin-left:auto;color:var(--dim);font-size:11.5px}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.tile{position:relative;display:flex;flex-direction:column;align-items:flex-start;text-align:left;border:0;border-radius:12px;padding:14px 14px 12px;color:#fff;min-height:118px;box-shadow:var(--shadow);transition:transform .15s,box-shadow .15s;overflow:hidden}
+.tile:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(22,32,47,.14)}
+.tile .ic{width:22px;height:22px;margin-bottom:8px;opacity:.92}
+.tile .ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.tile b{font-size:14.5px;font-weight:800;letter-spacing:.2px}
+.tile span{font-size:11.5px;opacity:.82;line-height:1.5;margin-top:2px}
+.tile small{margin-top:auto;font-size:11px;opacity:.9;padding-top:8px}
+.tile.navy{background:linear-gradient(150deg,#16345c,#0f2440)}
+.tile.blue{background:linear-gradient(150deg,#2f6fdb,#1d4ed8)}
+.tile.green{background:linear-gradient(150deg,#12876f,#0f766e)}
+.tile.purple{background:linear-gradient(150deg,#7b57cf,#5b3aa8)}
+.tile.orange{background:linear-gradient(150deg,#c4700f,#9a4f08)}
+.tile .dot{position:absolute;right:-18px;bottom:-18px;width:78px;height:78px;border-radius:50%;background:rgba(255,255,255,.07)}
+
+.entrylinks{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 2px}
+.entrylinks a{background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-size:12.5px;color:var(--muted);box-shadow:var(--shadow)}
+.entrylinks a b{color:var(--ink)}
+.entrylinks a:hover{border-color:#c9d8f2;color:var(--brand-d)}
+
+.sec{margin:30px 0 10px;font-size:15px;display:flex;align-items:center;gap:9px}
+.sec::before{content:"";width:4px;height:16px;border-radius:2px;background:var(--brand)}
+.chaplist{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.chcard{background:#fff;border:1px solid var(--line);border-radius:11px;padding:12px 14px;box-shadow:var(--shadow);display:block;color:inherit}
+.chcard:hover{border-color:#c9d8f2}
+.chcard .r{display:flex;align-items:center;gap:8px}
+.chcard .n{font-family:var(--mono);font-size:11px;color:var(--dim)}
+.chcard b{font-size:13.5px}
+.chcard .bar{height:4px;background:var(--line2);border-radius:4px;margin-top:9px;overflow:hidden}
+.chcard .bar i{display:block;height:100%;background:var(--teal)}
+.chcard small{color:var(--dim);font-size:11px;display:block;margin-top:6px}
+
+/* ---------- 通用 ---------- */
+.crumb{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--dim);margin:18px 0 8px}
+.crumb a{color:var(--muted)}
+.ph{margin:6px 0 4px;font-size:24px;letter-spacing:.3px}
+.psub{color:var(--muted);font-size:13.5px;margin:0 0 16px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:13px;padding:18px 20px;box-shadow:var(--shadow);margin:12px 0}
+.panel h3{margin:0 0 10px;font-size:15.5px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
+.row>label{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--muted)}
+select,input[type=search],input[type=number],input[type=text],textarea{border:1px solid #cfd9e8;border-radius:8px;padding:7px 10px;background:#fff;font-size:13.5px;min-height:37px}
+textarea{width:100%;resize:vertical;line-height:1.7}
+select:focus,input:focus,textarea:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 3px rgba(47,111,219,.12)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid #cfd9e8;background:#fff;border-radius:8px;padding:8px 14px;font-size:13px;color:var(--ink);font-weight:600}
+.btn:hover{border-color:#9fb6da;background:#f8faff}
+.btn.pri{background:var(--navy);color:#fff;border-color:var(--navy)}
+.btn.pri:hover{background:#17365e}
+.btn.green{background:var(--teal);border-color:var(--teal);color:#fff}
+.btn.sm{padding:5px 10px;font-size:12px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:3px 10px;font-size:11.5px;color:var(--muted)}
+.chip.on{background:var(--blue-bg);border-color:#bfd4f7;color:var(--brand-d);font-weight:700}
+.badge{display:inline-block;border-radius:5px;padding:0 6px;font-size:10.5px;font-weight:700;line-height:1.7;vertical-align:1px}
+.badge.g{background:var(--green-bg);color:var(--ok)}
+.badge.b{background:var(--blue-bg);color:var(--brand-d)}
+.badge.o{background:var(--amber-bg);color:var(--amber)}
+.badge.p{background:var(--purple-bg);color:var(--purple)}
+.badge.r{background:#fef2f2;color:var(--bad)}
+.muted{color:var(--muted)}
+.small{font-size:12.5px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.stat b{display:block;font-size:24px;line-height:1.2;font-variant-numeric:tabular-nums}
+.stat small{color:var(--muted);font-size:11.5px}
+.bar{height:6px;background:var(--line2);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--brand)}
+
+/* ---------- 文档 ---------- */
+.doc{font-size:15px;line-height:1.85;color:#263449;min-width:0}
+.doc p{margin:9px 0}
+.doc ul,.doc ol{padding-left:22px;margin:8px 0}
+.doc li{margin:4px 0}
+.doc b{color:#0f2a5c}
+.doc h4{margin:18px 0 6px;font-size:15.5px}
+.doc .eq{font-family:"Cambria Math",Cambria,"Times New Roman",Georgia,serif;font-size:17px;line-height:2.05}
+.doc .formula{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:10px 16px 12px;margin:12px 0;text-align:center;overflow-x:auto;overflow-y:hidden}
+.doc .formula .eq{font-size:17.5px;line-height:2.3}
+.doc .fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 .22em;font-size:.96em;line-height:1.15}
+.doc .fr>.fn{border-bottom:1.2px solid currentColor;padding:0 .28em .06em}
+.doc .fr>.fd{padding:.04em .28em 0}
+.doc .intg,.doc .sum{white-space:nowrap}
+.doc .intg>.lim,.doc .sum>.lim{display:inline-flex;flex-direction:column;vertical-align:middle;font-size:.56em;line-height:1.15;margin:0 .1em 0 -.05em;text-align:left}
+.doc .intg>.lim>.u,.doc .sum>.lim>.u{order:1}
+.doc .intg>.lim>.l,.doc .sum>.lim>.l{order:2}
+.doc table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.8px;background:#fff}
+.doc th,.doc td{border:1px solid #e3e9f3;padding:7px 10px;text-align:left;vertical-align:top}
+.doc th{background:#f5f8fd;color:#0f2a5c;font-weight:800;font-size:13px}
+.doc .tablewrap{overflow-x:auto;max-width:100%;margin:12px 0;border-radius:8px}
+.doc .tablewrap table{margin:0;min-width:560px}
+.doc td:first-child,.doc th:first-child{min-width:74px}
+.doc td:last-child,.doc th:last-child{min-width:112px}
+.doc .kp{background:#fff;border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:0 12px 12px 0;padding:13px 17px;margin:14px 0}
+.doc .kp .t{font-weight:800;color:var(--brand-d);font-size:15.5px;display:block;margin-bottom:3px}
+.doc .tip{background:#fff8ec;border:1px solid #f6dfb6;border-radius:11px;padding:11px 15px;margin:12px 0;font-size:14.4px}
+.doc .tip b{color:var(--amber)}
+.doc .warn{background:#fef2f2;border:1px solid #f6cdcd;border-radius:11px;padding:11px 15px;margin:12px 0;font-size:14.4px}
+.doc .warn b{color:var(--bad)}
+.doc .note{background:#f0f9ff;border:1px solid #cfe8fb;border-radius:11px;padding:11px 15px;margin:12px 0}
+.doc .card{background:#fff;border:1px solid var(--line);border-radius:11px;padding:11px 14px;margin:10px 0;font-size:14px}
+.doc .ch-intro{background:#fff;border:1px solid var(--line);border-radius:13px;padding:13px 17px;margin:10px 0 16px;font-size:14.3px;color:#41506a}
+.doc .ch-intro b{color:#0f2a5c}
+.doc .lead{color:var(--muted);font-size:13.7px}
+.doc .eg{background:#fff;border:1px solid var(--line);border-radius:13px;margin:14px 0;overflow:hidden;box-shadow:var(--shadow)}
+.doc .eg-h{background:linear-gradient(90deg,#edf3ff,#f9fbff);padding:9px 15px;font-weight:800;color:var(--brand-d);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:14.5px}
+.doc .eg-h .tag{font-size:11px;font-weight:700;color:#fff;background:var(--brand);border-radius:999px;padding:1px 8px;flex:none}
+.doc .eg-h .tag.g{background:var(--teal)}
+.doc .eg-b{padding:11px 16px 13px}
+.doc details.sol{margin-top:9px;border-top:1px dashed var(--line);padding-top:9px}
+.doc details.sol summary{cursor:pointer;color:var(--brand);font-weight:700;list-style:none;display:inline-flex;align-items:center;gap:6px;font-size:13.8px;user-select:none}
+.doc details.sol summary::-webkit-details-marker{display:none}
+.doc details.sol summary::before{content:"▸";display:inline-block;transition:transform .2s}
+.doc details.sol[open] summary::before{transform:rotate(90deg)}
+.doc details.sol .body{margin-top:8px;font-size:14.5px}
+.doc .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.doc .qs .q{background:#f8fafc;border:1px solid var(--line);border-radius:9px;padding:9px 13px;margin:8px 0;font-size:14.3px}
+.doc .qs .q::before{content:"›";color:var(--brand);font-weight:800;margin-right:7px}
+.doc img{max-width:100%;height:auto}
+
+/* ---------- 阅读器 ---------- */
+.reader{display:grid;grid-template-columns:210px minmax(0,1fr);gap:22px;align-items:start}
+.rnav{position:sticky;top:70px;max-height:calc(100vh - 90px);overflow-y:auto;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px}
+.rnav a{display:block;font-size:12.3px;line-height:1.45;color:#42506a;padding:6px 9px;border-radius:6px}
+.rnav a:hover{background:var(--blue-bg)}
+.rnav a.on{background:var(--blue-bg);color:var(--brand-d);font-weight:700}
+.rnav .h{font-size:10.5px;color:var(--dim);letter-spacing:.7px;font-weight:800;padding:6px 9px 3px}
+.rbody{min-width:0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 26px 30px;box-shadow:var(--shadow)}
+.rbody h2{margin:0 0 6px;font-size:21px}
+.rbody .meta{font-size:12px;color:var(--dim);margin-bottom:14px;display:flex;flex-wrap:wrap;gap:6px}
+.rbody .secbody{border-top:1px solid var(--line2);padding-top:16px;margin-top:18px}
+.rbody .secbody:first-of-type{border-top:0;margin-top:8px;padding-top:0}
+.rbody h3{font-size:17px;margin:4px 0 10px}
+.rtools{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0;padding-top:14px;border-top:1px dashed var(--line)}
+
+/* ---------- 题库 ---------- */
+body.bank .rail,body.bank .side{display:none}
+body.bank .menu{display:none}
+body.bank .layout{grid-template-columns:minmax(0,1fr)}
+body.bank main{max-width:900px;margin:0 auto;padding:0 22px 80px}
+.bhead{margin:22px 0 6px}
+.bhead .bk{font-size:10.5px;letter-spacing:2px;color:var(--dim);font-weight:800;text-transform:uppercase}
+.bhead h1{font-size:28px;margin:5px 0 4px}
+.bhead p{margin:0;color:var(--muted);font-size:13px}
+.filters{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:16px 0 10px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.filters label{display:flex;flex-direction:column;gap:4px;font-size:11.5px;color:var(--muted);min-width:0}
+.filters select,.filters input{width:100%;min-width:0}
+.qjump{display:flex;gap:8px;align-items:center;margin:8px 0 14px}
+.qjump select{flex:1;min-width:0}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:17px 20px 15px;box-shadow:var(--shadow)}
+.qmeta{display:flex;flex-wrap:wrap;align-items:center;gap:7px;font-size:11.5px;color:var(--dim);margin-bottom:9px}
+.qmeta .no{font-weight:800;color:var(--brand-d);font-size:13px}
+.qmeta .src{margin-left:auto}
+.qmeta .sp{color:#c8d2e2}
+.qstem{font-size:15px;line-height:1.85;overflow-wrap:anywhere}
+.qstem .ln{display:inline}
+.opts{display:grid;gap:7px;margin:13px 0 4px}
+.opt{display:flex;gap:10px;align-items:flex-start;text-align:left;border:1px solid #d7e0ee;background:#fff;border-radius:9px;padding:8px 12px;font-size:14px;line-height:1.7;color:#243247;width:100%}
+.opt:hover{border-color:#9fb6da;background:#f9fbff}
+.opt .k{font-weight:800;color:var(--brand-d);flex:none;width:16px}
+.opt .oh{min-width:0;overflow-wrap:anywhere}
+.opt.pick{border-color:var(--brand);background:var(--blue-bg)}
+.opt.right{border-color:#86c9a4;background:#f0fbf4}
+.opt.wrong{border-color:#e6a3a3;background:#fef2f2}
+.opt:disabled{cursor:default}
+.opt .eq{font-family:"Cambria Math",Cambria,Georgia,serif}
+.judge{display:flex;gap:9px;margin:13px 0 4px}
+.judge button{min-width:88px;border:1px solid #d7e0ee;background:#fff;border-radius:9px;padding:8px 16px;font-size:14px;font-weight:700}
+.judge button:hover{border-color:#9fb6da}
+.judge button.right{border-color:#86c9a4;background:#f0fbf4;color:var(--ok)}
+.judge button.wrong{border-color:#e6a3a3;background:#fef2f2;color:var(--bad)}
+.fills{margin:12px 0 4px;display:grid;gap:8px}
+.fillrow{display:flex;gap:9px;align-items:center}
+.fillrow span{font-size:11.5px;color:var(--dim);min-width:34px}
+.fillrow input{flex:1}
+.fillrow .mark{font-weight:800;min-width:18px}
+.fillrow .mark.ok{color:var(--ok)}
+.fillrow .mark.no{color:var(--bad)}
+.qfoot{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:13px}
+.qfoot .state{font-size:11.5px;color:var(--dim);margin-left:2px}
+.feed{margin-top:13px;border-top:1px dashed var(--line);padding-top:12px}
+.feed .ans{background:#f0fbf4;border:1px solid #cfe9d8;border-radius:9px;padding:9px 13px;font-size:14px;margin:8px 0}
+.feed .ans b{color:var(--ok)}
+.feed .why{font-size:14px;color:#3b4a61}
+.feed .cause{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px;color:var(--muted)}
+.navq{display:flex;justify-content:space-between;gap:8px;margin:14px 0 0}
+.empty{text-align:center;color:var(--muted);padding:40px 10px}
+
+/* ---------- 训练/考试 ---------- */
+.drillbar{display:flex;align-items:center;gap:10px;margin:10px 0 14px}
+.drillbar .bar{flex:1}
+.drillbar small{font-size:11.5px;color:var(--dim);white-space:nowrap}
+.result{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;text-align:center}
+.result .big{font-size:44px;font-weight:800;color:var(--navy);line-height:1.1;font-variant-numeric:tabular-nums}
+.result .big small{font-size:15px;color:var(--dim);font-weight:400}
+.timer{font-family:var(--mono);font-size:14px;background:#0f2440;color:#fff;border-radius:8px;padding:5px 11px}
+.examq{background:#fff;border:1px solid var(--line);border-radius:13px;padding:16px 18px;margin:11px 0}
+.examq .qn{font-size:11.5px;color:var(--dim);margin-bottom:6px}
+.review{border-left:3px solid var(--line);padding-left:12px;margin:12px 0}
+.review.ok{border-color:#86c9a4}
+.review.no{border-color:#e6a3a3}
+
+/* ---------- 工具 ---------- */
+.tool{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start}
+.tool .out{background:#0f2440;color:#e7f0fb;border-radius:12px;padding:16px 18px;font-size:13px;line-height:1.8}
+.tool .out b{color:#fff;font-size:22px;font-variant-numeric:tabular-nums}
+.tool .out code{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);color:#fff}
+.field{display:block;margin:10px 0;font-size:12px;color:var(--muted)}
+.field input,.field select{display:block;width:100%;margin-top:4px}
+.field input[type=range]{margin-top:8px}
+.field input[type=range]{width:100%;min-height:26px}
+.field .v{font-weight:800;color:var(--ink);font-size:13.5px}
+.labtabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:4px 0 14px}
+.labtab{text-align:left;border:1px solid var(--line);background:#fff;border-radius:11px;padding:10px 12px;box-shadow:var(--shadow);transition:transform .15s,border-color .15s}
+.labtab:hover{transform:translateY(-1px);border-color:#b9cdea}
+.labtab b{display:block;font-size:13px;color:var(--ink);line-height:1.4}
+.labtab span{display:block;font-size:10.8px;color:var(--muted);margin-top:2px;line-height:1.45}
+.labtab.on{border-color:#9fb6da;background:var(--blue-bg);box-shadow:0 0 0 2px rgba(47,111,219,.08)}
+.labtab.on b{color:var(--brand-d)}
+.labnote{font-size:11.5px;color:var(--dim);line-height:1.65;margin-top:8px}
+.vbar{height:8px;background:#e6edf8;border-radius:6px;overflow:hidden;margin:9px 0 4px}
+.vbar i{display:block;height:100%;background:linear-gradient(90deg,#2f6fdb,#69a6f5);border-radius:6px;transition:width .2s}
+.vscale{display:flex;justify-content:space-between;font-size:10px;color:var(--dim);gap:4px}
+.dfm{display:grid;gap:6px;margin-top:8px}
+.dfm .r{display:flex;align-items:center;gap:8px;font-size:12.2px;border-bottom:1px dashed rgba(255,255,255,.14);padding-bottom:5px;color:#dbe7f6}
+.dfm .r b{margin-left:auto;flex:none}
+.powergrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 14px;margin:6px 0 2px}
+.powergrid .field{margin:0}
+.checkline{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted);margin:9px 0 2px;line-height:1.5}
+.checkline input{width:14px;height:14px;min-height:0;margin:0}
+.pwsum{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:10px 0}
+.pwsum div{background:#f8fafc;border:1px solid var(--line);border-radius:9px;padding:9px 11px;min-width:0}
+.pwsum small{display:block;font-size:10.5px;color:var(--muted);line-height:1.4}
+.pwsum b{display:block;font-size:16.5px;margin-top:2px;font-variant-numeric:tabular-nums}
+.verdict{padding:11px 14px;border-radius:10px;font-size:13.4px;line-height:1.75;margin:10px 0;border:1px solid}
+.verdict.bad{background:#fef2f2;border-color:#f2c9c9;color:#7f1d1d}
+.verdict.warn{background:#fff8ec;border-color:#f1dab3;color:#7a4a0c}
+.verdict.ok{background:#f0fbf4;border-color:#c9e7d4;color:#14532d}
+table.tb tr.cur td{background:#eef4ff}
+.pwtb th,.pwtb td{white-space:nowrap}
+@media(max-width:700px){
+  .pwtb thead{display:none}
+  .pwtb,.pwtb tbody,.pwtb tr,.pwtb td{display:block;width:100%}
+  .pwtb{margin:0;border:0;background:transparent}
+  .pwtb tr{border:1px solid var(--line);border-radius:10px;margin:8px 0;padding:7px 11px;background:#fff}
+  .pwtb tr.cur{background:#eef4ff;border-color:#bcd4f6}
+  .pwtb td{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border:0;padding:3px 0;font-size:12.5px;text-align:right;white-space:normal}
+  .pwtb td::before{content:attr(data-l);color:var(--muted);font-weight:600;text-align:left;flex:none}
+  .pwtb td:first-child{font-weight:800;color:var(--brand-d);font-size:13.5px;border-bottom:1px dashed var(--line);margin-bottom:5px;padding-bottom:6px}
+  .pwtb td:first-child{justify-content:space-between}
+}
+
+
+
+canvas{display:block;width:100%;max-width:100%;height:auto;background:#fff;border:1px solid var(--line);border-radius:10px}
+.tool>*{min-width:0}
+.deriv{border:1px solid var(--line);border-radius:11px;padding:12px 15px;margin:10px 0;background:#fff}
+.deriv h4{margin:0 0 6px;font-size:14px}
+.steps{counter-reset:s;list-style:none;padding:0;margin:8px 0}
+.steps li{counter-increment:s;position:relative;padding:8px 10px 8px 34px;border-bottom:1px dashed var(--line2);font-size:13.5px}
+.steps li::before{content:counter(s);position:absolute;left:4px;top:8px;width:20px;height:20px;border-radius:50%;background:var(--blue-bg);color:var(--brand-d);font-size:11px;font-weight:800;display:grid;place-items:center}
+
+/* ---------- 表格/列表 ---------- */
+.list{display:grid;gap:8px}
+.li{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 13px;display:flex;gap:10px;align-items:flex-start;font-size:13.5px}
+.li .no{font-family:var(--mono);font-size:11px;color:var(--dim);min-width:52px}
+.li .body{flex:1;min-width:0}
+.li .act{display:flex;gap:5px;flex:none}
+.tablewrap{overflow-x:auto}
+table.tb{width:100%;border-collapse:collapse;font-size:13px;background:#fff}
+table.tb th,table.tb td{border:1px solid var(--line);padding:7px 10px;text-align:left}
+table.tb th{background:#f5f8fd;font-weight:800;color:#0f2a5c}
+
+/* ---------- 闪卡 ---------- */
+.flash{max-width:640px;margin:20px auto;background:#fff;border:1px solid var(--line);border-radius:16px;min-height:260px;padding:26px 28px;display:flex;flex-direction:column;box-shadow:0 10px 30px rgba(22,32,47,.06)}
+.flash .fl{font-size:11px;color:var(--dim);letter-spacing:1px;font-weight:800}
+.flash .fb{flex:1;display:flex;align-items:center;font-size:16px;line-height:1.9;padding:14px 0}
+.flash .fa{border-top:1px dashed var(--line);padding-top:14px;font-size:14px}
+.flash .acts{display:flex;gap:8px;margin-top:14px}
+
+/* ---------- 响应式 ---------- */
+@media(max-width:1180px){
+  .layout{grid-template-columns:236px minmax(0,1fr)}
+  .labtabs{grid-template-columns:repeat(3,minmax(0,1fr))}
+  aside.rail{display:none}
+  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:820px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  aside.side{position:fixed;z-index:60;left:0;top:0;bottom:0;width:280px;height:100vh;transform:translateX(-102%);transition:transform .22s;box-shadow:0 10px 40px rgba(0,0,0,.2);padding-top:18px}
+  body.nav-open aside.side{transform:none}
+  body.nav-open::after{content:"";position:fixed;inset:0;background:rgba(12,22,38,.38);z-index:55}
+  .top .menu{display:inline-flex}
+  .top .sub,.top .sep{display:none}
+  main{padding:0 14px 70px}
+  .hero{padding:22px 20px 20px;border-radius:14px}
+  .hero h1{font-size:23px}
+  .hero .deco{opacity:.28;width:60%}
+  .reader{grid-template-columns:minmax(0,1fr)}
+  .rnav{position:static;max-height:none;display:flex;overflow-x:auto;gap:4px}
+  .rnav .h{display:none}
+  .rnav a{white-space:nowrap;border:1px solid var(--line);border-radius:999px;padding:4px 10px;font-size:11.5px}
+  .rbody{padding:16px 15px 22px}
+  .filters{grid-template-columns:1fr 1fr}
+  .filters label:nth-child(3),.filters label:nth-child(4){grid-column:1/-1}
+  .qjump{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .qjump select{grid-column:1/-1;grid-row:1;width:100%}
+  .qjump #prev{grid-column:1;grid-row:2}
+  .qjump #next{grid-column:2;grid-row:2}
+  .top .right span{display:none}
+  body.bank.nav-open::after{display:none}
+  .grid2,.grid3,.tool{grid-template-columns:1fr}
+  .labtabs{grid-template-columns:1fr 1fr}
+  .powergrid{grid-template-columns:1fr 1fr}
+  .pwsum{grid-template-columns:1fr 1fr}
+  .labtabs .labtab:last-child:nth-child(odd){grid-column:1/-1}
+  .chaplist{grid-template-columns:1fr}
+  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tile{min-height:104px;padding:12px}
+  .tile b{font-size:13.5px}
+  .tile span{font-size:11px}
+  .qcard{padding:14px 14px 13px}
+  .bhead h1{font-size:23px}
+  .doc{font-size:14.5px}
+  .doc .eq{font-size:16px}
+  body.bank main{padding:0 12px 70px}
+}
+@media(max-width:560px){
+  .powergrid{grid-template-columns:1fr}
+}
+@media(max-width:420px){
+  .tiles{grid-template-columns:1fr 1fr;gap:8px}
+  .tile b{font-size:12.8px}
+  .hero h1{font-size:21px}
+}
+@media print{
+  .top,aside.side,aside.rail,.filters,.qfoot,.navq,.hero .acts{display:none!important}
+  .layout{display:block}
+  body{background:#fff}
+  .doc details.sol .body{display:block!important}
+}
+</style>
+</head>
+<body>
+<noscript><p style="padding:24px;font:16px sans-serif">本学习中心需要启用 JavaScript 才能运行。请用浏览器打开并允许脚本。</p></noscript>
+<script>window.COURSE={"id":"eda","name":"嘉立创EDA","chapters":[{"n":0,"title":"知识点速查","intro":"\u003cp>把零散题目归到几条主线：先记住它们，再去做题会快很多。\u003c/p>","sections":[{"id":"kb0","title":"① 原理图 → PCB 的完整链路","html":"\u003cp style=\"margin:4px 0\">画原理图（放元件、连导线、加网络标签）→ 给每个元件指定\u003cb>封装\u003c/b>（元件属性 Footprint / 封装管理器）→ 编译 ERC 查错 → \u003cb>设计 → 更新/同步到 PCB\u003c/b> → 布局 → 布线 → 铺铜 → DRC → 导出 Gerber。\u003c/p> \u003cp style=\"margin-bottom:0\">\u003cb>关键：\u003c/b>原理图与 PCB 之间是\u003cb>网络表（Netlist）\u003c/b>在传递连接关系，不是\"看起来连上了\"就算连上。\u003c/p>"},{"id":"kb1","title":"② 电气连接的三个硬条件","html":"\u003cul style=\"margin-bottom:0\"> \u003cli>导线端点必须落在\u003cb>引脚的电气热点\u003c/b>上，出现实心连接圆点；\u003c/li> \u003cli>网络标签必须\u003cb>精确放在导线/引脚的连接点\u003c/b>上，仅\"靠近\"不会建立连接；\u003c/li> \u003cli>\u003cb>跨图页\u003c/b>连通要用\u003cb>全局网络标签 / 网络端口 / 离图连接器\u003c/b>，普通网络标签只在同页有效。\u003c/li> \u003c/ul>"},{"id":"kb2","title":"③ 封装管理器：逻辑绑定，不是视觉叠加","html":"\u003cp style=\"margin-bottom:0\">有效做法：在元件属性 Footprint 字段从工程/系统库选封装；自定义封装先\"添加到工程\"再指定；在封装管理器确认\"已启用 + 默认\"。\u003cb>把封装图形拖到符号上叠在一起只是视觉重叠，不产生逻辑绑定。\u003c/b>位号重复用「设计 → 分配位号 / 标注」全局重编。\u003c/p>"},{"id":"kb3","title":"④ 铺铜（覆铜）four 条铁律","html":"\u003col style=\"margin-bottom:0\"> \u003cli>铺铜必须指定\u003cb>网络\u003c/b>（如 GND），与焊盘网络不一致会被当作孤岛移除；\u003c/li> \u003cli>修改布局/走线后铺铜\u003cb>不会自动重算\u003c/b>，必须手动\u003cb>重建（重新铺铜）\u003c/b>；\u003c/li> \u003cli>两块铜皮合并的前提是\u003cb>同一网络\u003c/b>，还要检查所在层、优先级/填充属性一致；\u003c/li> \u003cli>孤立铜皮、飞线、DRC 报错，往往都是\"没重建铺铜\"引起的。\u003c/li> \u003c/ol>"},{"id":"kb4","title":"⑤ 内电层（Internal Plane）= 负片","html":"\u003cp style=\"margin:4px 0\">\u003cb>负片\u003c/b>：默认整层铺满铜，\"画线\"的地方是\u003cb>把铜清除\u003c/b>做隔离带。分割内电层用\u003cb>折线（Polyline）\u003c/b>画闭合隔离带，并给每个分割区指定正确网络；分割完要\u003cb>手动重建内电层\u003c/b>再导出。\u003c/p> \u003cp style=\"margin-bottom:0\">输出 Gerber 时会转成\u003cb>正片\u003c/b>。隐藏某个层只是显示控制，\u003cb>不等于\u003c/b>该层不导出，导出内容由 Gerber 层设置决定。\u003c/p>"},{"id":"kb5","title":"⑥ 过孔家族与层管理","html":"\u003ctable style=\"margin:6px 0\">\u003ctbody> \u003ctr>\u003ctd>\u003cb>过孔 Via\u003c/b>\u003c/td>\u003ctd>贯通所有层，用于顶底层之间切换走线\u003c/td>\u003c/tr> \u003ctr>\u003ctd>\u003cb>盲孔 Blind Via\u003c/b>\u003c/td>\u003ctd>表层 ↔ 内层，不贯通整板\u003c/td>\u003c/tr> \u003ctr>\u003ctd>\u003cb>埋孔 Buried Via\u003c/b>\u003c/td>\u003ctd>内层 ↔ 内层，表底层都看不到\u003c/td>\u003c/tr> \u003c/tbody>\u003c/table> \u003cp style=\"margin-bottom:0\">铜箔层数取\u003cb>偶数\u003c/b>，顶层和底层是默认层不能删除。多层板还要先做\u003cb>图层规划与板框设置\u003c/b>，再布线；盲埋孔除软件设置外还受\u003cb>板厂工艺能力\u003c/b>限制，不是 Gerber 里画了就一定能做。\u003c/p>"},{"id":"kb6","title":"⑦ DRC 能查什么、不能查什么","html":"\u003cp style=\"margin:4px 0\">能查：线宽、间距、孔外径、丝印压焊盘、未连接网络、短路等\u003cb>已定义网络之间\u003c/b>的冲突。\u003c/p> \u003cp style=\"margin-bottom:0\">\u003cb>不能查：\u003c/b>网络定义本身是否符合设计意图。例如把 GND 符号的网络属性错设成 +5V，DRC 会全部通过，直到调试才暴露。\u003cb>DRC 全过 ≠ 设计正确。\u003c/b>\u003c/p>"},{"id":"kb7","title":"⑧ 规则、工艺与元器件选型","html":"\u003cul style=\"margin-bottom:0\"> \u003cli>安全间距/线宽要\u003cb>不低于板厂工艺能力并留余量\u003c/b>，不能改 0 或关 DRC 硬布通；\u003c/li> \u003cli>晶振、滤波电容尽量\u003cb>靠近主控芯片对应引脚\u003c/b>；\u003c/li> \u003cli>阻抗线的参考平面必须是\u003cb>实心铜皮\u003c/b>，被走线/过孔切割会让实际阻抗偏离计算值；\u003c/li> \u003cli>元件选\u003cb>成长期/成熟期\u003c/b>型号，避开停产（EOL）；电容耐压留 \u003cb>2 倍以上\u003c/b>余量（5V 电路用 10V/16V）。\u003c/li> \u003c/ul>"}]},{"n":1,"title":"原理图与封装","intro":"\u003cp>本章 13 题：选择 8 题、填空 1 题、判断 4 题。先做客观题确认概念，再用简答/实验题练完整表述。\u003c/p>","sections":[{"id":"pt1","title":"本章要点（来自题目解析）","html":"\u003cul>\u003cli>\u003cb>Q1\u003c/b>　报错说的是逻辑绑定缺失，应到封装管理器修正元件与封装的对应关系；手动放元件、忽略报错、删元件都不能解决网络表问题。\u003c/li>\u003cli>\u003cb>Q2\u003c/b>　用增量同步而不是重新转一次 PCB，否则已完成的布局布线会被打乱。\u003c/li>\u003cli>\u003cb>Q3\u003c/b>　网络改名后要检查飞线与走线归属，软件不会保证已布走线自动跟随新网络名。\u003c/li>\u003cli>\u003cb>Q4\u003c/b>　放置非连接标识符（X），明确告诉 ERC 这个引脚是故意不接的。\u003c/li>\u003cli>\u003cb>Q5\u003c/b>　焊盘编号要与原理图引脚号一一对应；放置时可自动递增，但复制粘贴出来的焊盘常需手工确认编号。D 也偏绝对：编号错了一般仍能转 PCB，只是引脚/网络对应错。\u003c/li>\u003cli>\u003cb>Q6\u003c/b>　普通网络标签只在同页有效；跨页要用全局网络标签、网络端口或离图连接器。电源符号虽全局，但不能拿来代替信号名。\u003c/li>\u003c/ul>"}]},{"n":2,"title":"PCB布局与布线","intro":"\u003cp>本章 18 题：简答/实验 6 题、选择 8 题、填空 3 题、简答/实验 1 题。先做客观题确认概念，再用简答/实验题练完整表述。\u003c/p>","sections":[{"id":"pt2","title":"本章要点（来自题目解析）","html":"\u003cul>\u003cli>\u003cb>Q14\u003c/b>　要点：先导入网络表并核对封装，再布局布线；电源线加粗、加泪滴，二维/三维图与姓名学号一并提交；最后重建铺铜 + DRC。\u003c/li>\u003cli>\u003cb>Q15\u003c/b>　要点：先导入网络表并核对封装，再布局布线；电源线加粗、加泪滴，二维/三维图与姓名学号一并提交；最后重建铺铜 + DRC。\u003c/li>\u003cli>\u003cb>Q16\u003c/b>　按要求完成：画原理图或 PCB → 显示二维/三维图 → 标注姓名学号 → 电源线加粗、加泪滴、标注对外接口。建议在提交前跑一次 DRC 并重建铺铜。\u003c/li>\u003cli>\u003cb>Q17\u003c/b>　原则是&quot;对象自身设置 &gt; 全局规则&quot;，但当对象在属性面板选了&quot;跟随规则&quot;，就以设计规则为准。不同版本措辞略有差异，建议软件里实测一次。\u003c/li>\u003cli>\u003cb>Q18\u003c/b>　去耦电容、晶振要尽量靠近主控芯片对应引脚，缩短回流路径、减小寄生参数。\u003c/li>\u003cli>\u003cb>Q19\u003c/b>　铺铜网络与焊盘网络不一致时，软件会把它当作孤岛（孤立铜皮）移除，看起来就是&quot;没铺上&quot;。\u003c/li>\u003c/ul>"}]},{"n":3,"title":"铺铜与铜皮","intro":"\u003cp>本章 3 题：选择 1 题、填空 1 题、简答/实验 1 题。先做客观题确认概念，再用简答/实验题练完整表述。\u003c/p>","sections":[{"id":"pt3","title":"本章要点（来自题目解析）","html":"\u003cul>\u003cli>\u003cb>Q32\u003c/b>　同网络是合并的必要条件；颜色、时间、大小都不是。\u003c/li>\u003cli>\u003cb>Q33\u003c/b>　同一网络之外还要在同一层，且铺铜优先级、填充样式一致，否则合并后行为不可预期。\u003c/li>\u003cli>\u003cb>Q34\u003c/b>　铺铜是&quot;算出来&quot;的静态结果，布局/走线改动后不会自动重算，必须手动重建铺铜，否则出现飞线或孤立铜皮。\u003c/li>\u003c/ul>"}]},{"n":4,"title":"DRC与规则检查","intro":"\u003cp>本章 1 题：选择 1 题。先做客观题确认概念，再用简答/实验题练完整表述。\u003c/p>","sections":[{"id":"pt4","title":"本章要点（来自题目解析）","html":"\u003cul>\u003cli>\u003cb>Q35\u003c/b>　线宽、间距、孔外径都是可配置 DRC 项；元件颜色只是显示属性，不属于电气/制造规则。\u003c/li>\u003c/ul>"}]},{"n":5,"title":"层管理与内电层","intro":"\u003cp>本章 11 题：选择 8 题、填空 2 题、判断 1 题。先做客观题确认概念，再用简答/实验题练完整表述。\u003c/p>","sections":[{"id":"pt5","title":"本章要点（来自题目解析）","html":"\u003cul>\u003cli>\u003cb>Q36\u003c/b>　工具 → 图层管理器里设置层数、叠层顺序与层属性。\u003c/li>\u003cli>\u003cb>Q37\u003c/b>　盲孔是表层到内层、埋孔是内层到内层（表底层看不到）；设置前需在规则/层叠中添加层对，单层板谈不上盲埋孔。\u003c/li>\u003cli>\u003cb>Q38\u003c/b>　内电层用负片：默认整层铺铜，画线处清除铜做隔离。\u003c/li>\u003cli>\u003cb>Q39\u003c/b>　只连表层与内层、不贯穿整板的是盲孔；只连内层之间的是埋孔。\u003c/li>\u003cli>\u003cb>Q40\u003c/b>　隐藏只是显示控制；导出哪些层由 Gerber 输出设置决定，隐藏层照样可能被导出。\u003c/li>\u003cli>\u003cb>Q41\u003c/b>　负片方式：默认铺满铜，绘制折线的地方把铜清除。\u003c/li>\u003c/ul>"}]},{"n":6,"title":"Gerber与制造输出","intro":"\u003cp>本章 5 题：选择 2 题、判断 2 题、简答/实验 1 题。先做客观题确认概念，再用简答/实验题练完整表述。\u003c/p>","sections":[{"id":"pt6","title":"本章要点（来自题目解析）","html":"\u003cul>\u003cli>\u003cb>Q47\u003c/b>　选型优先成长期/成熟期型号；EOL（停产）、即将停产、刚发布新品都有供货或验证风险。\u003c/li>\u003cli>\u003cb>Q48\u003c/b>　5V 电路通常选耐压 2 倍以上（10V 或 16V）的电容；&quot;刚好高于工作电压&quot;不留余量，电解电容同样要看耐压。\u003c/li>\u003cli>\u003cb>Q49\u003c/b>　编辑视图用负片方便画隔离带，制造文件必须转成正片，板厂才能按&quot;有线即有铜&quot;生产。\u003c/li>\u003cli>\u003cb>Q50\u003c/b>　分割后不手动重建内电层就导出，旧铜皮数据会被带进 Gerber，可能把本该隔离的两块网络连在一起。\u003c/li>\u003cli>\u003cb>Q51\u003c/b>　软件能画 ≠ 板厂能做。盲埋孔属于特殊工艺，下单时必须选择对应工艺并确认层对、价格与交期。\u003c/li>\u003c/ul>"}]},{"n":7,"title":"综合与其他","intro":"\u003cp>本章 1 题：简答/实验 1 题。先做客观题确认概念，再用简答/实验题练完整表述。\u003c/p>","sections":[{"id":"pt7","title":"本章要点（来自题目解析）","html":"\u003cul>\u003cli>\u003cb>Q52\u003c/b>　按要求完成：用立创 EDA 画原理图 → 指定封装 → 转 PCB 并布局布线 → 输出二维、三维图 → 图上标注姓名与学号。提交前跑 ERC/DRC。\u003c/li>\u003c/ul>"}]}],"blocks":[{"title":"① 原理图 → PCB 的完整链路","html":"\u003cp style=\"margin:4px 0\">画原理图（放元件、连导线、加网络标签）→ 给每个元件指定\u003cb>封装\u003c/b>（元件属性 Footprint / 封装管理器）→ 编译 ERC 查错 → \u003cb>设计 → 更新/同步到 PCB\u003c/b> → 布局 → 布线 → 铺铜 → DRC → 导出 Gerber。\u003c/p> \u003cp style=\"margin-bottom:0\">\u003cb>关键：\u003c/b>原理图与 PCB 之间是\u003cb>网络表（Netlist）\u003c/b>在传递连接关系，不是\"看起来连上了\"就算连上。\u003c/p>"},{"title":"② 电气连接的三个硬条件","html":"\u003cul style=\"margin-bottom:0\"> \u003cli>导线端点必须落在\u003cb>引脚的电气热点\u003c/b>上，出现实心连接圆点；\u003c/li> \u003cli>网络标签必须\u003cb>精确放在导线/引脚的连接点\u003c/b>上，仅\"靠近\"不会建立连接；\u003c/li> \u003cli>\u003cb>跨图页\u003c/b>连通要用\u003cb>全局网络标签 / 网络端口 / 离图连接器\u003c/b>，普通网络标签只在同页有效。\u003c/li> \u003c/ul>"},{"title":"③ 封装管理器：逻辑绑定，不是视觉叠加","html":"\u003cp style=\"margin-bottom:0\">有效做法：在元件属性 Footprint 字段从工程/系统库选封装；自定义封装先\"添加到工程\"再指定；在封装管理器确认\"已启用 + 默认\"。\u003cb>把封装图形拖到符号上叠在一起只是视觉重叠，不产生逻辑绑定。\u003c/b>位号重复用「设计 → 分配位号 / 标注」全局重编。\u003c/p>"},{"title":"④ 铺铜（覆铜）four 条铁律","html":"\u003col style=\"margin-bottom:0\"> \u003cli>铺铜必须指定\u003cb>网络\u003c/b>（如 GND），与焊盘网络不一致会被当作孤岛移除；\u003c/li> \u003cli>修改布局/走线后铺铜\u003cb>不会自动重算\u003c/b>，必须手动\u003cb>重建（重新铺铜）\u003c/b>；\u003c/li> \u003cli>两块铜皮合并的前提是\u003cb>同一网络\u003c/b>，还要检查所在层、优先级/填充属性一致；\u003c/li> \u003cli>孤立铜皮、飞线、DRC 报错，往往都是\"没重建铺铜\"引起的。\u003c/li> \u003c/ol>"},{"title":"⑤ 内电层（Internal Plane）= 负片","html":"\u003cp style=\"margin:4px 0\">\u003cb>负片\u003c/b>：默认整层铺满铜，\"画线\"的地方是\u003cb>把铜清除\u003c/b>做隔离带。分割内电层用\u003cb>折线（Polyline）\u003c/b>画闭合隔离带，并给每个分割区指定正确网络；分割完要\u003cb>手动重建内电层\u003c/b>再导出。\u003c/p> \u003cp style=\"margin-bottom:0\">输出 Gerber 时会转成\u003cb>正片\u003c/b>。隐藏某个层只是显示控制，\u003cb>不等于\u003c/b>该层不导出，导出内容由 Gerber 层设置决定。\u003c/p>"},{"title":"⑥ 过孔家族与层管理","html":"\u003ctable style=\"margin:6px 0\">\u003ctbody> \u003ctr>\u003ctd>\u003cb>过孔 Via\u003c/b>\u003c/td>\u003ctd>贯通所有层，用于顶底层之间切换走线\u003c/td>\u003c/tr> \u003ctr>\u003ctd>\u003cb>盲孔 Blind Via\u003c/b>\u003c/td>\u003ctd>表层 ↔ 内层，不贯通整板\u003c/td>\u003c/tr> \u003ctr>\u003ctd>\u003cb>埋孔 Buried Via\u003c/b>\u003c/td>\u003ctd>内层 ↔ 内层，表底层都看不到\u003c/td>\u003c/tr> \u003c/tbody>\u003c/table> \u003cp style=\"margin-bottom:0\">铜箔层数取\u003cb>偶数\u003c/b>，顶层和底层是默认层不能删除。多层板还要先做\u003cb>图层规划与板框设置\u003c/b>，再布线；盲埋孔除软件设置外还受\u003cb>板厂工艺能力\u003c/b>限制，不是 Gerber 里画了就一定能做。\u003c/p>"},{"title":"⑦ DRC 能查什么、不能查什么","html":"\u003cp style=\"margin:4px 0\">能查：线宽、间距、孔外径、丝印压焊盘、未连接网络、短路等\u003cb>已定义网络之间\u003c/b>的冲突。\u003c/p> \u003cp style=\"margin-bottom:0\">\u003cb>不能查：\u003c/b>网络定义本身是否符合设计意图。例如把 GND 符号的网络属性错设成 +5V，DRC 会全部通过，直到调试才暴露。\u003cb>DRC 全过 ≠ 设计正确。\u003c/b>\u003c/p>"},{"title":"⑧ 规则、工艺与元器件选型","html":"\u003cul style=\"margin-bottom:0\"> \u003cli>安全间距/线宽要\u003cb>不低于板厂工艺能力并留余量\u003c/b>，不能改 0 或关 DRC 硬布通；\u003c/li> \u003cli>晶振、滤波电容尽量\u003cb>靠近主控芯片对应引脚\u003c/b>；\u003c/li> \u003cli>阻抗线的参考平面必须是\u003cb>实心铜皮\u003c/b>，被走线/过孔切割会让实际阻抗偏离计算值；\u003c/li> \u003cli>元件选\u003cb>成长期/成熟期\u003c/b>型号，避开停产（EOL）；电容耐压留 \u003cb>2 倍以上\u003c/b>余量（5V 电路用 10V/16V）。\u003c/li> \u003c/ul>"}],"pitfalls":["把\"看起来连上了\"当成电气连接：ERC 依据网络表，网络标签必须落在连接点。","跨页仍用普通网络标签：跨页要用全局网络标签 / 网络端口 / 离图连接器。","改了布局走线忘记重建铺铜：飞线、孤立铜皮、DRC 报错多半由此而来。","以为内电层隐藏了就不导出 Gerber：导出内容由 Gerber 层设置决定。","把负片当正片：内电层画线是\"清铜\"，分割线要用折线并闭合。","认为 DRC 全过就万事大吉：网络属性定义错（如 GND 符号设成 +5V）DRC 查不出来。","为布通把安全间距改成 0 或关掉 DRC：必须不低于板厂工艺能力并留余量。","把封装图形拖到符号上就算绑定：必须在元件属性 / 封装管理器里指定 Footprint。","盲孔、埋孔、过孔三者混淆：过孔贯通、盲孔表层↔内层、埋孔内层↔内层。","盲埋孔以为画了就能做：还要板厂工艺支持，下单需选对应工艺。"],"bank":[{"id":"eda-Q1","ch":1,"no":"Q1","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">在立创EDA中，将原理图转换为PCB时，如果出现“封装名未通过封装管理器指定过”的报错，正确的处理方式是（ ）","options":[{"key":"A","html":"直接在PCB中手动放置元件"},{"key":"B","html":"在封装管理器中修正元件与封装的对应关系"},{"key":"C","html":"忽略该错误，强制转换"},{"key":"D","html":"删除原理图中的该元件"}],"answer":"B","answerKey":"B","why":"\u003cp class=\"q-why\">报错说的是逻辑绑定缺失，应到封装管理器修正元件与封装的对应关系；手动放元件、忽略报错、删元件都不能解决网络表问题。\u003c/p>","source":"L03 p5 题1","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q2","ch":1,"no":"Q2","kind":"fill","group":"objective","stem":"\u003cspan class=\"ln\">在立创EDA中，将原理图的变更同步更新到已有的PCB文件时，应点击顶部菜单“设计”下的“______”功能，而非重新转一次PCB。\u003c/span>","options":[],"answer":"设计 → 更新/同步到 PCB（Update PCB）","answerKey":"","why":"\u003cp class=\"q-why\">用增量同步而不是重新转一次 PCB，否则已完成的布局布线会被打乱。\u003c/p>","source":"L03 p5 题5","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q3","ch":1,"no":"Q3","kind":"judge","group":"objective","stem":"\u003cspan class=\"ln\">在立创EDA中，从原理图更新网络到PCB后，原网络已经布好的走线会自动跟随新的网络名变化，无需手动修改。（ ）\u003c/span>","options":[],"answer":"×","answerKey":"×","why":"\u003cp class=\"q-why\">网络改名后要检查飞线与走线归属，软件不会保证已布走线自动跟随新网络名。\u003c/p>","source":"L03 p5 题6","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q4","ch":1,"no":"Q4","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">在立创EDA原理图中，若某个元器件引脚设计上不需连接任何网络，规范的做法是放置什么标识符？( )","options":[{"key":"A","html":"网络标签"},{"key":"B","html":"非连接标识符（X）"},{"key":"C","html":"网络端口"},{"key":"D","html":"总线分支"}],"answer":"B","answerKey":"B","why":"\u003cp class=\"q-why\">放置非连接标识符（X），明确告诉 ERC 这个引脚是故意不接的。\u003c/p>","source":"L03 p7 题1","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q5","ch":1,"no":"Q5","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">绘制PCB封装时，关于焊盘编号的设置，以下说法错误的是？","options":[{"key":"A","html":"焊盘编号需与元件引脚编号一一对应"},{"key":"B","html":"焊盘编号可以通过鼠标放置自动递增"},{"key":"C","html":"通过复制粘贴放置的焊盘，编号会自动递增"},{"key":"D","html":"焊盘编号设置错误会导致原理图无法转为PCB"}],"answer":"C（复制粘贴通常不会自动递增）","answerKey":"C","why":"\u003cp class=\"q-why\">焊盘编号要与原理图引脚号一一对应；放置时可自动递增，但复制粘贴出来的焊盘常需手工确认编号。D 也偏绝对：编号错了一般仍能转 PCB，只是引脚/网络对应错。\u003c/p>","source":"L03 p7 题4","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q6","ch":1,"no":"Q6","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">原理图中需要将两个不同图页上的 RESET_CTRL 信号电气连通。以下做法正确的是： ( )","options":[{"key":"A","html":"在两页各放置一个普通“网络标签”，名称相同即可"},{"key":"B","html":"在两页各放置一个“全局网络标签”，名称均为 RESET_CTRL"},{"key":"C","html":"使用电源符号 +3V3 代替 RESET_CTRL，因为电源符号默认全局"},{"key":"D","html":"在两页分别放置网络标签，并在PCB中用飞线手动连接"}],"answer":"B","answerKey":"B","why":"\u003cp class=\"q-why\">普通网络标签只在同页有效；跨页要用全局网络标签、网络端口或离图连接器。电源符号虽全局，但不能拿来代替信号名。\u003c/p>","source":"L09 p2 题3","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q7","ch":1,"no":"Q7","kind":"judge","group":"objective","stem":"\u003cspan class=\"ln\">网络标签只要放在导线附近，即使没有落在导线的电气连接点上，嘉立创EDA也会自动将其电气连接到该导线。( )\u003c/span>","options":[],"answer":"×","answerKey":"×","why":"\u003cp class=\"q-why\">ERC 基于网络表做逻辑检查，标签必须精确落在导线或引脚的电气连接点上；仅\"靠近\"不建立连接。\u003c/p>","source":"L09 p3 题6","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q8","ch":1,"no":"Q8","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">在嘉立创EDA原理图中，两个网络标签在视觉上紧挨着同一条导线放置，但ERC仍报“网络仅有一个连接点（Net with only one pin）”。下列解释最准确的是（ ）","options":[{"key":"A","html":"ERC是基于视觉位置判断连接的，因此这一定是软件Bug"},{"key":"B","html":"ERC基于网络表（Netlist）进行逻辑检查；网络标签必须精确放置在导线的电气连接点上，或与另一标签的热点完全重合，仅“靠近”不会在网络表中建立连接"},{"key":"C","html":"只要导线颜色高亮，就说明标签已经建立了电气连接"},{"key":"D","html":"网络标签名称区分大小写，但大小写不一致只会报警告，不会导致“仅有一个连接点”"}],"answer":"B","answerKey":"B","why":"\u003cp class=\"q-why\">ERC 依据网络表判断：标签必须精确落在电气连接点或与另一标签热点重合，\"视觉上挨着\"不算连接。\u003c/p>","source":"L09 p8 题1","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q9","ch":1,"no":"Q9","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">某设计在原理图中将一个LDO的VSS引脚连接到“地”符号，但该“地”符号的网络属性实际上是+5V（因合并网络后残留所致）。PCB导入后，该引脚焊盘网络变为+5V，而DRC全部通过。关于这一错误，下列判断正确的是（ ）","options":[{"key":"A","html":"这类错误源于原理图引脚或电源符号的网络属性被错误定义，DRC检查的是“已定义网络之间是否冲突”，不负责校验“网络定义本身是否符合设计意图”，因此可能在DRC全过的情况下直到调试才暴露"},{"key":"B","html":"只要在PCB中重新铺铜，该错误会自动纠正"},{"key":"C","html":"DRC未报错说明设计没有问题，该焊盘实际仍连接GND"},{"key":"D","html":"封装管理器会拦截所有网络属性错误，未拦截说明封装正确"}],"answer":"A","answerKey":"A","why":"\u003cp class=\"q-why\">DRC 只检查\"已定义网络之间是否冲突\"，不校验网络定义是否符合设计意图；这类错误只能靠人工核对原理图符号属性。\u003c/p>","source":"L09 p8 题2","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q10","ch":1,"no":"Q10","kind":"judge","group":"objective","stem":"\u003cspan class=\"ln\">在原理图中，网络标签只要放在导线附近，即使没有精确落在电气连接点上，ERC也能识别为有效连接。( )\u003c/span>","options":[],"answer":"×","answerKey":"×","why":"\u003cp class=\"q-why\">与上一题同源：必须落在连接点，ERC 不看\"看起来近不近\"。\u003c/p>","source":"L09 p8 题3","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q11","ch":1,"no":"Q11","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">在嘉立创EDA专业版中，原理图上两个引脚之间已经画了导线，目视“连在一起”，但编译仍报“网络仅有一个连接点（Net with only one pin）”。以下原因中最不可能的是（ ）","options":[{"key":"A","html":"导线与引脚端点之间存在微小间隙，未形成实心连接圆点"},{"key":"B","html":"两个本应同名的网络标签大小写或标点不一致（如 VCC3.3 与 VCC_3.3）"},{"key":"C","html":"跨页连接时仅使用了普通网络标签，而未使用网络端口或离图连接器"},{"key":"D","html":"原理图中的导线颜色设置成了与背景相近的颜色，导致视觉上看不清"}],"answer":"D","answerKey":"D","why":"\u003cp class=\"q-why\">导线颜色接近背景只影响肉眼观察，不会改变电气连接；其余三项（微小间隙、标签名不一致、跨页用普通标签）都会真正导致网络表不连通。\u003c/p>","source":"L15 p3 题1","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q12","ch":1,"no":"Q12","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">关于元件与封装的关联，以下做法在嘉立创EDA中不能建立有效逻辑绑定的是（ ）","options":[{"key":"A","html":"在原理图元件属性的 Footprint 字段中，通过右侧“…”按钮从工程封装库中选择目标封装"},{"key":"B","html":"将封装库中的封装图形直接拖拽到原理图元件符号上，使二者叠在一起"},{"key":"C","html":"在封装管理器中确认目标封装的状态为“已启用”并标记为“默认”"},{"key":"D","html":"对于自定义封装，先将其“添加到工程”并同步，再在元件属性中指定封装名"}],"answer":"B","answerKey":"B","why":"\u003cp class=\"q-why\">把封装图形拖到符号上只是视觉叠加，没有建立 Footprint 逻辑绑定；正确做法是在元件属性或封装管理器中指定。\u003c/p>","source":"L15 p3 题2","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q13","ch":1,"no":"Q13","kind":"judge","group":"objective","stem":"\u003cspan class=\"ln\">在嘉立创EDA中，复制粘贴原理图模块后，若出现位号重复，可以使用“设计 → 分配位号”或“标注”功能对位号进行全局重新编号，而不必逐个手动修改。( )\u003c/span>","options":[],"answer":"√","answerKey":"√","why":"\u003cp class=\"q-why\">复制粘贴模块造成位号重复时，用「设计 → 分配位号 / 标注」全局重编号，不必逐个改。\u003c/p>","source":"L15 p3 题3","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q14","ch":2,"no":"Q14","kind":"short","group":"written","stem":"\u003cspan class=\"ln\">根据所给图t2.png，利用立创EDA画出对应PCB图，显示对应二维、三维图，同时标注用户名与学号\u003c/span>","options":[],"answer":"实验/绘图题","answerKey":"","why":"\u003cp class=\"q-why\">要点：先导入网络表并核对封装，再布局布线；电源线加粗、加泪滴，二维/三维图与姓名学号一并提交；最后重建铺铜 + DRC。\u003c/p>","source":"L02 p11 题3","tags":["需对照原图"],"needsCheck":false,"points":["要点：先导入网络表并核对封装，再布局布线","电源线加粗、加泪滴，二维/三维图与姓名学号一并提交","最后重建铺铜 + DRC"]},{"id":"eda-Q15","ch":2,"no":"Q15","kind":"short","group":"written","stem":"\u003cspan class=\"ln\">根据所给图t3.png，利用立创EDA画出对应PCB图，显示对应二维、三维图，同时标注用户名与学号，电源线粗细、泪滴与标注显示美观\u003c/span>","options":[],"answer":"实验/绘图题","answerKey":"","why":"\u003cp class=\"q-why\">要点：先导入网络表并核对封装，再布局布线；电源线加粗、加泪滴，二维/三维图与姓名学号一并提交；最后重建铺铜 + DRC。\u003c/p>","source":"L03 p12 题3","tags":["需对照原图"],"needsCheck":false,"points":["要点：先导入网络表并核对封装，再布局布线","电源线加粗、加泪滴，二维/三维图与姓名学号一并提交","最后重建铺铜 + DRC"]},{"id":"eda-Q16","ch":2,"no":"Q16","kind":"short","group":"written","stem":"\u003cspan class=\"ln\">根据所给图t4.png，利用立创EDA画出对应4层PCB板，显示对应二维、三维图，同时标注用户名与学号，电源线粗细、泪滴与标注显示美观，对外接口要标注好。\u003c/span>\u003cbr>\u003cspan class=\"ln\">所有作业均要出现自己姓名与学号\u003c/span>","options":[],"answer":"实验/绘图题","answerKey":"","why":"\u003cp class=\"q-why\">按要求完成：画原理图或 PCB → 显示二维/三维图 → 标注姓名学号 → 电源线加粗、加泪滴、标注对外接口。建议在提交前跑一次 DRC 并重建铺铜。\u003c/p>","source":"L03 p14 题3","tags":["需对照原图"],"needsCheck":false,"points":["按要求完成：画原理图或 PCB → 显示二维/三维图 → 标注姓名学号 → 电源线加粗、加泪滴、标注对外接口","建议在提交前跑一次 DRC 并重建铺铜"]},{"id":"eda-Q17","ch":2,"no":"Q17","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">关于立创EDA中导线线宽的优先级，以下说法正确的是（ ）","options":[{"key":"A","html":"设计规则中的线宽设置优先级最高"},{"key":"B","html":"导线对象自身的线宽属性优先级最高"},{"key":"C","html":"属性面板中的“跟随规则”优先级最高"},{"key":"D","html":"所有设置的优先级相同"}],"answer":"B（对象属性优先；设为\"跟随规则\"时按规则）","answerKey":"B","why":"\u003cp class=\"q-why\">原则是\"对象自身设置 > 全局规则\"，但当对象在属性面板选了\"跟随规则\"，就以设计规则为准。不同版本措辞略有差异，建议软件里实测一次。\u003c/p>","source":"L03 p5 题2","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q18","ch":2,"no":"Q18","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">在PCB布局时，对于晶振、滤波电容这类元件，通常的布局原则是（ ）","options":[{"key":"A","html":"随意放置，不影响性能"},{"key":"B","html":"尽量靠近主控芯片的对应引脚"},{"key":"C","html":"放在板子边缘，方便更换"},{"key":"D","html":"集中放置在电源输入附近"}],"answer":"B","answerKey":"B","why":"\u003cp class=\"q-why\">去耦电容、晶振要尽量靠近主控芯片对应引脚，缩短回流路径、减小寄生参数。\u003c/p>","source":"L03 p5 题3","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q19","ch":2,"no":"Q19","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">立创EDA的铺铜操作中，如果铺铜后没有显示填充区域，最可能的原因是（ ）","options":[{"key":"A","html":"没有设置铺铜的颜色"},{"key":"B","html":"铺铜网络与焊盘网络不一致，被判定为孤岛移除"},{"key":"C","html":"铺铜层选错了"},{"key":"D","html":"没有开启3D预览"}],"answer":"B","answerKey":"B","why":"\u003cp class=\"q-why\">铺铜网络与焊盘网络不一致时，软件会把它当作孤岛（孤立铜皮）移除，看起来就是\"没铺上\"。\u003c/p>","source":"L03 p5 题4","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q20","ch":2,"no":"Q20","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">在PCB布线时，若需要在顶层和底层之间切换走线，可以使用快捷键（），系统会自动添加过孔。( )","options":[{"key":"A","html":"T 和 B"},{"key":"B","html":"+ 和 -"},{"key":"C","html":"Shift + W"},{"key":"D","html":"L"}],"answer":"A（T / B）","answerKey":"A","why":"\u003cp class=\"q-why\">按 T（顶层）或 B（底层）切换布线层时，软件会自动插入过孔连通两层。Shift+W 是快速改线宽。\u003c/p>","source":"L03 p7 题2","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q21","ch":2,"no":"Q21","kind":"fill","group":"objective","stem":"\u003cspan class=\"ln\">立创EDA布线时，若想快速切换导线宽度，可以使用快捷键______。\u003c/span>","options":[],"answer":"Shift+W","answerKey":"","why":"\u003cp class=\"q-why\">Shift+W 调出线宽选择；切换层用 T/B。两者容易混，按\"W=Width、T/B=Top/Bottom\"记。\u003c/p>","source":"L03 p7 题5","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q22","ch":2,"no":"Q22","kind":"short","group":"written","stem":"\u003cspan class=\"ln\">根据所给图t5.png，利用立创EDA画出合理的4层PCB板，显示对应二维、三维图，同时标注用户名与学号，电源线粗细、泪滴与标注显示美观，对外接口要标注好。\u003c/span>\u003cbr>\u003cspan class=\"ln\">所有作业均要出现自己姓名与学号\u003c/span>","options":[],"answer":"实验/绘图题","answerKey":"","why":"\u003cp class=\"q-why\">按要求完成：画原理图或 PCB → 显示二维/三维图 → 标注姓名学号 → 电源线加粗、加泪滴、标注对外接口。建议在提交前跑一次 DRC 并重建铺铜。\u003c/p>","source":"L05 p12 题4","tags":["需对照原图"],"needsCheck":false,"points":["按要求完成：画原理图或 PCB → 显示二维/三维图 → 标注姓名学号 → 电源线加粗、加泪滴、标注对外接口","建议在提交前跑一次 DRC 并重建铺铜"]},{"id":"eda-Q23","ch":2,"no":"Q23","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">在嘉立创EDA多层板中，用于连通各层之间印制导线的公共孔称为？ ( )","options":[{"key":"A","html":"焊盘"},{"key":"B","html":"过孔"},{"key":"C","html":"定位孔"},{"key":"D","html":"安装孔"}],"answer":"B","answerKey":"B","why":"\u003cp class=\"q-why\">过孔（Via）贯通各层；定位孔、安装孔是机械孔，焊盘是元件引脚。\u003c/p>","source":"L05 p4 题2","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q24","ch":2,"no":"Q24","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">在多层板布局布线流程中，以下哪项操作应在布线之前完成？( )","options":[{"key":"A","html":"erber文件"},{"key":"B","html":"DRC检查"},{"key":"C","html":"图层规划与板框设置"},{"key":"D","html":"丝印调整"}],"answer":"C","answerKey":"C","why":"\u003cp class=\"q-why\">先做图层规划与板框设置，再布局布线；导出 Gerber、DRC、丝印调整都在后面。\u003c/p>","source":"L05 p4 题5","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q25","ch":2,"no":"Q25","kind":"fill","group":"objective","stem":"\u003cspan class=\"ln\">在布线过程中需要切换层时，立创EDA专业版会自动添加______，以连通不同层之间的导线。\u003c/span>","options":[],"answer":"过孔（Via）","answerKey":"","why":"\u003cp class=\"q-why\">切换布线层时软件自动插入过孔，把顶层与底层的导线在电气上连通。\u003c/p>","source":"L05 p7 题6","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q26","ch":2,"no":"Q26","kind":"short","group":"written","stem":"\u003cspan class=\"ln\">根据所给图t6.png，利用立创EDA画出合理布局的6层PCB板，显示对应二维、三维图，同时标注用户名与学号，电源线粗细、泪滴与标注显示美观，对外接口要标注好。\u003c/span>\u003cbr>\u003cspan class=\"ln\">所有作业均要出现自己姓名与学号\u003c/span>","options":[],"answer":"实验/绘图题","answerKey":"","why":"\u003cp class=\"q-why\">按要求完成：画原理图或 PCB → 显示二维/三维图 → 标注姓名学号 → 电源线加粗、加泪滴、标注对外接口。建议在提交前跑一次 DRC 并重建铺铜。\u003c/p>","source":"L06 p12 题4","tags":["需对照原图"],"needsCheck":false,"points":["按要求完成：画原理图或 PCB → 显示二维/三维图 → 标注姓名学号 → 电源线加粗、加泪滴、标注对外接口","建议在提交前跑一次 DRC 并重建铺铜"]},{"id":"eda-Q27","ch":2,"no":"Q27","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">某双层板器件布局密集，默认安全间距规则下信号线无法扇出，反复DRC报间距错误。以下处理方式中，最合理的是( )","options":[{"key":"A","html":"将设计规则中的安全间距直接改为0，先布通再改回"},{"key":"B","html":"在不低于板厂工艺能力且留有余量的前提下，适度减小安全间距与默认线宽"},{"key":"C","html":"关闭DRC检查，完成布线后直接导出Gerber"},{"key":"D","html":"将所有信号线宽度统一改为最小线宽，不调整间距规则"}],"answer":"B","answerKey":"B","why":"\u003cp class=\"q-why\">改规则不能突破工艺下限：应在不低于板厂能力且留余量的前提下，适度减小安全间距与默认线宽。改 0、关 DRC、只改线宽不调间距都是掩耳盗铃。\u003c/p>","source":"L09 p2 题1","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q28","ch":2,"no":"Q28","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">PCB中某个GND焊盘旁有丝印字符压住焊盘，DRC报“丝印压焊盘”。关于这一错误的处理，以下判断正确的是：( )","options":[{"key":"A","html":"丝印压焊盘是致命电气错误，必须删除整个封装重新设计"},{"key":"B","html":"嘉立创在制造时会默认掏掉露铜区域上方的丝印，但设计阶段仍应尽量移动丝印以避免歧义"},{"key":"C","html":"丝印错误与电气连接无关，因此可以在所有项目中无条件忽略"},{"key":"D","html":"只要在DRC中关闭“丝印重叠”检查，丝印就会自动避让焊盘"}],"answer":"B","answerKey":"B","why":"\u003cp class=\"q-why\">丝印压焊盘不是致命电气错误；制造端通常会掏掉露铜区上方的丝印，但设计阶段仍应移动丝印避免歧义。\u003c/p>","source":"L09 p3 题4","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q29","ch":2,"no":"Q29","kind":"fill","group":"objective","stem":"\u003cspan class=\"ln\">在嘉立创EDA中，修改了元件布局或走线后，铺铜不会自动更新。对全部铺铜（包括内电层）执行重建的快捷键是 ________。\u003c/span>","options":[],"answer":"常用 Shift+B（以软件版本为准）","answerKey":"","why":"\u003cp class=\"q-why\">嘉立创 EDA 专业版里\"重建全部铺铜\"常用 Shift+B；也可在铺铜管理器中右键重建。记住动作名称比记快捷键更稳。\u003c/p>","source":"L09 p3 题5","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q30","ch":2,"no":"Q30","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">在嘉立创EDA中为多层板设置阻抗规则时，以下关于参考平面的说法，正确的是( )","options":[{"key":"A","html":"只要在阻抗计算器中选择了某一层作为参考层，实际制造中该层就会自动保证完整参考，无需检查布线区域"},{"key":"B","html":"只有地层可以作为阻抗参考层，电源层因噪声较大不能作为参考"},{"key":"C","html":"参考层对应位置必须是实心铜皮覆盖，若该区域被走线或过孔切割，实际阻抗会偏离计算值"},{"key":"D","html":"顶层走阻抗线时，必须将顶层铺铜完全去除，否则参考平面效应会消失"}],"answer":"C","answerKey":"C","why":"\u003cp class=\"q-why\">阻抗线要求参考层对应位置是完整实心铜皮；被走线或过孔切割后回流路径断裂，实测阻抗就偏离计算值。\u003c/p>","source":"L10 p2 题1","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q31","ch":2,"no":"Q31","kind":"short","group":"written","stem":"\u003cspan class=\"ln\">根据所给图t10.png，利用立创EDA画出合理的4层PCB板，显示对应二维、三维图，同时标注用户名与学号，电源线粗细、泪滴与标注显示美观，对外接口要标注好。\u003c/span>","options":[],"answer":"实验/绘图题","answerKey":"","why":"\u003cp class=\"q-why\">按要求完成：画原理图或 PCB → 显示二维/三维图 → 标注姓名学号 → 电源线加粗、加泪滴、标注对外接口。建议在提交前跑一次 DRC 并重建铺铜。\u003c/p>","source":"L13 p5 题3","tags":["需对照原图"],"needsCheck":false,"points":["按要求完成：画原理图或 PCB → 显示二维/三维图 → 标注姓名学号 → 电源线加粗、加泪滴、标注对外接口","建议在提交前跑一次 DRC 并重建铺铜"]},{"id":"eda-Q32","ch":3,"no":"Q32","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">在立创EDA中合并两块铜皮时，以下哪项条件是必须满足的？（ ）","options":[{"key":"A","html":"铜皮颜色相同"},{"key":"B","html":"铜皮绘制时间相近"},{"key":"C","html":"铜皮大小一致"},{"key":"D","html":"铜皮处于同一网络（Net）"}],"answer":"D","answerKey":"D","why":"\u003cp class=\"q-why\">同网络是合并的必要条件；颜色、时间、大小都不是。\u003c/p>","source":"L05 p7 题4","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q33","ch":3,"no":"Q33","kind":"fill","group":"objective","stem":"\u003cspan class=\"ln\">在立创EDA中进行铜皮合并时，除了确保同一网络外，还需检查两块铜皮的______属性是否一致。\u003c/span>","options":[],"answer":"所在层（Layer）与优先级/填充属性","answerKey":"","why":"\u003cp class=\"q-why\">同一网络之外还要在同一层，且铺铜优先级、填充样式一致，否则合并后行为不可预期。\u003c/p>","source":"L05 p7 题5","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q34","ch":3,"no":"Q34","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">在嘉立创EDA中完成GND铺铜后，拖动了一个GND焊盘的位置，发现原本“连上”的铺铜处出现飞线或DRC“孤立铜皮”报错。根本原因是：( )","options":[{"key":"A","html":"铺铜网络属性被自动改为了“No Net”"},{"key":"B","html":"嘉立创EDA的铺铜不会在布局/走线修改后自动重算，必须手动重建"},{"key":"C","html":"拖动焊盘会删除该焊盘上的所有网络信息"},{"key":"D","html":"飞线显示本身就是铺铜已断开的电气证明"}],"answer":"B","answerKey":"B","why":"\u003cp class=\"q-why\">铺铜是\"算出来\"的静态结果，布局/走线改动后不会自动重算，必须手动重建铺铜，否则出现飞线或孤立铜皮。\u003c/p>","source":"L09 p2 题2","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q35","ch":4,"no":"Q35","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">以下哪项不属于立创EDA设计规则（DRC）中可配置的检查项？( )","options":[{"key":"A","html":"线宽"},{"key":"B","html":"间距"},{"key":"C","html":"元件颜色"},{"key":"D","html":"孔外径"}],"answer":"C","answerKey":"C","why":"\u003cp class=\"q-why\">线宽、间距、孔外径都是可配置 DRC 项；元件颜色只是显示属性，不属于电气/制造规则。\u003c/p>","source":"L03 p7 题3","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q36","ch":5,"no":"Q36","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">在嘉立创EDA中设置多层板层数与叠层参数的正确操作路径是？( )","options":[{"key":"A","html":"设计 → 规则设置"},{"key":"B","html":"工具 → 图层管理器"},{"key":"C","html":"视图 → 面板设置"},{"key":"D","html":"布线 → 层设置"}],"answer":"B","answerKey":"B","why":"\u003cp class=\"q-why\">工具 → 图层管理器里设置层数、叠层顺序与层属性。\u003c/p>","source":"L05 p4 题1","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q37","ch":5,"no":"Q37","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">关于嘉立创EDA中盲埋孔的设置，下列说法正确的是？( )","options":[{"key":"A","html":"单层板即可添加盲埋孔"},{"key":"B","html":"设置盲埋孔前需在规则设置中添加"},{"key":"C","html":"盲孔是指内层之间的导通孔"},{"key":"D","html":"埋孔的表底层均可见"}],"answer":"B","answerKey":"B","why":"\u003cp class=\"q-why\">盲孔是表层到内层、埋孔是内层到内层（表底层看不到）；设置前需在规则/层叠中添加层对，单层板谈不上盲埋孔。\u003c/p>","source":"L05 p4 题3","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q38","ch":5,"no":"Q38","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">嘉立创EDA专业版中，内电层采用哪种绘制方式？( )","options":[{"key":"A","html":"正片绘制"},{"key":"B","html":"负片绘制"},{"key":"C","html":"混合绘制"},{"key":"D","html":"自动生成"}],"answer":"B","answerKey":"B","why":"\u003cp class=\"q-why\">内电层用负片：默认整层铺铜，画线处清除铜做隔离。\u003c/p>","source":"L05 p4 题4","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q39","ch":5,"no":"Q39","kind":"fill","group":"objective","stem":"\u003cspan class=\"ln\">在嘉立创EDA多层板设计中，用于连接表层和内层而不贯通整板的导通孔称为___。\u003c/span>","options":[],"answer":"盲孔（Blind Via）","answerKey":"","why":"\u003cp class=\"q-why\">只连表层与内层、不贯穿整板的是盲孔；只连内层之间的是埋孔。\u003c/p>","source":"L05 p4 题6","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q40","ch":5,"no":"Q40","kind":"judge","group":"objective","stem":"\u003cspan class=\"ln\">在多层板图层管理器中隐藏某个层，该层的元素在导出Gerber时也会被自动排除。（ ）\u003c/span>","options":[],"answer":"×","answerKey":"×","why":"\u003cp class=\"q-why\">隐藏只是显示控制；导出哪些层由 Gerber 输出设置决定，隐藏层照样可能被导出。\u003c/p>","source":"L05 p4 题7","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q41","ch":5,"no":"Q41","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">在立创EDA专业版中，内电层（Internal Plane）的绘制方式是（ ）","options":[{"key":"A","html":"正片方式，画线处保留铜"},{"key":"B","html":"负片方式，画线处清除铜"},{"key":"C","html":"与信号层完全相同"},{"key":"D","html":"只能通过导入方式生成"}],"answer":"B","answerKey":"B","why":"\u003cp class=\"q-why\">负片方式：默认铺满铜，绘制折线的地方把铜清除。\u003c/p>","source":"L05 p7 题1","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q42","ch":5,"no":"Q42","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">分割内电层时，应使用哪种图元来绘制分割线？（ ）","options":[{"key":"A","html":"导线（Wire）"},{"key":"B","html":"填充"},{"key":"C","html":"圆弧"},{"key":"D","html":"折线（Polyline）"}],"answer":"D","answerKey":"D","why":"\u003cp class=\"q-why\">用折线（Polyline）画闭合隔离带；普通导线 Wire 带网络属性，不适合做分割线。\u003c/p>","source":"L05 p7 题2","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q43","ch":5,"no":"Q43","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">立创EDA专业版最多支持的铜箔层数是（ ）","options":[{"key":"A","html":"16层"},{"key":"B","html":"24层"},{"key":"C","html":"32层"},{"key":"D","html":"64层"}],"answer":"C（32 层，以软件版本为准）","answerKey":"C","why":"\u003cp class=\"q-why\">专业版常见上限为 32 层；这类\"最多多少层\"的题以当前软件版本说明为准。\u003c/p>","source":"L05 p7 题3","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q44","ch":5,"no":"Q44","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">在嘉立创EDA专业版中，打开图层管理器的默认快捷键是（ ）","options":[{"key":"A","html":"Ctrl + M"},{"key":"B","html":"Ctrl + L"},{"key":"C","html":"Shift + L"},{"key":"D","html":"Alt + L"}],"answer":"B（Ctrl+L）","answerKey":"B","why":"\u003cp class=\"q-why\">Ctrl+L 打开图层管理器；Shift+W 改线宽、T/B 切换层，别混。\u003c/p>","source":"L06 p6 题1","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q45","ch":5,"no":"Q45","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">关于内电层的正负片属性，以下说法正确的是（ ）","options":[{"key":"A","html":"内电层以正片方式绘制，默认无铜，绘制导线即为铜线"},{"key":"B","html":"内电层以负片方式绘制，默认铺满铜，绘制折线的地方铜被清除"},{"key":"C","html":"内电层以正片方式绘制，生成Gerber时自动转为负片"},{"key":"D","html":"内电层以负片方式绘制，生成Gerber时也以负片方式输出"}],"answer":"B","answerKey":"B","why":"\u003cp class=\"q-why\">编辑时负片（画线清铜），生成 Gerber 时转成正片输出，所以选\"Gerber 也是负片\"是错的。\u003c/p>","source":"L06 p6 题2","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q46","ch":5,"no":"Q46","kind":"fill","group":"objective","stem":"\u003cspan class=\"ln\">在嘉立创EDA中，PCB的铜箔层数必须是________数，顶层和底层是默认铜箔层，无法被________。\u003c/span>","options":[],"answer":"偶数；顶层和底层无法被删除","answerKey":"","why":"\u003cp class=\"q-why\">可增删的是中间层，铜箔层数保持偶数；顶层、底层是默认层不能删除。\u003c/p>","source":"L06 p6 题4","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q47","ch":6,"no":"Q47","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">关于立创商城元器件的“生命周期状态”，选型时应优先选择（ ）","options":[{"key":"A","html":"停产（EOL）的型号，因为价格便宜"},{"key":"B","html":"处于成长期或成熟期的型号"},{"key":"C","html":"刚发布的新品，性能一定最好"},{"key":"D","html":"即将停产的型号，趁还能买到"}],"answer":"B","answerKey":"B","why":"\u003cp class=\"q-why\">选型优先成长期/成熟期型号；EOL（停产）、即将停产、刚发布新品都有供货或验证风险。\u003c/p>","source":"L03 p9 题7","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q48","ch":6,"no":"Q48","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">以下关于立创商城元器件耐压值选择的说法，正确的是（ ）","options":[{"key":"A","html":"耐压值只要高于电路工作电压即可，无需留余量"},{"key":"B","html":"对于5V电路，应选择耐压值2倍以上（如10V或16V）的电容-11"},{"key":"C","html":"耐压值越高越好，不需要考虑成本"},{"key":"D","html":"电解电容不需要关注耐压值"}],"answer":"B","answerKey":"B","why":"\u003cp class=\"q-why\">5V 电路通常选耐压 2 倍以上（10V 或 16V）的电容；\"刚好高于工作电压\"不留余量，电解电容同样要看耐压。\u003c/p>","source":"L03 p9 题8","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q49","ch":6,"no":"Q49","kind":"judge","group":"objective","stem":"\u003cspan class=\"ln\">嘉立创EDA的内电层在绘制时采用负片方式，但在输出制造文件Gerber时采用正片方式输出。（ ）\u003c/span>","options":[],"answer":"√","answerKey":"√","why":"\u003cp class=\"q-why\">编辑视图用负片方便画隔离带，制造文件必须转成正片，板厂才能按\"有线即有铜\"生产。\u003c/p>","source":"L06 p6 题5","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q50","ch":6,"no":"Q50","kind":"choice","group":"objective","stem":"\u003cspan class=\"ln\">关于嘉立创EDA内电层（负片层）的分割操作，以下最容易导致“设计时看起来连通、制造后却短路”的做法是( )","options":[{"key":"A","html":"使用折线（无网络特性的线条）绘制隔离带，并确保每个分割区域形成闭合回路"},{"key":"B","html":"分割线宽度设置为8 mil，以节省内层空间"},{"key":"C","html":"为每个分割区块分别指定正确的网络"},{"key":"D","html":"分割完成后不手动重建内电层，直接导出Gerber"}],"answer":"D","answerKey":"D","why":"\u003cp class=\"q-why\">分割后不手动重建内电层就导出，旧铜皮数据会被带进 Gerber，可能把本该隔离的两块网络连在一起。\u003c/p>","source":"L10 p2 题2","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q51","ch":6,"no":"Q51","kind":"judge","group":"objective","stem":"\u003cspan class=\"ln\">盲埋孔可以在嘉立创EDA专业版中设置和绘制，因此在嘉立创下单打样时，只要Gerber中包含盲埋孔层对，就一定能按盲埋孔制造。( )\u003c/span>","options":[],"answer":"×","answerKey":"×","why":"\u003cp class=\"q-why\">软件能画 ≠ 板厂能做。盲埋孔属于特殊工艺，下单时必须选择对应工艺并确认层对、价格与交期。\u003c/p>","source":"L10 p2 题3","tags":[],"needsCheck":false,"points":[]},{"id":"eda-Q52","ch":7,"no":"Q52","kind":"short","group":"written","stem":"\u003cspan class=\"ln\">根据所给T1电路图，利用立创EDA软件，画出其对应电路图，并列出其2维与3维图，电路图上必须列出自己的姓名与学号。\u003c/span>","options":[],"answer":"实验/绘图题","answerKey":"","why":"\u003cp class=\"q-why\">按要求完成：用立创 EDA 画原理图 → 指定封装 → 转 PCB 并布局布线 → 输出二维、三维图 → 图上标注姓名与学号。提交前跑 ERC/DRC。\u003c/p>","source":"L01 p13 题1","tags":[],"needsCheck":false,"points":["按要求完成：用立创 EDA 画原理图 → 指定封装 → 转 PCB 并布局布线 → 输出二维、三维图 → 图上标注姓名与学号","提交前跑 ERC/DRC"]}],"metaExtra":{"source":"《嘉立创 EDA 复习资料》52 题 · 8 个知识块"},"x":{"kicker":"JLCEDA · SCH / PCB / DRC / GERBER","tagline":"把课件里散落的 EDA 复习题整理成能直接背的主线","desc":"52 道题覆盖原理图与封装、布局布线、铺铜、DRC、层管理与内电层、Gerber 输出。每题给出“为什么”，并标注课件页码便于回查。","accent":"orange","exam":"选择 30 · 判断 7 · 填空 7 · 简答 5 · 实验/绘图 3","guide":[{"id":"e1","ch":1,"title":"原理图到 PCB：网络表在传递什么","clues":"问转换报错、更新 PCB、ERC 报“网络仅有一个连接点”","rule":"原理图与 PCB 之间靠网络表（Netlist）传递连接关系；ERC 基于网络表做逻辑检查，不看“看起来连没连”","steps":[{"ask":"从原理图到 PCB 的完整链路有哪几步？","ref":"画原理图 → 指定封装 → 编译 ERC → 设计/更新到 PCB → 布局 → 布线 → 铺铜 → DRC → Gerber。"},{"ask":"“封装名未通过封装管理器指定过”说明缺了什么？","ref":"缺 Footprint 逻辑绑定，应到封装管理器或元件属性里指定封装。"},{"ask":"ERC 报“网络仅有一个连接点”，先查哪三处？","ref":"导线与引脚是否有间隙；标签是否精确落在连接点；跨页是否用了全局标签/端口。"}],"trap":"把“视觉上挨着”当成电气连接；网络改名后不检查走线归属。","example":{"q":"两个网络标签紧挨导线，ERC 仍报只有一个连接点，为什么？","a":"ERC 依据网络表，标签没有精确落在电气连接点，网络表里就没有建立连接。"}},{"id":"e2","ch":1,"title":"封装绑定：逻辑绑定不是视觉叠加","clues":"问 Footprint 字段、封装管理器、位号重复","rule":"有效绑定=元件属性 Footprint 指定 / 封装管理器启用并设为默认；把封装图形拖到符号上只是视觉重叠","steps":[{"ask":"建立封装的两种有效入口是什么？","ref":"元件属性 Footprint 字段（从工程/系统库选）；封装管理器确认“已启用+默认”。"},{"ask":"自定义封装要先做什么？","ref":"先“添加到工程”并同步，再在元件属性中指定封装名。"},{"ask":"复制粘贴导致位号重复，怎么处理？","ref":"设计 → 分配位号/标注，全局重编号，不必逐个改。"}],"trap":"拖拽封装图形叠在符号上就以为绑定了；位号重复不重编。","example":{"q":"把封装图形拖到原理图符号上，能建立绑定吗？","a":"不能，只是视觉叠加，不产生 Footprint 逻辑绑定。"}},{"id":"e3","ch":2,"title":"布局与布线原则","clues":"问晶振/去耦电容放哪、电源线怎么走、切换层快捷键、线宽优先级","rule":"晶振与去耦电容靠近主控对应引脚；电源线加粗、加泪滴；T/B 切层自动加过孔；Shift+W 改线宽","steps":[{"ask":"布局先放谁？晶振、去耦电容应该离什么最近？","ref":"先放连接器与主控，再放外围；晶振与去耦电容紧靠主控对应引脚，缩短回流路径。"},{"ask":"布线时电源与地为什么要加粗？","ref":"载流与压降：线宽不足会发热、压降大；电源地尽量短而粗，必要时铺铜。"},{"ask":"T/B 与 Shift+W 分别做什么？","ref":"T/B 切换顶层/底层并自动加过孔；Shift+W 调线宽。"}],"trap":"去耦电容放在板边“整齐好看”；为布通把安全间距改 0。","example":{"q":"双层板信号线扇出困难，最合理的处理是？","a":"在不低于板厂工艺且留余量的前提下，适度减小间距与线宽；不能改 0 或关 DRC。"}},{"id":"e4","ch":3,"title":"铺铜的四条铁律","clues":"问铺铜不显示、铜皮不能合并、飞线/孤岛、修改后是否自动更新","rule":"必须指定网络；网络不一致会被当孤岛移除；改布局走线后要手动重建；合并需同网络、同层、同优先级","steps":[{"ask":"铺铜后没有填充，最先查什么？","ref":"铺铜网络与焊盘网络是否一致；不一致会被判为孤岛移除。"},{"ask":"改了布局或走线，铺铜会自动重算吗？","ref":"不会，必须手动“重建/重新铺铜”，否则飞线、孤岛、DRC 报错都来了。"},{"ask":"两块铜皮能合并的前提是什么？","ref":"同一网络，并检查所在层、优先级/填充属性一致。"}],"trap":"改完板子直接导 Gerber，不重建铺铜。","example":{"q":"铺铜后看不到铜皮，最可能原因？","a":"铺铜网络与焊盘网络不一致，被当作孤岛移除。"}},{"id":"e5","ch":5,"title":"内电层：负片与分割","clues":"问内电层画线是加铜还是清铜、如何分割、隐藏层是否导出","rule":"内电层是负片：默认整层铺铜，“画线”是把铜清掉做隔离；分割用折线画闭合隔离带并指定网络；导出 Gerber 转正片","steps":[{"ask":"负片是什么意思？在内电层画一条线，实际发生什么？","ref":"默认整层是铜；画线处清除铜，形成隔离带。"},{"ask":"分割内电层用什么工具？画完还要做什么？","ref":"用折线（Polyline）画闭合隔离带，给每个区指定网络，然后手动重建内电层。"},{"ask":"隐藏某个层，是否等于它不导出？","ref":"不等于。隐藏只是显示控制，导出内容由 Gerber 层设置决定。"}],"trap":"把负片当正片；分割后不重建；以为隐藏层就不导出。","example":{"q":"内电层分割后导出 Gerber 前必须做什么？","a":"手动重建内电层，确认每个分割区网络正确。"}},{"id":"e6","ch":4,"title":"DRC 能查什么、不能查什么","clues":"问 DRC 全过是否代表设计正确、网络属性错误为何查不出","rule":"DRC 查已定义网络之间的冲突（线宽、间距、孔外径、丝印压焊盘、未连接、短路）；不校验网络定义是否符合设计意图","steps":[{"ask":"DRC 检查的对象是什么？","ref":"已定义网络之间的几何/电气冲突，以及未连接、短路等规则违例。"},{"ask":"把 GND 符号的网络属性错设成 +5V，DRC 会报吗？","ref":"不会。网络定义本身错了，但网络之间没有冲突，DRC 全过，直到调试才暴露。"},{"ask":"所以“DRC 全过”能推出什么？","ref":"只能说明没有违反已设规则，不能说明网络定义、封装、极性都正确。"}],"trap":"把 DRC 当设计正确性的充分条件；为布通关 DRC。","example":{"q":"为什么 DRC 全过仍可能板子不工作？","a":"网络属性/封装/极性等设计意图错误不在 DRC 检查范围内。"}},{"id":"e7","ch":6,"title":"Gerber 与制造输出","clues":"问导出哪些层、钻孔文件、阻焊/钢网、隐藏层是否影响","rule":"Gerber 按层设置导出：铜层、阻焊、丝印、钻孔（Excellon）；内电层输出转正片；隐藏层不影响导出","steps":[{"ask":"一块双层板至少要导出哪些文件？","ref":"顶层/底层铜、顶层/底层阻焊、丝印、钻孔文件，必要时钢网与装配图。"},{"ask":"内电层在 Gerber 里是正片还是负片？","ref":"输出时转成正片，制造厂按正片加工。"},{"ask":"导出前最后两件事是什么？","ref":"重建铺铜/内电层，跑一次 DRC 并确认无未连接。"}],"trap":"只导铜层漏钻孔；隐藏层后以为不导出；不重建铺铜就导出。","example":{"q":"导出 Gerber 前必须确认哪两件事？","a":"铺铜/内电层已重建，DRC 无未连接与间距错误。"}}],"formula":[{"title":"IPC-2221 线宽估算","q":"2 A 电流、允许温升 10 ℃、1 oz 外层铜，线宽约多少？","steps":["截面积 A=(I/(k·ΔT^0.44))^(1/0.725)，外层 k=0.048。","代入 I=2、ΔT=10：A≈42.3 mil²。","1 oz 铜厚≈1.378 mil，宽度=42.3/1.378≈30.7 mil。","换算公制：30.7×0.0254≈0.78 mm。"],"final":"约 0.78 mm；工程上再留 20% 余量，取 1 mm。"},{"title":"铜线电阻","q":"长 50 mm、宽 0.5 mm、1 oz 铜的走线电阻？","steps":["1 oz 铜厚≈35 μm=0.035 mm。","截面积=0.5×0.035=0.0175 mm²。","ρ=1.72×10⁻⁸ Ω·m=0.0172 Ω·mm²/m。","R=ρL/S=0.0172×0.05/0.0175≈0.049 Ω。"],"final":"约 49 mΩ；大电流路径要加宽或并层。"},{"title":"过孔载流","q":"0.3 mm 孔径、25 μm 镀铜的过孔，能过多大电流？","steps":["镀铜环截面积≈周长×镀层厚=π×0.3×0.025≈0.0236 mm²。","按 1 A/0.1 mm² 的保守经验，约 0.24 A。","工程上常按 0.5–1 A/过孔估算并多打过孔并联。"],"final":"保守约 0.2–0.3 A/孔；大电流多打孔并联。"}],"project":{"name":"四层板叠层与层规划","desc":"给一块 1.6 mm 四层板做叠层：信号—地—电源—信号，确定铜厚与内层数。","steps":[{"ask":"四层板的内层有几层？（填整数）","unit":"","value":2,"hint":"四层=顶层+2 个内层+底层，内层 2 层。"},{"ask":"1 oz 铜对应的厚度是多少微米？（填整数）","unit":"μm","value":35,"hint":"1 oz 铜≈35 μm（更精确 34.8）。"},{"ask":"板厚 1.6 mm、四层，若铜厚合计 0.14 mm，介质总厚约多少 mm？（保留一位小数）","unit":"mm","value":1.5,"hint":"1.6−0.14≈1.46，取 1.5 mm 分配介质。"}]},"lab":{"title":"PCB 工程实验室","desc":"8 个常用估算与核对：载流线宽、过孔、走线压降、电源线压降、微带阻抗、拼板利用率、单位换算、板厂工艺核对。"}}};</script>
+<script>'use strict';
+/* ================= 基础 ================= */
+const C = window.COURSE, X = C.x || {};
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+const E = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const T = s => String(s ?? '').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
+const pad = n => (n < 10 ? '0' + n : '' + n);
+const fmtTime = t => { const d = new Date(t); return `${d.getMonth() + 1}/${d.getDate()} ${pad(d.getHours())}:${pad(d.getMinutes())}`; };
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const pick = a => a[Math.floor(Math.random() * a.length)];
+const shuffle = a => { const b = a.slice(); for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; };
+const sample = (a, n) => shuffle(a).slice(0, n);
+
+const NS = 'sc:' + C.id + ':';
+let MEM = {}, SAVE_OK = true;
+const store = {
+  get(k, d) { try { const r = localStorage.getItem(NS + k); return r ? JSON.parse(r) : (k in MEM ? MEM[k] : d); } catch (e) { return k in MEM ? MEM[k] : d; } },
+  set(k, v) { MEM[k] = v; try { localStorage.setItem(NS + k, JSON.stringify(v)); } catch (e) { SAVE_OK = false; warnSave(); } }
+};
+
+const KIND = { choice: '选择题', judge: '判断题', fill: '填空题', short: '简答/计算' };
+const BANKS = { objective: C.bank.filter(q => q.group === 'objective'), written: C.bank.filter(q => q.group === 'written') };
+const SCORABLE = BANKS.objective.filter(q => !q.needsCheck);
+const QBY = new Map(C.bank.map(q => [q.id, q]));
+const CH = new Map(C.chapters.map(c => [c.n, c]));
+
+let REC = store.get('rec', {});
+let NOTES = store.get('notes', []);
+let EXAMS = store.get('exams', []);
+let POSTS = store.get('posts', []);
+let GUIDE = store.get('guide', {});
+let MASTER = store.get('master', []);
+const R = id => REC[id] || {};
+
+function warnSave() {
+  if (document.getElementById('saveWarn')) return;
+  const d = document.createElement('div');
+  d.id = 'saveWarn'; d.setAttribute('role', 'status');
+  d.textContent = '浏览器不允许保存本地记录：本轮作答仍在页面内有效，关闭后会丢失。请换用普通窗口或允许站点存储。';
+  document.body.prepend(d);
+}
+function setR(id, patch) {
+  REC[id] = Object.assign({}, REC[id], patch);
+  store.set('rec', REC);
+  paintRail();
+}
+function setRSilent(id, patch) {
+  REC[id] = Object.assign({}, REC[id], patch);
+  store.set('rec', REC);
+}
+function setMaster(id, on) {
+  MASTER = on ? Array.from(new Set(MASTER.concat(id))) : MASTER.filter(x => x !== id);
+  store.set('master', MASTER);
+}
+const isMaster = id => MASTER.includes(id);
+
+function norm(s) {
+  return T(s).normalize('NFKC').toLowerCase()
+    .replace(/<[^>]+>/g, '')
+    .replace(/[\s。；;、，,．.·`'"]/g, '')
+    .replace(/[（(]/g, '(').replace(/[）)]/g, ')')
+    .replace(/[−–—]/g, '-')
+    .replace(/×/g, 'x').replace(/÷/g, '/');
+}
+function doc(h) {
+  let s = String(h || '');
+  s = s.replace(/<table/g, '<div class="tablewrap"><table').replace(/<\/table>/g, '</table></div>');
+  return s;
+}
+
+/* ================= 外壳 ================= */
+const GROUPS = [
+  ['AI 教学中心', [
+    ['learn', '知识讲解', '逐节讲透知识点', 'book'],
+    ['guide', '引导式教学', '先审题，再逐步推理', 'chat'],
+    ['voice', 'AI 语音教师', '听题、听讲与跟读', 'wave'],
+    ['overview', '章节速览', '一页看全课程结构', 'map']
+  ]],
+  ['AI 训练中心', [
+    ['drill', '随堂练习', '按章抽题即时反馈', 'pen'],
+    ['errors', '错题分析', '错因归类与重练', 'alert'],
+    ['exam', '模拟考试', '限时组卷，交卷核对', 'clock'],
+    ['review', '智能复习', '到期复测与薄弱专项', 'loop']
+  ]],
+  ['AI 知识管理中心', [
+    ['graph', '知识图谱', '章节与考点关联', 'graph'],
+    ['library', '学习资料库', '原文、讲义与题库', 'box'],
+    ['notes', '智能笔记', '整理错因与解题规则', 'note'],
+    ['slides', 'AI 课件生成', '按章生成复习提纲', 'slide']
+  ]],
+  ['AI 实践创新中心', [
+    ['lab', '交互式实验室', (X.lab && X.lab.title) || '改变参数观察结果', 'flask'],
+    ['code', '编程训练场', '动手算一遍再核对', 'code'],
+    ['formula', '公式推导中心', '从条件推到结论', 'sigma'],
+    ['project', '项目实训', (X.project && X.project.name) || '三步完成一个小项目', 'cube']
+  ]],
+  ['AI 学习成长中心', [
+    ['path', '学习路径', '按学情安排下一步', 'route'],
+    ['report', '学习报告', '真实记录与薄弱点', 'chart'],
+    ['challenge', '学习闯关', '三关独立计算', 'star'],
+    ['community', '学习讨论板', '本机记录与导出', 'users']
+  ]],
+  ['考前工具', [
+    ['bank/objective', '客观题专练', '选择、判断、填空', 'list'],
+    ['bank/written', '大题专练', '卷面作答 · 按点自评', 'write'],
+    ['flash', '考前闪卡', '遮住答案快速回忆', 'cards'],
+    ['saved', '收藏夹', '重做收藏的原题', 'bookmark']
+  ]]
+];
+const ICONS = {
+  book: '<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v18H6.5A2.5 2.5 0 0 1 4 18.5z"/><path d="M8 3v18"/>',
+  chat: '<path d="M21 12a8 8 0 0 1-8 8H7l-4 3v-6.5A8 8 0 1 1 21 12z"/><path d="M8 10h8M8 14h5"/>',
+  wave: '<path d="M3 12h2l2-6 3 12 3-9 2 5 2-2h4"/>',
+  map: '<path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/>',
+  pen: '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>',
+  alert: '<path d="M12 3 2 21h20z"/><path d="M12 9v5M12 17.5v.5"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  loop: '<path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/>',
+  graph: '<circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="7" r="2.4"/><circle cx="12" cy="18" r="2.4"/><path d="M8.2 7.2 15.8 8M7 8.2l4 7.8M17 9.2l-3.4 6.6"/>',
+  box: '<path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/>',
+  note: '<path d="M5 3h11l4 4v14H5z"/><path d="M15 3v5h5M8 12h8M8 16h6"/>',
+  slide: '<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8"/><path d="M7 8h6M7 11h9"/>',
+  flask: '<path d="M9 3h6M10 3v6L4 19a2 2 0 0 0 1.8 3h12.4A2 2 0 0 0 20 19L14 9V3"/><path d="M7.5 15h9"/>',
+  code: '<path d="m8 8-4 4 4 4M16 8l4 4-4 4M13 5l-2 14"/>',
+  sigma: '<path d="M18 4H6l7 8-7 8h12"/>',
+  cube: '<path d="M12 2 21 7v10l-9 5-9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/>',
+  route: '<circle cx="5" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 6h7a4 4 0 0 1 0 8H9a4 4 0 0 0 0 8h8"/>',
+  chart: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+  star: '<path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9z"/>',
+  users: '<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.4"/><path d="M16 15a5 5 0 0 1 5 5"/>',
+  list: '<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>',
+  write: '<path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/>',
+  cards: '<rect x="3" y="6" width="12" height="14" rx="2"/><path d="M7 3h12a2 2 0 0 1 2 2v12"/>',
+  bookmark: '<path d="M6 3h12v18l-6-4-6 4z"/>'
+};
+
+function icon(n) { return `<svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[n] || ICONS.book}</svg>`; }
+
+function mountShell() {
+  const nav = [
+    ['学习', [['home', '首页'], ['learn', '知识讲解'], ['guide', '引导式教学'], ['drill', '随堂练习'], ['exam', '模拟考试'], ['review', '智能复习'], ['errors', '错题分析']]],
+    ['资料', [['overview', '章节速览'], ['library', '学习资料库'], ['graph', '知识图谱'], ['notes', '智能笔记'], ['slides', '课件生成']]],
+    ['实践', [['lab', '交互实验室'], ['code', '编程训练场'], ['formula', '公式推导'], ['project', '项目实训']]],
+    ['成长', [['path', '学习路径'], ['report', '学习报告'], ['challenge', '学习闯关'], ['community', '学习讨论板']]],
+    ['题库', [['bank/objective', '客观题专练'], ['bank/written', '大题专练'], ['flash', '考前闪卡'], ['saved', '收藏夹']]]
+  ];
+  document.body.innerHTML = `
+  <header class="top">
+    <button class="menu" id="menuBtn" aria-label="打开目录">☰</button>
+    <div class="mk">${E(C.name.slice(0, 1))}</div>
+    <b>${E(C.name)} · 学习中心</b><span class="sep">/</span><span class="sub">${E(X.kicker || '')}</span>
+    <div class="right"><span>记录仅存本浏览器</span><a href="#/home">首页</a></div>
+  </header>
+  <div class="layout">
+    <aside class="side" id="side">
+      <div class="brand">${E(C.name)}<small>${E(X.tagline || '分步备考 · 学练一体')}</small></div>
+      <div class="prog"><div class="pt"><span id="sideProg">已掌握 0 / ${BANKS.objective.length}</span><b id="sideMaster">0%</b></div>
+        <div class="progbar"><i id="sideBar" style="width:0"></i></div></div>
+      ${nav.map(([g, items]) => `<div class="grp">${g}</div>` + items.map(([k, n]) => `<a class="toc" data-nav="${k}" href="#/${k}">${n}</a>`).join('')).join('')}
+      <div class="grp">章节</div>
+      ${C.chapters.map(c => `<a class="toc" data-ch="${c.n}" href="#/learn/${c.n}"><span class="num">${pad(c.n)}</span><span>${E(c.title)}</span></a>`).join('')}
+      <div class="tip">离线可用 · 进度存在本机浏览器<br>${E(C.name)} · ${C.bank.length} 题</div>
+    </aside>
+    <main id="main" tabindex="-1"></main>
+    <aside class="rail" id="rail"></aside>
+  </div>`;
+  $('#menuBtn').onclick = () => document.body.classList.toggle('nav-open');
+  document.body.addEventListener('click', ev => {
+    const a = ev.target.closest('a[href^="#/"]');
+    if (a) document.body.classList.remove('nav-open');
+  });
+}
+
+function paintRail() {
+  const rail = $('#rail'); if (!rail) return;
+  const obj = BANKS.objective;
+  const done = obj.filter(q => R(q.id).ok).length;
+  const star = C.bank.filter(q => R(q.id).star).length;
+  const weak = C.bank.filter(q => R(q.id).status === 'weak').length;
+  const last = store.get('last', '');
+  const lq = last ? QBY.get(last) : null;
+  const rs = obj.map(q => R(q.id)).filter(r => r.tries);
+  const t = rs.reduce((s, r) => s + r.tries, 0), o = rs.reduce((s, r) => s + (r.ok || 0), 0);
+  const acc = t ? Math.round(o / t * 100) : 0;
+  rail.innerHTML = `
+    <div class="k">Study Desk</div><h3>我的学习概览</h3>
+    <div class="blk"><div class="big">${done}<small> / ${obj.length}</small></div><div class="q">客观题已独立答对</div>
+      <div class="row"><span>答题正确率</span><b>${acc}%</b></div>
+      <div class="row"><span>收藏原题</span><b>${star}</b></div>
+      <div class="row"><span>大题自评通过</span><b>${BANKS.written.filter(q => R(q.id).status === 'ok').length} / ${BANKS.written.length}</b></div>
+      <div class="row"><span>待补练</span><b>${weak}</b></div>
+      <div class="row" style="border:0"><span>已交模拟卷</span><b>${EXAMS.length}</b></div>
+    </div>
+    <div class="blk"><div class="k">继续学习</div>
+      <div class="q" style="margin-top:6px">${lq ? E((CH.get(lq.ch) || {}).title || '') + ' · ' + E(lq.no) : '还没有开始，先做一道客观题试试。'}</div>
+      <a class="next" href="${lq ? '#/bank/objective?id=' + encodeURIComponent(lq.id) : '#/bank/objective'}">${lq ? '接着这一题 →' : '开始第一道题 →'}</a>
+      <div class="mini"><a href="#/errors">错题分析</a><a href="#/exam">模拟考试</a><a href="#/report">学习报告</a></div>
+    </div>
+    <div class="blk"><div class="k">今日建议</div><div class="q" style="margin-top:6px">${suggest()}</div></div>`;
+  const pct = obj.length ? Math.round(done / obj.length * 100) : 0;
+  const sp = $('#sideMaster'), sb = $('#sideBar'), st = $('#sideProg');
+  if (sp) sp.textContent = pct + '%';
+  if (sb) sb.style.width = pct + '%';
+  if (st) st.textContent = `已掌握 ${done} / ${obj.length}`;
+}
+function suggest() {
+  const due = BANKS.objective.filter(q => { const r = R(q.id); return r.due && r.due <= Date.now(); }).length;
+  const weak = C.bank.filter(q => R(q.id).status === 'weak').length;
+  if (weak) return `有 ${weak} 道题标记为待补练，建议先做错题重练，再开新章。`;
+  if (due) return `有 ${due} 道题到期，按 1/3/7 天节奏复测一遍最划算。`;
+  const un = C.chapters.find(c => BANKS.objective.some(q => q.ch === c.n && !R(q.id).tries));
+  return un ? `下一章建议：第 ${un.n} 章《${E(un.title)}》。先读知识讲解，再做随堂练习。` : '客观题已全部做过一遍，建议转大题专练，按评分点自评。';
+}
+
+/* ================= 路由 ================= */
+let CURRENT = 'home';
+function go(path) { if (location.hash === '#/' + path) route(); else location.hash = '#/' + path; }
+function route() {
+  const rawFull = location.hash.replace(/^#\/?/, '') || 'home';
+  const raw = rawFull.split('?')[0];
+  const [view, a, b] = raw.split('/');
+  CURRENT = view + (a ? '/' + a : '');
+  document.body.classList.remove('nav-open');
+  if (examTimer) { clearInterval(examTimer); examTimer = null; }
+  document.body.classList.toggle('bank', view === 'bank');
+  const main = $('#main');
+  window.speechSynthesis && speechSynthesis.cancel();
+  const map = { home, learn, guide, voice, overview, drill, exam, review, errors, graph, library, notes, slides, lab, code, formula, project, path, report, challenge, community, flash, saved };
+  if (view === 'bank') bankPage(a || 'objective'); else (map[view] || home)(a, b);
+  paintRail();
+  if (view !== 'learn') main.focus({ preventScroll: true });
+  window.scrollTo(0, 0);
+}
+window.addEventListener('hashchange', route);
+window.addEventListener('DOMContentLoaded', () => { mountShell(); route(); });
+
+/* ================= 首页 ================= */
+function home() {
+  const obj = BANKS.objective, wr = BANKS.written;
+  $('#main').innerHTML = `
+  <section class="hero">
+    <div class="deco"><svg viewBox="0 0 400 240" width="100%" height="100%" aria-hidden="true">
+      <g fill="none" stroke="#7fb0e8" stroke-opacity=".35" stroke-width="1">
+        <path d="M40 60 140 40 220 90 330 60M40 60 90 150 200 170 330 60M220 90 200 170M140 40 90 150M330 60 300 180 200 170"/>
+      </g>
+      <g fill="#8fc0f0" fill-opacity=".65">
+        <circle cx="40" cy="60" r="4"/><circle cx="140" cy="40" r="3"/><circle cx="220" cy="90" r="4"/>
+        <circle cx="330" cy="60" r="3"/><circle cx="90" cy="150" r="4"/><circle cx="200" cy="170" r="3"/>
+        <circle cx="300" cy="180" r="3"/>
+      </g></svg></div>
+    <div class="kick">${E(X.kicker || '')}</div>
+    <h1>${E(C.name)} · AI 智能学习中心</h1>
+    <p>${E(X.desc || '')}</p>
+    <div class="met"><span>${C.chapters.length} 章</span><span>${C.bank.length} 道题</span><span>客观 ${obj.length}</span><span>大题 ${wr.length}</span><span>离线可用</span></div>
+    <div class="acts"><a class="pri" href="#/drill?diag=1">先做 3 题诊断</a><a href="#/learn/${C.chapters[0] ? C.chapters[0].n : 1}">开始学习</a><a href="#/exam">模拟考试</a></div>
+  </section>
+  <div class="entrylinks"><a href="#/bank/objective"><b>客观题 · ${obj.length}</b>　选择/判断/填空</a><a href="#/bank/written"><b>大题 · ${wr.length}</b>　按评分点自评</a><a href="#/learn/${C.chapters[0] ? C.chapters[0].n : 1}"><b>章节 · ${C.chapters.length}</b>　知识讲解</a></div>
+  <div class="groups">${GROUPS.map(([g, items], gi) => `
+    <div class="chead"><h2><span class="n">${pad(gi + 1)}</span>${g}</h2><small>4 个功能</small></div>
+    <div class="tiles">${items.map(([k, n, s, ic], i) => `
+      <button class="tile ${['navy', 'green', 'purple', 'orange'][i]}" data-go="${k}">
+        <span class="ic">${icon(ic)}</span><b>${E(n)}</b><span>${E(s)}</span><small>进入 →</small><span class="dot"></span>
+      </button>`).join('')}</div>`).join('')}</div>
+  <h2 class="sec">章节目录</h2>
+  <div class="chaplist">${C.chapters.map(c => {
+    const qs = C.bank.filter(q => q.ch === c.n);
+    const done = qs.filter(q => R(q.id).ok || R(q.id).status === 'ok').length;
+    const pct = qs.length ? Math.round(done / qs.length * 100) : 0;
+    return `<a class="chcard" href="#/learn/${c.n}"><div class="r"><span class="n">${pad(c.n)}</span><b>${E(c.title)}</b><span class="badge b" style="margin-left:auto">${qs.length} 题</span></div>
+      <div class="bar"><i style="width:${pct}%;background:${pct > 60 ? '#0f766e' : '#2f6fdb'}"></i></div><small>${c.sections.length} 节 · 已掌握 ${done}/${qs.length}</small></a>`;
+  }).join('')}</div>`;
+  $$('[data-go]').forEach(b => b.onclick = () => go(b.dataset.go));
+}
+
+/* ================= 章节速览 ================= */
+function overview() {
+  $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 章节速览</div>
+  <h1 class="ph">${E(C.name)} · 课程结构</h1><p class="psub">${E(X.exam || '')}</p>
+  <div class="grid3">${C.chapters.map(c => {
+    const qs = C.bank.filter(q => q.ch === c.n);
+    const done = qs.filter(q => R(q.id).ok).length;
+    return `<div class="stat"><small>第 ${c.n} 章</small><b style="font-size:17px;margin:4px 0 6px">${E(c.title)}</b>
+      <div class="small muted">${c.sections.length} 节 · ${qs.length} 题</div>
+      <div class="bar" style="margin-top:8px"><i style="width:${qs.length ? Math.round(done / qs.length * 100) : 0}%"></i></div>
+      <div class="row" style="margin-top:8px"><a class="btn sm" href="#/learn/${c.n}">读本章</a>${qs.some(q => q.group === 'objective') ? `<a class="btn sm" href="#/drill?ch=${c.n}">练本章</a>` : qs.length ? `<a class="btn sm" href="#/bank/written?ch=${c.n}">练大题</a>` : ''}</div>
+    </div>`;
+  }).join('')}</div>
+  ${C.pitfalls && C.pitfalls.length ? `<h2 class="sec">易错点清单</h2><div class="panel"><ol>${C.pitfalls.map(p => `<li>${E(T(p))}</li>`).join('')}</ol></div>` : ''}`;
+}
+
+/* ================= 知识讲解 ================= */
+function learn(a, b) {
+  const n = Number(a || (C.chapters[0] || {}).n || 0);
+  const c = CH.get(n) || C.chapters[0];
+  if (!c) return ($('#main').innerHTML = '<div class="empty">暂无章节</div>');
+  const sec = b ? c.sections.find(s => s.id === b) : null;
+  const body = sec ? `<h3>${E(sec.title)}</h3><div class="doc">${doc(sec.html)}</div>` :
+    `<div class="doc">${c.intro ? doc(c.intro) : ''}${c.sections.map(s => `<div class="secbody" id="${s.id}"><h3>${E(s.title)}</h3>${doc(s.html)}</div>`).join('')}</div>`;
+  const qs = C.bank.filter(q => q.ch === n);
+  const done = qs.filter(q => R(q.id).ok || R(q.id).status === 'ok').length;
+  $('#main').innerHTML = `
+  <div class="crumb"><a href="#/home">首页</a> / <a href="#/overview">章节速览</a> / 第 ${n} 章</div>
+  <div class="reader">
+    <nav class="rnav" aria-label="本节导航">
+      <div class="h">第 ${n} 章</div>
+      <a class="${!b ? 'on' : ''}" href="#/learn/${n}">本章导读</a>
+      ${c.sections.map(s => `<a class="${b === s.id ? 'on' : ''}" href="#/learn/${n}/${s.id}">${E(s.title)}</a>`).join('')}
+      <div class="h">练习</div>
+      <a href="#/drill?ch=${n}">本章随堂练习</a>
+      <a href="#/exam?ch=${n}">本章模拟卷</a>
+    </nav>
+    <article class="rbody">
+      <h2>${E(sec ? sec.title : c.title)}</h2>
+      <div class="meta"><span class="badge b">第 ${n} 章</span><span>${qs.length} 题</span><span>已掌握 ${done}</span><span>${c.sections.length} 节</span></div>
+      ${body}
+      <div class="rtools">
+        <button class="btn" id="readAloud">朗读本页</button>
+        <button class="btn" id="markSec">${isMaster(sec ? sec.id : (c.sections[0] ? c.sections[0].id : 'c' + n)) ? '已标记本节' : '标记本节已读'}</button>
+        <a class="btn" href="#/drill?ch=${n}">做本章练习</a>
+        <a class="btn" href="#/guide?ch=${n}">引导式讲解</a>
+        <a class="btn" href="#/library?ch=${n}">看原文</a>
+      </div>
+    </article>
+  </div>`;
+  $('#readAloud').onclick = () => speak((sec ? sec.title + '。' : '') + T(sec ? sec.html : (c.intro || '') + c.sections.map(s => s.html).join(' ')), $('#readAloud'));
+  const sid = sec ? sec.id : (c.sections[0] ? c.sections[0].id : 'c' + n);
+  $('#markSec').onclick = ev => { const on = !isMaster(sid); setMaster(sid, on); ev.target.textContent = on ? '已标记本节' : '标记本节已读'; };
+  $$('.rbody a[href^="#"]').forEach(link => link.addEventListener('click', ev => {
+    const href = link.getAttribute('href');
+    if (/^#s\d+$/.test(href)) { ev.preventDefault(); const id = href.slice(1); if (c.sections.some(s => s.id === id)) go('learn/' + n + '/' + id); }
+  }));
+}
+
+function speak(text, btn) {
+  if (!window.speechSynthesis || !window.SpeechSynthesisUtterance) { alert('当前浏览器不支持朗读，请阅读页面文字。'); return; }
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(String(text).slice(0, 4000));
+  u.lang = 'zh-CN'; u.rate = 1;
+  if (btn) { const old = btn.textContent; btn.textContent = '朗读中…'; u.onend = u.onerror = () => btn.textContent = old; }
+  speechSynthesis.speak(u);
+}
+function voice() {
+  const topics = X.guide || [];
+  $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / AI 语音教师</div>
+  <h1 class="ph">AI 语音教师</h1><p class="psub">选择考点，听一遍讲稿；也可以跟读，把关键词说出来。</p>
+  <div class="panel"><label class="field">考点<select id="vt">${topics.map(t => `<option value="${t.id}">${E(t.title)}</option>`).join('')}</select></label>
+    <div class="row"><button class="btn pri" id="vspeak">朗读讲稿</button><button class="btn" id="vstop">停止</button></div></div>
+  <div class="panel" id="vtext"></div>`;
+  const draw = () => { const t = topics.find(x => x.id === $('#vt').value); $('#vtext').innerHTML = `<h3>${E(t.title)}</h3><p class="muted small">${E(t.clues)}</p><div class="doc"><p>${E(t.rule)}</p>${t.steps.map((s, i) => `<p><b>第 ${i + 1} 步：</b>${E(s.ask)}</p><p class="muted">${E(s.ref)}</p>`).join('')}</div>`; };
+  $('#vt').onchange = draw; draw();
+  $('#vspeak').onclick = () => { const t = topics.find(x => x.id === $('#vt').value); speak([t.title, t.clues, t.rule, ...t.steps.map(s => s.ask + '。' + s.ref)].join('。'), $('#vspeak')); };
+  $('#vstop').onclick = () => speechSynthesis.cancel();
+}
+
+/* ================= 引导式教学 ================= */
+function guide() {
+  const qch = Number((new URLSearchParams(location.hash.split('?')[1] || '')).get('ch') || 0);
+  const topics = (X.guide || []).filter(t => !qch || t.ch === qch);
+  if (!topics.length) return ($('#main').innerHTML = '<div class="empty">本章暂无引导式考点。</div>');
+  const tid = store.get('guidePick', topics[0].id);
+  const t = topics.find(x => x.id === tid) || topics[0];
+  const st = GUIDE[t.id] || { i: 0, drafts: [] };
+  const i = clamp(st.i || 0, 0, t.steps.length);
+  const done = i >= t.steps.length;
+  $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 引导式教学</div>
+  <h1 class="ph">引导式教学</h1><p class="psub">一次只问一步：先自己写，再对照参考。写不出来就点“不会，讲这一步”。</p>
+  <div class="panel"><div class="row"><label class="field" style="flex:1">考点<select id="gt">${topics.map(x => `<option value="${x.id}" ${x.id === t.id ? 'selected' : ''}>第 ${x.ch} 章 · ${E(x.title)}</option>`).join('')}</select></label>
+  <button class="btn" id="greset">重新开始</button></div>
+  <p class="small muted" style="margin-top:8px">题型线索：${E(t.clues)}</p></div>
+  <div class="panel"><h3>${E(t.title)}</h3>
+    <div class="chips" style="margin-bottom:10px">${t.steps.map((_, k) => `<span class="chip ${k < i ? 'on' : ''}">第 ${k + 1} 步</span>`).join('')}${done ? '<span class="chip on">完成</span>' : ''}</div>
+    ${done ? `<div class="doc"><p><b>参考规则：</b>${E(t.rule)}</p><p><b>易错：</b>${E(t.trap)}</p><div class="kp"><span class="t">练一道同类题</span><p>${E(t.example.q)}</p><details class="sol"><summary>看答案</summary><div class="body">${E(t.example.a)}</div></details></div></div>
+      <div class="row"><button class="btn green" id="gok">独立完成，记通过</button><button class="btn" id="gweak">仍需补练</button></div>`
+      : `<div class="deriv"><h4>第 ${i + 1} 步 / 共 ${t.steps.length}</h4><p>${E(t.steps[i].ask)}</p>
+        <textarea id="gdraft" rows="4" placeholder="先写下你的判断或算式，再对照参考">${E((st.drafts || [])[i] || '')}</textarea>
+        <div class="row" style="margin-top:8px"><button class="btn pri" id="gcheck">对照参考</button><button class="btn" id="gskip">不会，讲这一步</button></div>
+        <div id="gref"></div></div>`}
+  </div>`;
+  $('#gt').onchange = ev => { store.set('guidePick', ev.target.value); go('guide' + (qch ? '?ch=' + qch : '')); };
+  $('#greset').onclick = () => { GUIDE[t.id] = { i: 0, drafts: [] }; store.set('guide', GUIDE); go('guide'); };
+  if (done) {
+    $('#gok').onclick = () => { setR('guide:' + t.id, { status: 'ok', last: Date.now(), due: Date.now() + 3 * 864e5 }); alert('已记录：独立完成。3 天后会进入复习队列。'); };
+    $('#gweak').onclick = () => { setR('guide:' + t.id, { status: 'weak', last: Date.now(), due: Date.now() + 864e5 }); alert('已加入待补练，明天再走一遍。'); };
+    return;
+  }
+  const saveDraft = () => { const d = (GUIDE[t.id] || {}).drafts || []; d[i] = $('#gdraft').value; GUIDE[t.id] = Object.assign({}, GUIDE[t.id], { i, drafts: d }); store.set('guide', GUIDE); };
+  $('#gdraft').oninput = saveDraft;
+  $('#gcheck').onclick = () => { saveDraft(); $('#gref').innerHTML = `<div class="doc" style="margin-top:10px"><div class="tip"><b>本步参考：</b>${E(t.steps[i].ref)}</div><button class="btn pri" id="gnext">已核对，下一步</button></div>`; $('#gnext').onclick = () => { GUIDE[t.id] = Object.assign({}, GUIDE[t.id], { i: i + 1, drafts: (GUIDE[t.id] || {}).drafts || [] }); store.set('guide', GUIDE); go('guide'); }; };
+  $('#gskip').onclick = () => { saveDraft(); $('#gref').innerHTML = `<div class="doc" style="margin-top:10px"><div class="tip"><b>这一步这样做：</b>${E(t.steps[i].ref)}</div><button class="btn pri" id="gnext">看懂了，重写这一步</button></div>`; $('#gnext').onclick = () => { const d = (GUIDE[t.id] || {}).drafts || []; d[i] = ''; GUIDE[t.id] = Object.assign({}, GUIDE[t.id], { i, drafts: d }); store.set('guide', GUIDE); go('guide'); }; };
+}
+
+/* ================= 题目渲染 ================= */
+function qTags(q) {
+  const t = (q.tags || []).filter(x => !['讲义提炼'].includes(x));
+  return t.slice(0, 2).map(x => `<span class="badge ${x === '待核对' ? 'o' : 'p'}">${E(x)}</span>`).join('');
+}
+function qMeta(q) {
+  return `<div class="qmeta"><span class="no">${E(q.no)}</span><span class="badge b">${KIND[q.kind] || '题目'}</span>
+    <span class="sp">·</span><span>第 ${q.ch} 章 · ${E((CH.get(q.ch) || {}).title || '')}</span>${qTags(q) ? '<span class="sp">·</span>' + qTags(q) : ''}
+    <span class="src">${E(q.source || '')}</span></div>`;
+}
+function blankCount(q) { const m = String(q.stem).match(/_{3,}|（\s*）|\(\s*\)/g); return Math.max(1, m ? m.length : 1); }
+function answerParts(q) {
+  if (q.accept && q.accept.length) return q.accept;
+  return T(q.answer).split(/[；;]/).map(s => s.trim()).filter(Boolean);
+}
+function sameText(input, want) {
+  const a = norm(input), b = norm(want);
+  if (!a || !b) return false;
+  if (a === b) return true;
+  const na = Number(a.replace(/[^\d.eE+\-]/g, '')), nb = Number(b.replace(/[^\d.eE+\-]/g, ''));
+  if (a.match(/^[\d.]+$/) && b.match(/^[\d.]+$/) && Number.isFinite(na) && Number.isFinite(nb)) return Math.abs(na - nb) < 1e-6;
+  return b.length >= 4 && (a.includes(b) || b.includes(a));
+}
+function hitBlank(input, accepts) { return (accepts || []).some(x => sameText(input, x)); }
+
+function optionsHTML(q, picked) {
+  return `<div class="opts" role="group" aria-label="选项">${q.options.map(o => `
+    <button class="opt ${picked === o.key ? 'pick' : ''}" data-k="${o.key}"><span class="k">${o.key}</span><span class="oh">${doc(o.html)}</span></button>`).join('')}</div>`;
+}
+function judgeHTML(q, picked) {
+  return `<div class="judge" role="group" aria-label="判断"><button data-k="√" class="${picked === '√' ? 'pick' : ''}">正确 √</button><button data-k="×" class="${picked === '×' ? 'pick' : ''}">错误 ×</button></div>`;
+}
+function fillHTML(q, values) {
+  const n = blankCount(q);
+  return `<div class="fills">${Array.from({ length: n }, (_, i) => `<div class="fillrow"><span>第 ${i + 1} 空</span><input data-i="${i}" value="${E((values || [])[i] || '')}" placeholder="写下答案"><span class="mark"></span></div>`).join('')}</div>`;
+}
+function qBody(q, state) {
+  if (q.kind === 'choice') return optionsHTML(q, state.pick);
+  if (q.kind === 'judge') return judgeHTML(q, state.pick);
+  return fillHTML(q, state.vals);
+}
+function feedHTML(q, ok) {
+  let shown = q.answer;
+  if (q.kind === 'choice' && q.answerKey) {
+    const o = (q.options || []).find(x => x.key === q.answerKey);
+    if (o) shown = `${q.answerKey}. ${o.html}`;
+  }
+  const ans = shown ? `<div class="ans"><b>参考答案</b>　<span class="doc" style="display:inline">${doc(shown)}</span></div>` : '<div class="ans"><b>参考答案</b>　本题原文未给答案，标为待核对。</div>';
+  return `<div class="feed">${ok ? '<p class="badge g">答对了</p>' : '<p class="badge r">这次没对</p>'}${ans}
+    ${q.why ? `<div class="why doc">${doc(q.why)}</div>` : ''}
+    ${ok ? '' : `<div class="cause"><span>错在哪：</span>${['概念', '选式', '单位', '运算', '表述'].map(c => `<button class="chip" data-cause="${c}">${c}</button>`).join('')}</div>`}
+    <div class="row" style="margin-top:10px"><button class="btn sm" data-act="weak">加入补练</button>${variantLink(q)}</div></div>`;
+}
+
+let qSeq = 0;
+function objectiveCard(q, opts = {}) {
+  const r = R(q.id);
+  const values = opts.values || [];
+  const pickv = opts.pick || '';
+  const html = `<article class="qcard" id="qc${++qSeq}" data-qid="${q.id}">
+    ${qMeta(q)}
+    <div class="qstem doc">${doc(q.stem)}</div>
+    ${qBody(q, { pick: pickv, vals: values })}
+    <div class="qfoot">
+      ${q.kind === 'fill' ? '<button class="btn pri" data-act="check">核对答案</button>' : ''}
+      <button class="btn" data-act="star">${r.star ? '★ 已收藏' : '☆ 收藏'}</button>
+      <span class="state">${r.status === 'ok' ? '已掌握' : r.status === 'weak' ? '待补练' : '未核对'}${r.tries ? ' · 作答 ' + r.tries + ' 次' : ''}</span>
+    </div></article>`;
+  return html;
+}
+
+function bindObjective(root, q, opts = {}) {
+  const card = root.querySelector('.qcard') || root;
+  let done = false;
+  const picked = { k: opts.pick || '' };
+  const record = ok => { if (opts.noRecord) return; recordAnswer(q, ok); };
+  const finish = (ok, detail) => {
+    if (done) return; done = true;
+    card.querySelectorAll('.opt').forEach(b => { b.disabled = true; if (q.kind === 'choice') { if (b.dataset.k === q.answerKey) b.classList.add('right'); if (b.dataset.k === picked.k && picked.k !== q.answerKey) b.classList.add('wrong'); } });
+    card.querySelectorAll('.judge button').forEach(b => { b.disabled = true; if (b.dataset.k === q.answerKey) b.classList.add('right'); if (b.dataset.k === picked.k && picked.k !== q.answerKey) b.classList.add('wrong'); });
+    if (detail) card.querySelectorAll('.fillrow').forEach((row, i) => {
+      const mark = row.querySelector('.mark');
+      if (detail[i] !== undefined) { mark.textContent = detail[i] ? '✓' : '✗'; mark.className = 'mark ' + (detail[i] ? 'ok' : 'no'); }
+      row.querySelector('input').disabled = true;
+    });
+    const host = document.createElement('div');
+    host.innerHTML = feedHTML(q, ok);
+    card.appendChild(host);
+    bindFeed(card, q, ok);
+    if (q.kind !== 'choice' || q.answerKey) record(ok);
+    const st = card.querySelector('.qfoot .state');
+    if (st) st.textContent = ok ? '已掌握 · 已记录' : '待补练 · 已记录';
+    opts.onAnswer && opts.onAnswer(ok, q);
+  };
+  const checkFill = () => {
+    const vals = $$('.fillrow input', card).map(i => i.value);
+    if (vals.every(v => !v.trim())) { alert('先写下答案，再核对。'); return; }
+    const parts = answerParts(q);
+    const detail = vals.map((v, i) => hitBlank(v, parts[i] ? [].concat(parts[i]) : parts));
+    const ok = detail.length > 0 && detail.every(Boolean);
+    store.set('draft:' + q.id, vals);
+    finish(ok, detail);
+  };
+  if (q.kind === 'choice') {
+    $$('.opt', card).forEach(b => b.onclick = () => {
+      if (done) return;
+      picked.k = b.dataset.k;
+      $$('.opt', card).forEach(x => x.classList.toggle('pick', x === b));
+      store.set('pick:' + q.id, picked.k);
+      const ok = picked.k === q.answerKey;
+      if (!q.answerKey) { alert('本题原文答案待核对，先按参考答案自评。'); }
+      finish(ok);
+    });
+  } else if (q.kind === 'judge') {
+    $$('.judge button', card).forEach(b => b.onclick = () => {
+      if (done) return;
+      picked.k = b.dataset.k;
+      $$('.judge button', card).forEach(x => x.classList.toggle('pick', x === b));
+      finish(picked.k === q.answerKey);
+    });
+  } else {
+    const cbtn = card.querySelector('[data-act="check"]');
+    if (cbtn) cbtn.onclick = checkFill;
+    $$('.fillrow input', card).forEach(inp => inp.addEventListener('keydown', e => { if (e.key === 'Enter') checkFill(); }));
+    $$('.fillrow input', card).forEach((inp, i) => inp.oninput = () => { const v = $$('.fillrow input', card).map(x => x.value); store.set('draft:' + q.id, v); });
+  }
+  card.querySelector('[data-act="star"]').onclick = ev => {
+    const on = !R(q.id).star; setR(q.id, { star: on }); ev.target.textContent = on ? '★ 已收藏' : '☆ 收藏';
+  };
+}
+function variantLink(q) {
+  const pool = (q.group === 'objective' ? BANKS.objective : BANKS.written).filter(x => !x.needsCheck && x.ch === q.ch && x.id !== q.id && x.kind === q.kind);
+  if (!pool.length) return '';
+  const v = pool[Math.floor(Math.random() * pool.length)];
+  return `<a class="btn sm" href="#/bank/${q.group === 'objective' ? 'objective' : 'written'}?id=${encodeURIComponent(v.id)}" title="同章同题型、条件和数值都换了">换一道同类题 · ${E(v.no)}</a>`;
+}
+function bindFeed(card, q, ok) {
+  const weak = card.querySelector('[data-act="weak"]'), star = card.querySelector('[data-act="star"]');
+  if (weak) weak.onclick = () => { setR(q.id, { status: 'weak', due: Date.now() + 864e5 }); weak.textContent = '已加入补练'; weak.disabled = true; };
+  if (star) star.onclick = () => { const on = !R(q.id).star; setR(q.id, { star: on }); star.textContent = on ? '★ 已收藏' : '☆ 收藏'; };
+  $$('[data-cause]', card).forEach(b => b.onclick = () => { setR(q.id, { cause: b.dataset.cause }); $$('[data-cause]', card).forEach(x => x.classList.toggle('on', x === b)); });
+}
+function recordAnswer(q, ok) {
+  const r = R(q.id);
+  const tries = (r.tries || 0) + 1, okc = (r.ok || 0) + (ok ? 1 : 0), bad = (r.bad || 0) + (ok ? 0 : 1);
+  const streak = ok ? (r.streak || 0) + 1 : 0;
+  const days = [1, 3, 7, 15, 30][Math.min(streak, 4)];
+  setR(q.id, { tries, ok: okc, bad, streak, last: Date.now(), due: Date.now() + days * 864e5, status: ok ? 'ok' : 'weak' });
+  store.set('last', q.id);
+}
+
+/* ================= 题库页面 ================= */
+let bankKind = 'objective', bankIndex = 0, bankPool = [];
+function bankPage(kind, qid) {
+  bankKind = kind;
+  const list = BANKS[kind] || [];
+  const label = kind === 'written' ? '大题专练' : '客观题专练';
+  const sub = kind === 'written' ? '卷面作答 · 逐项对照评分点自评（不做关键词判分）' : '选择、判断、填空 · 逐题反馈，错因可归类';
+  document.body.classList.add('bank');
+  $('#main').innerHTML = `
+    <div class="bhead"><div class="bk">${E(C.name)} / 题库</div><h1>${label}</h1><p>${list.length} 题 · ${C.chapters.length} 章 · ${sub}${list.filter(q => q.needsCheck).length ? ` · <span class="badge o">${list.filter(q => q.needsCheck).length} 题待核对</span>（原文缺选项/图，不参与自动判分）` : ''}</p></div>
+    <div class="row" style="justify-content:space-between;margin:6px 0 0"><a class="small" href="#/home">← 学习中心</a><a class="small" href="#/bank/${kind === 'objective' ? 'written' : 'objective'}">切换到${kind === 'objective' ? '大题' : '客观题'} →</a></div>
+    <div class="filters">
+      <label>章节<select id="fch"><option value="0">全部章节</option>${C.chapters.filter(c => C.bank.some(q => q.ch === c.n)).map(c => `<option value="${c.n}">第 ${c.n} 章 · ${E(c.title)}</option>`).join('')}</select></label>
+      <label>范围<select id="fscope"><option value="">全部</option><option value="todo">未做</option><option value="wrong">做错过</option><option value="star">已收藏</option><option value="weak">待补练</option></select></label>
+      <label>搜索<input id="fq" type="search" placeholder="题干关键词或题号"></label>
+      ${kind === 'objective' ? `<label>题型<select id="fkind"><option value="">全部题型</option><option value="choice">选择题</option><option value="judge">判断题</option><option value="fill">填空题</option></select></label>` : ''}
+    </div>
+    <div class="qjump"><button class="btn sm" id="prev">← 上一题</button><select id="jump" aria-label="题目列表"></select><button class="btn sm" id="next">下一题 →</button></div>
+    <div id="qhost"></div>`;
+  const qs = new URLSearchParams(location.hash.split('?')[1] || '');
+  if (qs.get('ch')) $('#fch').value = qs.get('ch');
+  if (qs.get('mode') === 'star') $('#fscope').value = 'star';
+  if (qs.get('mode') === 'weak') $('#fscope').value = 'weak';
+  const refresh = keepId => {
+    const ch = +$('#fch').value, scope = $('#fscope').value, kw = $('#fq').value.trim().toLowerCase(), kd = $('#fkind') ? $('#fkind').value : '';
+    bankPool = list.filter(q => (!ch || q.ch === ch) && (!kd || q.kind === kd) && (!kw || (T(q.stem) + ' ' + q.no + ' ' + q.source + ' ' + (q.tags || []).join(' ')).toLowerCase().includes(kw)) && (
+      !scope ||
+      (scope === 'star' && R(q.id).star) ||
+      (scope === 'weak' && R(q.id).status === 'weak') ||
+      (scope === 'wrong' && (R(q.id).bad || 0) > 0) ||
+      (scope === 'todo' && !R(q.id).tries)));
+    if (!bankPool.length) { $('#qhost').innerHTML = '<div class="empty">没有匹配题目，调整章节或筛选条件。</div>'; $('#jump').innerHTML = ''; return; }
+    bankIndex = keepId ? Math.max(0, bankPool.findIndex(q => q.id === keepId)) : 0;
+    $('#jump').innerHTML = bankPool.map((q, i) => `<option value="${i}" ${i === bankIndex ? 'selected' : ''}>第 ${q.ch} 章 · ${E(q.no)}　${E(T(q.stem).slice(0, 34))}</option>`).join('');
+    drawQ();
+  };
+  const drawQ = () => {
+    const q = bankPool[bankIndex]; if (!q) return;
+    $('#jump').value = bankIndex;
+    $('#prev').disabled = bankIndex === 0;
+    $('#next').disabled = bankIndex >= bankPool.length - 1;
+    const host = $('#qhost');
+    if (q.group === 'written') { host.innerHTML = writtenCard(q); bindWritten(host, q); }
+    else { host.innerHTML = objectiveCard(q, { values: store.get('draft:' + q.id, []), pick: store.get('pick:' + q.id, '') }); bindObjective(host, q); }
+    store.set('last', q.id);
+    paintRail();
+  };
+  $('#fch').onchange = () => refresh();
+  $('#fscope').onchange = () => refresh();
+  if ($('#fkind')) $('#fkind').onchange = () => refresh();
+  let tm; $('#fq').oninput = () => { clearTimeout(tm); tm = setTimeout(() => refresh(), 220); };
+  $('#jump').onchange = ev => { bankIndex = +ev.target.value; drawQ(); };
+  $('#prev').onclick = () => { if (bankIndex > 0) { bankIndex--; drawQ(); } };
+  $('#next').onclick = () => { if (bankIndex < bankPool.length - 1) { bankIndex++; drawQ(); } };
+  document.onkeydown = ev => {
+    if (!CURRENT.startsWith('bank')) return;
+    if (ev.target.matches('input,textarea,select')) return;
+    if (ev.key === 'ArrowLeft') $('#prev').click();
+    if (ev.key === 'ArrowRight') $('#next').click();
+  };
+  refresh(qid || qs.get('id'));
+}
+
+function writtenCard(q) {
+  const r = R(q.id);
+  return `<article class="qcard" id="wc" data-qid="${q.id}">
+    ${qMeta(q)}
+    <div class="qstem doc">${doc(q.stem)}</div>
+    <label class="small muted" style="display:block;margin-top:10px">我的卷面答案（先写完整过程，再对照评分点）</label>
+    <textarea id="wdraft" rows="7" placeholder="写出：已知 → 所求 → 公式与条件 → 代入 → 结果与单位 / 结论">${E(r.draft || '')}</textarea>
+    <div class="qfoot"><button class="btn pri" data-act="reveal">对照评分点自评</button><button class="btn" data-act="star">${r.star ? '★ 已收藏' : '☆ 收藏'}</button>
+      <span class="state">${r.status === 'ok' ? '已独立通过' : r.status === 'weak' ? '待补练' : '未自评'}</span></div>
+    <div id="wrev"></div></article>`;
+}
+function bindWritten(root, q) {
+  const card = root.querySelector('.qcard') || root;
+  const draft = card.querySelector('#wdraft');
+  let dt;
+  draft.oninput = () => { clearTimeout(dt); dt = setTimeout(() => setRSilent(q.id, { draft: draft.value }), 260); };
+  card.querySelector('[data-act="star"]').onclick = ev => { const on = !R(q.id).star; setR(q.id, { star: on }); ev.target.textContent = on ? '★ 已收藏' : '☆ 收藏'; };
+  card.querySelector('[data-act="reveal"]').onclick = () => {
+    const pts = (q.points && q.points.length) ? q.points : ['思路与公式', '代入与步骤', '结果与单位', '结论与条件'];
+    card.querySelector('#wrev').innerHTML = `<div class="feed">
+      <div class="ans"><b>参考答案</b></div><div class="doc">${doc(q.answer)}</div>
+      ${q.why ? `<div class="why doc">${doc(q.why)}</div>` : ''}
+      <div class="panel" style="margin:10px 0 0;background:#f8fafc"><b>评分点自评</b><p class="small muted">逐项勾选你卷面上真的写出来的内容，不勾“心里想到了”。</p>
+      ${pts.map((p, i) => `<label style="display:flex;gap:8px;align-items:flex-start;margin:5px 0;font-size:13.5px"><input type="checkbox" data-pt="${i}"> <span>${E(T(p))}</span></label>`).join('')}
+      <div class="row" style="margin-top:10px"><button class="btn green" data-act="pass">独立通过</button><button class="btn" data-act="weak2">仍需补练</button><span class="small muted" id="ptout"></span></div></div>
+      <div class="cause"><span>错在哪：</span>${['概念', '选式', '单位', '运算', '表述'].map(c => `<button class="chip" data-cause="${c}">${c}</button>`).join('')}</div></div>`;
+    bindFeed(card, q, false);
+    const out = card.querySelector('#ptout');
+    const update = () => { const n = $$('[data-pt]', card).filter(x => x.checked).length; out.textContent = `已勾 ${n} / ${pts.length} 项`; };
+    $$('[data-pt]', card).forEach(x => x.onchange = update);
+    card.querySelector('[data-act="pass"]').onclick = () => { setR(q.id, { status: 'ok', last: Date.now(), due: Date.now() + 3 * 864e5, streak: (R(q.id).streak || 0) + 1 }); alert('已记录：独立通过。3 天后进入复习。'); };
+    card.querySelector('[data-act="weak2"]').onclick = () => { setR(q.id, { status: 'weak', last: Date.now(), due: Date.now() + 864e5 }); alert('已加入补练。建议先看解析，再关掉答案重写一遍。'); };
+  };
+}
+
+/* ================= 随堂练习 ================= */
+function drill(a) {
+  const qs = new URLSearchParams(location.hash.split('?')[1] || '');
+  const ch = Number(qs.get('ch') || 0);
+  const diag = qs.get('diag') === '1';
+  const pool = SCORABLE.filter(q => !ch || q.ch === ch);
+  const items = sample(pool, Math.min(diag ? 3 : 8, pool.length));
+  if (!items.length) return ($('#main').innerHTML = '<div class="empty">本章暂无客观题，请到大题专练或换一章。</div>');
+  let i = 0, right = 0, answered = false;
+  const draw = () => {
+    if (i >= items.length) return result();
+    const q = items[i], r = R(q.id);
+    $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 随堂练习</div>
+      <div class="row" style="justify-content:space-between"><h1 class="ph">${diag ? '入门诊断' : '随堂练习'}</h1><span class="small muted">${ch ? '第 ' + ch + ' 章' : '全章混合'}</span></div>
+      ${diag ? '<p class="small muted" style="margin:-6px 0 10px">3 道短题，只用来判断下一步从哪章开始；不计入考试成绩。</p>' : ''}
+      <div class="drillbar"><div class="bar"><i style="width:${Math.round(i / items.length * 100)}%"></i></div><small>${i + 1} / ${items.length} · 已对 ${right}</small></div>
+      ${objectiveCard(q, { pick: store.get('pick:' + q.id, '') })}
+      <div class="navq"><button class="btn" id="quitD">结束练习</button><button class="btn pri" id="nextD" disabled>下一题 →</button></div>`;
+    answered = false;
+    bindObjective($('#main'), q, { onAnswer: ok => { if (answered) return; answered = true; if (ok) right++; $('#nextD').disabled = false; $('#nextD').textContent = i + 1 >= items.length ? '看结果 →' : '下一题 →'; } });
+    $('#nextD').onclick = () => { i++; draw(); };
+    $('#quitD').onclick = () => { i = items.length; result(); };
+  };
+  const result = () => {
+    const weak = items.filter(q => R(q.id).status === 'weak');
+    $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 随堂练习</div>
+      <div class="result"><div class="big">${right}<small> / ${items.length}</small></div><p class="muted">${diag ? '诊断结果：独立答对' : '本组独立答对'}</p>
+      ${weak.length ? `<p>待补练 ${weak.length} 题：${weak.map(q => E(q.no)).join('、')}</p>` : '<p>本组没有新增错题。</p>'}
+      <div class="row" style="justify-content:center;margin-top:14px"><button class="btn pri" id="again">再来一组</button><a class="btn" href="#/path">看学习路径</a><a class="btn" href="#/errors">看错题分析</a></div></div>`;
+    $('#again').onclick = () => go('drill' + (diag ? '?diag=1' : (ch ? '?ch=' + ch : '')));
+  };
+  draw();
+}
+
+/* ================= 模拟考试 ================= */
+let examTimer = null, EXAM = null;
+function exam(a) {
+  const qs = new URLSearchParams(location.hash.split('?')[1] || '');
+  const preset = Number(qs.get('ch') || 0);
+  if (qs.get('start') === '1') return; // 由开始按钮触发
+  $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 模拟考试</div>
+  <h1 class="ph">模拟考试</h1><p class="psub">按章组卷：客观题自动判分，大题交卷后按评分点自评。限时结束会自动交卷。</p>
+  <div class="panel"><div class="row">
+    <label class="field">范围<select id="ech"><option value="0">全章混合</option>${C.chapters.filter(c => C.bank.some(q => q.ch === c.n)).map(c => `<option value="${c.n}" ${preset === c.n ? 'selected' : ''}>第 ${c.n} 章 · ${E(c.title)}</option>`).join('')}</select></label>
+    <label class="field">客观题<select id="ecount"><option>8</option><option>12</option><option>16</option></select></label>
+    <label class="field">大题<select id="ewcount"><option>2</option><option>1</option><option>3</option></select></label>
+    <label class="field">限时<select id="etime"><option value="25">25 分钟</option><option value="40">40 分钟</option><option value="60">60 分钟</option></select></label>
+    <button class="btn pri" id="estart">开始组卷</button>
+  </div><p class="small muted" style="margin:10px 0 0">历史交卷 ${EXAMS.length} 次${EXAMS.length ? ' · 最近 ' + fmtTime(EXAMS[0].time) : ''}。试卷只在本机生成，不联网。</p></div>
+  <div id="epaper"></div>`;
+  $('#estart').onclick = () => startExam(+$('#ech').value, +$('#ecount').value, +$('#ewcount').value, +$('#etime').value);
+}
+function startExam(ch, oc, wc, mins) {
+  const pool = SCORABLE.filter(q => !ch || q.ch === ch);
+  const wp = BANKS.written.filter(q => !q.needsCheck && (!ch || q.ch === ch));
+  const items = sample(pool, Math.min(oc, pool.length)).concat(sample(wp, Math.min(wc, wp.length)));
+  if (!items.length) return alert('该范围没有可用题目。');
+  EXAM = { items, ans: {}, ch, start: Date.now(), end: Date.now() + mins * 60000, mins, submitted: false };
+  const tick = () => {
+    if (!EXAM || EXAM.submitted) return;
+    const left = Math.max(0, EXAM.end - Date.now());
+    const el = $('#etimer'); if (el) el.textContent = `${pad(Math.floor(left / 60000))}:${pad(Math.floor(left % 60000 / 1000))}`;
+    if (left <= 0) submitExam();
+  };
+  clearInterval(examTimer); examTimer = setInterval(tick, 500);
+  $('#main').innerHTML = `<div class="row" style="justify-content:space-between;margin:16px 0 4px"><div><div class="bk small muted">${E(C.name)} · 模拟卷</div><h1 class="ph" style="font-size:22px">${ch ? '第 ' + ch + ' 章' : '全章混合'} · ${items.length} 题</h1></div><div class="row"><span class="timer" id="etimer">--:--</span><button class="btn pri" id="esubmit">交卷</button></div></div>
+  <p class="small muted">客观题 ${Math.min(oc, pool.length)} 道 · 大题 ${Math.min(wc, wp.length)} 道 · 答案只在交卷后显示。</p>
+  <div id="elist">${items.map((q, i) => `<section class="examq" data-qid="${q.id}">
+    <div class="qn">第 ${i + 1} 题 · ${KIND[q.kind]} · 第 ${q.ch} 章 ${E(q.no)}</div>
+    <div class="qstem doc">${doc(q.stem)}</div>
+    ${q.group === 'written' ? `<textarea rows="5" data-w="${q.id}" placeholder="卷面答案（交卷后自评）"></textarea>` : qBody(q, {})}
+  </section>`).join('')}</div>
+  <div class="row" style="margin:14px 0 60px"><button class="btn pri" id="esubmit2">交卷核对</button><span class="small muted">交卷前请检查是否有漏答。</span></div>`;
+  $$('#elist .opt').forEach(b => b.onclick = () => {
+    const card = b.closest('.examq'), qid = card.dataset.qid;
+    $$('.opt', card).forEach(x => x.classList.toggle('pick', x === b));
+    EXAM.ans[qid] = b.dataset.k;
+  });
+  $$('#elist .judge button').forEach(b => b.onclick = () => {
+    const card = b.closest('.examq'), qid = card.dataset.qid;
+    $$('.judge button', card).forEach(x => x.classList.toggle('pick', x === b));
+    EXAM.ans[qid] = b.dataset.k;
+  });
+  $$('#elist .fillrow input').forEach(inp => {
+    const card = inp.closest('.examq'), qid = card.dataset.qid;
+    inp.oninput = () => { const vals = $$('.fillrow input', card).map(x => x.value); EXAM.ans[qid] = vals; };
+  });
+  $$('#elist textarea[data-w]').forEach(t => t.oninput = () => { EXAM.ans[t.dataset.w] = t.value; });
+  $('#esubmit').onclick = submitExam; $('#esubmit2').onclick = submitExam;
+  tick();
+}
+function submitExam() {
+  if (!EXAM || EXAM.submitted) return;
+  if (!confirm('确认交卷？交卷后不能再修改答案。')) return;
+  EXAM.submitted = true; clearInterval(examTimer);
+  const obj = EXAM.items.filter(q => q.group === 'objective');
+  let hits = 0, graded = [];
+  obj.forEach(q => {
+    let ok = false;
+    if (q.kind === 'choice' || q.kind === 'judge') ok = EXAM.ans[q.id] === q.answerKey;
+    else {
+      const vals = EXAM.ans[q.id] || [], parts = answerParts(q);
+      ok = vals.length > 0 && vals.every((v, i) => hitBlank(v, parts[i] ? [].concat(parts[i]) : parts));
+    }
+    if (ok) hits++;
+    graded.push({ q, ok, given: EXAM.ans[q.id] });
+  });
+  const written = EXAM.items.filter(q => q.group === 'written');
+  const rec = { time: Date.now(), ch: EXAM.ch, total: obj.length, hits, written: written.length, minutes: EXAM.mins, self: null };
+  EXAMS = [rec].concat(EXAMS).slice(0, 50); store.set('exams', EXAMS);
+  const score = obj.length ? Math.round(hits / obj.length * 100) : 0;
+  $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 模拟考试 / 交卷</div>
+  <div class="result"><div class="big">${score}<small> 分</small></div><p class="muted">客观题 ${hits} / ${obj.length} 自动判分；大题 ${written.length} 道需按点自评</p>
+  <p class="small muted">用时 ${Math.round((Date.now() - EXAM.start) / 60000)} 分钟 · 记录已保存</p>
+  <div class="row" style="justify-content:center;margin-top:12px"><a class="btn pri" href="#/report">看学习报告</a><a class="btn" href="#/errors">错题分析</a><button class="btn" id="eagain">再考一次</button></div></div>
+  <h2 class="sec">逐题核对</h2>
+  ${graded.map(({ q, ok, given }, i) => `<div class="review ${ok ? 'ok' : 'no'}"><b>${i + 1}. ${E(q.no)}　${ok ? '<span class="badge g">正确</span>' : '<span class="badge r">错误</span>'}</b>
+    <div class="small muted">我的作答：${E(Array.isArray(given) ? given.join('；') : (given || '未答'))}</div>
+    <details><summary class="small">看答案与解析</summary><div class="doc">${doc(q.answer)}${q.why ? doc(q.why) : ''}</div></details>
+    ${ok ? '' : `<button class="btn sm" data-weak="${q.id}">加入补练</button>`}</div>`).join('')}
+  ${written.length ? `<h2 class="sec">大题自评</h2>${written.map((q, i) => `<div class="review"><b>${E(q.no)}</b><div class="doc">${doc(q.stem)}</div>
+    <p class="small muted">我的卷面：${E((EXAM.ans[q.id] || '未答').slice(0, 160))}</p>
+    <details><summary class="small">参考答案与评分点</summary><div class="doc">${doc(q.answer)}</div></details>
+    <label class="small">自评得分（0–10）<input type="number" min="0" max="10" data-self="${q.id}" style="width:78px;margin-left:6px"></label>
+    <button class="btn sm" data-selfsave="${q.id}">保存自评</button></div>`).join('')}` : ''}`;
+  $$('[data-weak]').forEach(b => b.onclick = () => { setR(b.dataset.weak, { status: 'weak', due: Date.now() + 864e5 }); b.textContent = '已加入'; b.disabled = true; });
+  $$('[data-selfsave]').forEach(b => b.onclick = () => {
+    const inp = $(`[data-self="${b.dataset.selfsave}"]`); const v = +inp.value;
+    if (!Number.isFinite(v)) return alert('填 0–10 的分数');
+    const q = QBY.get(b.dataset.selfsave); setR(q.id, { draft: (EXAM.ans[q.id] || ''), status: v >= 6 ? 'ok' : 'weak', self: v, last: Date.now(), due: Date.now() + (v >= 6 ? 3 : 1) * 864e5 });
+    b.textContent = '已保存'; b.disabled = true;
+  });
+  $('#eagain').onclick = () => go('exam');
+  paintRail();
+  EXAM = null;
+}
+
+/* ================= 错题分析 ================= */
+function errors() {
+  const bad = C.bank.filter(q => (R(q.id).bad || 0) > 0 || R(q.id).status === 'weak')
+    .sort((a, b) => (R(b.id).bad || 0) - (R(a.id).bad || 0));
+  const causes = {};
+  C.bank.forEach(q => { const c = R(q.id).cause; if (c) causes[c] = (causes[c] || 0) + 1; });
+  $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 错题分析</div>
+  <h1 class="ph">错题分析</h1><p class="psub">按“错了几次”排序；错因由你在作答后自己标记，不用关键词猜。</p>
+  ${bad.length ? `<div class="panel"><div class="row"><button class="btn pri" id="redo">重练这批（最多 10 题）</button><a class="btn" href="#/bank/objective?mode=weak">只看待补练</a><a class="btn" href="#/bank/written?mode=weak">大题待补练</a></div>
+    <p class="small muted" style="margin:10px 0 0">错因分布：${Object.keys(causes).length ? Object.entries(causes).map(([k, v]) => `${E(k)} ${v}`).join(' · ') : '还没有标记错因'}</p></div>
+    <div class="list">${bad.map(q => { const r = R(q.id); return `<div class="li"><span class="no">${E(q.no)}</span><div class="body">
+      <div class="small"><b>第 ${q.ch} 章</b> · ${KIND[q.kind]} ${r.cause ? `<span class="badge o">${E(r.cause)}</span>` : ''} ${r.status === 'weak' ? '<span class="badge r">待补练</span>' : (r.bad ? '<span class="badge g">已通过后续复测</span>' : '')}</div>
+      <div style="margin-top:3px">${E(T(q.stem).slice(0, 92))}</div></div>
+      <div class="act"><a class="btn sm" href="#/bank/${q.group === 'written' ? 'written' : 'objective'}?id=${encodeURIComponent(q.id)}">重做</a></div></div>`; }).join('')}</div>`
+      : `<div class="empty"><p>还没有错题记录。</p><a class="btn pri" href="#/drill">做一组随堂练习</a></div>`}`;
+  if ($('#redo')) $('#redo').onclick = () => {
+    const ids = bad.filter(q => q.group === 'objective').slice(0, 10).map(q => q.id);
+    if (!ids.length) return alert('这批里没有客观题，请点“重做”逐题自评。');
+    drillIds(ids);
+  };
+}
+function drillIds(ids) {
+  const items = ids.map(id => QBY.get(id)).filter(Boolean);
+  let i = 0, right = 0;
+  const draw = () => {
+    if (i >= items.length) return $('#main').innerHTML = `<div class="result"><div class="big">${right}<small> / ${items.length}</small></div><p class="muted">错题重练完成</p><div class="row" style="justify-content:center"><a class="btn pri" href="#/errors">回到错题分析</a></div></div>`;
+    const q = items[i];
+    $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 错题重练</div>
+      <div class="drillbar"><div class="bar"><i style="width:${Math.round(i / items.length * 100)}%"></i></div><small>${i + 1} / ${items.length}</small></div>
+      ${objectiveCard(q, { pick: '' })}<div class="navq"><button class="btn" id="q">退出</button><button class="btn pri" id="n" disabled>下一题 →</button></div>`;
+    let ans = false;
+    bindObjective($('#main'), q, { onAnswer: ok => { if (ans) return; ans = true; if (ok) right++; $('#n').disabled = false; } });
+    $('#n').onclick = () => { i++; draw(); };
+    $('#q').onclick = () => go('errors');
+  };
+  draw();
+}
+
+/* ================= 智能复习 ================= */
+function review() {
+  const now = Date.now();
+  const due = SCORABLE.filter(q => { const r = R(q.id); return r.due && r.due <= now; });
+  const weak = C.bank.filter(q => R(q.id).status === 'weak');
+  const soon = BANKS.objective.filter(q => { const r = R(q.id); return r.due && r.due > now; }).sort((a, b) => R(a.id).due - R(b.id).due).slice(0, 6);
+  $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 智能复习</div>
+  <h1 class="ph">智能复习</h1><p class="psub">答对后按 1 / 3 / 7 / 15 天间隔安排复测；答错次日回炉。只记录真实做过的题。</p>
+  <div class="grid3">
+    <div class="stat"><small>今天到期</small><b>${due.length}</b><a class="btn sm" href="#/review?go=due">开始复测</a></div>
+    <div class="stat"><small>待补练</small><b>${weak.length}</b><a class="btn sm" href="#/errors">看错题</a></div>
+    <div class="stat"><small>下次到期</small><b style="font-size:15px;margin-top:6px">${soon.length ? fmtTime(R(soon[0].id).due).split(' ')[0] : '—'}</b><span class="small muted">按最近一道</span></div>
+  </div>
+  <div class="panel"><h3>复习规则</h3><ul class="small"><li>第一次独立答对：1 天后复测；连续答对依次 3、7、15、30 天。</li><li>答错或标记“仍需补练”：次日回炉，并进入错题分析。</li><li>大题不自动判分，按评分点自评后同样进入复习队列。</li></ul>
+  <div class="row"><button class="btn pri" id="startDue">复测到期题（${Math.min(10, due.length)}）</button><button class="btn" id="startWeak">补练薄弱题（${Math.min(10, weak.filter(q => q.group === 'objective').length)}）</button></div></div>
+  ${soon.length ? `<h2 class="sec">接下来到期</h2><div class="list">${soon.map(q => `<div class="li"><span class="no">${E(q.no)}</span><div class="body">${E(T(q.stem).slice(0, 80))}</div><span class="small muted">${fmtTime(R(q.id).due)}</span></div>`).join('')}</div>` : ''}`;
+  $('#startDue').onclick = () => { if (!due.length) return alert('今天没有到期题，可以先做一组随堂练习。'); drillIds(due.slice(0, 10).map(q => q.id)); };
+  $('#startWeak').onclick = () => { const ids = weak.filter(q => q.group === 'objective').slice(0, 10).map(q => q.id); if (!ids.length) return alert('没有客观题待补练。'); drillIds(ids); };
+  if (new URLSearchParams(location.hash.split('?')[1] || '').get('go') === 'due' && due.length) drillIds(due.slice(0, 10).map(q => q.id));
+}
+
+/* ================= 知识图谱 ================= */
+function graph() {
+  $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 知识图谱</div>
+  <h1 class="ph">知识图谱</h1><p class="psub">按章展开考点；点任意节点进入对应小节。</p>
+  ${C.chapters.map(c => {
+    const qs = C.bank.filter(q => q.ch === c.n);
+    const pct = qs.length ? Math.round(qs.filter(q => R(q.id).ok).length / qs.length * 100) : 0;
+    return `<section class="panel"><div class="row" style="justify-content:space-between"><h3 style="margin:0">第 ${c.n} 章 · ${E(c.title)}</h3><span class="small muted">${qs.length} 题 · 掌握 ${pct}%</span></div>
+      <div class="chips" style="margin-top:10px">${c.sections.map(s => `<a class="chip" href="#/learn/${c.n}/${s.id}">${E(s.title)}</a>`).join('')}</div>
+      <div class="bar" style="margin-top:10px"><i style="width:${pct}%"></i></div></section>`;
+  }).join('')}`;
+}
+
+/* ================= 资料库 ================= */
+function library() {
+  const qs = new URLSearchParams(location.hash.split('?')[1] || '');
+  const n = Number(qs.get('ch') || (C.chapters[0] || {}).n || 0);
+  const c = CH.get(n) || C.chapters[0];
+  $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 学习资料库</div>
+  <h1 class="ph">学习资料库</h1><p class="psub">${E(C.metaExtra && C.metaExtra.source || '')}。原文只读，不改动源资料。</p>
+  <div class="panel"><div class="row"><label class="field">选择章节<select id="lch">${C.chapters.map(x => `<option value="${x.n}" ${x.n === n ? 'selected' : ''}>第 ${x.n} 章 · ${E(x.title)}</option>`).join('')}</select></label>
+  <button class="btn" id="ldl">下载本章原文</button><a class="btn" href="#/bank/objective?ch=${n}">本章客观题</a><a class="btn" href="#/bank/written?ch=${n}">本章大题</a></div></div>
+  <article class="rbody"><h2>${E(c.title)}</h2><div class="doc">${c.intro ? doc(c.intro) : ''}${c.sections.map(s => `<h3>${E(s.title)}</h3>${doc(s.html)}`).join('')}</div></article>`;
+  $('#lch').onchange = ev => go('library?ch=' + ev.target.value);
+  $('#ldl').onclick = () => download(`${C.name}_第${n}章_${c.title}.md`, `# ${C.name} · 第 ${n} 章 ${c.title}\n\n` + htmlToMd((c.intro || '') + c.sections.map(s => `<h3>${s.title}</h3>` + s.html).join('')));
+}
+function htmlToMd(h) {
+  return String(h).replace(/<\/(p|div|li|h[1-6]|tr)>/g, '\n').replace(/<br\s*\/?>/g, '\n')
+    .replace(/<li>/g, '- ').replace(/<\/t[dh]>/g, ' | ').replace(/<[^>]+>/g, '')
+    .replace(/&nbsp;/g, ' ').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&')
+    .replace(/\n{3,}/g, '\n\n').trim();
+}
+function download(name, text) {
+  const u = URL.createObjectURL(new Blob([text], { type: 'text/markdown;charset=utf-8' }));
+  const a = document.createElement('a'); a.href = u; a.download = name; a.click();
+  setTimeout(() => URL.revokeObjectURL(u), 800);
+}
+
+/* ================= 笔记 ================= */
+function notes() {
+  $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 智能笔记</div>
+  <h1 class="ph">智能笔记</h1><p class="psub">记“我错在哪、下次怎么判断”，比抄定义有用。笔记存在本机，可导出。</p>
+  <div class="panel"><div class="row"><label class="field">关联章节<select id="nch"><option value="0">不关联</option>${C.chapters.map(c => `<option value="${c.n}">第 ${c.n} 章 · ${E(c.title)}</option>`).join('')}</select></label></div>
+  <textarea id="ntext" rows="4" placeholder="例：CRC 余数位数由生成多项式位数减 1 决定，我总是少数一位。"></textarea>
+  <div class="row" style="margin-top:8px"><button class="btn pri" id="nadd">保存笔记</button><button class="btn" id="nexp">导出全部</button></div></div>
+  <div class="list">${NOTES.length ? NOTES.map((v, i) => `<div class="li"><span class="no">${v.ch ? '第' + v.ch + '章' : '通用'}</span><div class="body"><div>${E(v.text)}</div><small class="muted">${fmtTime(v.t)}</small></div><div class="act"><button class="btn sm" data-del="${i}">删除</button></div></div>`).join('') : '<div class="empty">还没有笔记。</div>'}</div>`;
+  $('#nadd').onclick = () => { const t = $('#ntext').value.trim(); if (!t) return; NOTES = [{ t: Date.now(), ch: +$('#nch').value, text: t }, ...NOTES]; store.set('notes', NOTES); notes(); };
+  $('#nexp').onclick = () => download(C.name + '_笔记.md', NOTES.map(v => `## ${v.ch ? '第 ' + v.ch + ' 章' : '通用'} · ${fmtTime(v.t)}\n\n${v.text}`).join('\n\n'));
+  $$('[data-del]').forEach(b => b.onclick = () => { NOTES.splice(+b.dataset.del, 1); store.set('notes', NOTES); notes(); });
+}
+
+/* ================= 课件生成 ================= */
+function slides() {
+  const n = Number((new URLSearchParams(location.hash.split('?')[1] || '')).get('ch') || (C.chapters[0] || {}).n || 0);
+  const c = CH.get(n) || C.chapters[0];
+  const qs = C.bank.filter(q => q.ch === n);
+  const top = qs.slice(0, 3);
+  const slidesArr = [
+    ['本章地图', c.sections.map((s, i) => `${i + 1}. ${s.title}`).join('\n')],
+    ['一句话主线', T(c.intro).slice(0, 240) || c.title],
+    ['必背规则', c.sections.slice(0, 3).map(s => `${s.title}：${T(s.html).slice(0, 90)}`).join('\n')],
+    ['高频题型', top.map(q => `${q.no}　${T(q.stem).slice(0, 70)}`).join('\n') || '本章以概念题为主。'],
+    ['易错提醒', (C.pitfalls || []).slice(0, 4).map(x => T(x)).join('\n') || '做完题先自查单位、条件与结论。'],
+    ['考前自测', top.map(q => `□ ${q.no} 能否独立写出完整步骤？`).join('\n') || '□ 能否复述本章三条主线？']
+  ];
+  $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / AI 课件生成</div>
+  <h1 class="ph">AI 课件生成</h1><p class="psub">按章抽取“地图—主线—规则—题型—易错—自测”，生成可编辑的 Markdown 提纲。</p>
+  <div class="panel"><div class="row"><label class="field">章节<select id="sch">${C.chapters.map(x => `<option value="${x.n}" ${x.n === n ? 'selected' : ''}>第 ${x.n} 章 · ${E(x.title)}</option>`).join('')}</select></label><button class="btn pri" id="sexp">导出 Markdown</button><button class="btn" id="sprint">打印 / 存 PDF</button></div></div>
+  <div class="grid2">${slidesArr.map(([h, b], i) => `<div class="panel"><small class="muted">${i + 1} / 6</small><h3>${E(h)}</h3><div class="doc small">${b.split('\n').map(x => `<p>${E(x)}</p>`).join('')}</div></div>`).join('')}</div>`;
+  $('#sch').onchange = ev => go('slides?ch=' + ev.target.value);
+  $('#sexp').onclick = () => download(`${C.name}_第${n}章_课件提纲.md`, `# ${C.name} · 第 ${n} 章 ${c.title}\n\n` + slidesArr.map(([h, b]) => `## ${h}\n\n${b}`).join('\n\n'));
+  $('#sprint').onclick = () => window.print();
+}
+
+/* ================= 实验室 ================= */
+function lab() {
+  if (C.id === 'signals') return labSignals();
+  if (C.id === 'stm32') return labStm32();
+  return labEda();
+}
+function labSignals() {
+  $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 交互实验室</div>
+  <h1 class="ph">${E(X.lab.title)}</h1><p class="psub">${E(X.lab.desc)}</p>
+  <div class="panel"><div class="tool"><div>
+    <label class="field">信号频率 f<sub>m</sub>：<span class="v" id="fmv">4 Hz</span><input id="fm" type="range" min="1" max="10" step="0.5" value="4"></label>
+    <label class="field">抽样频率 f<sub>s</sub>：<span class="v" id="fsv">20 Hz</span><input id="fs" type="range" min="2" max="40" step="1" value="20"></label>
+    <p class="small muted">灰虚线：原信号；蓝点：抽样点；橙线：由样点唯一确定的最低频正弦（混叠后的“假信号”）。</p>
+  </div><div><canvas id="cv" width="640" height="280" aria-label="抽样波形图"></canvas><div class="out" id="lout" style="margin-top:10px"></div></div></div></div>`;
+  const draw = () => {
+    const fm = +$('#fm').value, fs = +$('#fs').value;
+    $('#fmv').textContent = fm + ' Hz'; $('#fsv').textContent = fs + ' Hz';
+    const cv = $('#cv'), ctx = cv.getContext('2d'), W = cv.width, H = cv.height, mid = H / 2, A = 88;
+    ctx.clearRect(0, 0, W, H);
+    ctx.strokeStyle = '#e2e8f2'; ctx.lineWidth = 1;
+    for (let x = 0; x <= W; x += 40) { ctx.beginPath(); ctx.moveTo(x, 10); ctx.lineTo(x, H - 10); ctx.stroke(); }
+    ctx.strokeStyle = '#cfd9e8'; ctx.beginPath(); ctx.moveTo(0, mid); ctx.lineTo(W, mid); ctx.stroke();
+    const T0 = 1 / fm, scale = W / (2 * T0);
+    ctx.strokeStyle = '#94a3b8'; ctx.setLineDash([4, 4]); ctx.lineWidth = 1.6; ctx.beginPath();
+    for (let x = 0; x <= W; x += 2) { const t = x / scale; const y = mid - A * Math.sin(2 * Math.PI * fm * t); x ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
+    ctx.stroke(); ctx.setLineDash([]);
+    const n = Math.floor(2 * T0 * fs);
+    ctx.fillStyle = '#2f6fdb';
+    for (let k = 0; k <= n; k++) { const t = k / fs, x = t * scale, y = mid - A * Math.sin(2 * Math.PI * fm * t); ctx.beginPath(); ctx.arc(x, y, 3.4, 0, Math.PI * 2); ctx.fill(); }
+    const alias = Math.abs(fm - Math.round(fm / fs) * fs);
+    if (fs < 2 * fm && alias > 0.001) {
+      ctx.strokeStyle = '#c4700f'; ctx.lineWidth = 1.8; ctx.beginPath();
+      for (let x = 0; x <= W; x += 2) { const t = x / scale; const y = mid - A * Math.sin(2 * Math.PI * alias * t + Math.PI); x ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
+      ctx.stroke();
+    }
+    const ok = fs >= 2 * fm;
+    $('#lout').innerHTML = `f<sub>m</sub>=${fm} Hz，f<sub>s</sub>=${fs} Hz<br>奈奎斯特下限 2f<sub>m</sub>=${2 * fm} Hz<br><b>${ok ? '可以无失真恢复' : '发生混叠'}</b>${ok ? '' : `<br>混叠频率 ≈ ${alias.toFixed(1)} Hz`}`;
+  };
+  $('#fm').oninput = draw; $('#fs').oninput = draw; draw();
+}
+function labStm32() {
+  $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 交互实验室</div>
+  <h1 class="ph">${E(X.lab.title)}</h1><p class="psub">${E(X.lab.desc)}</p>
+  <div class="panel"><div class="tool"><div>
+    <label class="field">定时器时钟 f<sub>clk</sub>（MHz）<input id="lf" type="number" value="84" min="1" step="1"></label>
+    <label class="field">预分频 PSC<input id="lp" type="number" value="83" min="0" step="1"></label>
+    <label class="field">自动重装 ARR<input id="la" type="number" value="999" min="0" step="1"></label>
+    <label class="field">比较值 CCR（算占空比）<input id="lc" type="number" value="300" min="0" step="1"></label>
+  </div><div><div class="out" id="lout"></div><div class="doc" style="margin-top:10px"><div class="kp"><span class="t">公式</span><p>f = f<sub>clk</sub> / ((PSC+1)(ARR+1))，占空比 = CCR/(ARR+1)</p></div></div></div></div></div>`;
+  const calc = () => {
+    const f = +$('#lf').value * 1e6, p = +$('#lp').value, a = +$('#la').value, c = +$('#lc').value;
+    const out = f / ((p + 1) * (a + 1)), T = 1 / out, duty = clamp(c / (a + 1), 0, 1) * 100;
+    const fh = out >= 1000 ? (out / 1000).toFixed(3) + ' kHz' : out.toFixed(2) + ' Hz';
+    $('#lout').innerHTML = `频率 <b>${fh}</b><br>周期 ${(T * 1e3).toFixed(3)} ms<br>占空比 ${duty.toFixed(1)} %<br><span style="color:#9fc0ea">PSC+1=${p + 1}，ARR+1=${a + 1}</span>`;
+  };
+  ['lf', 'lp', 'la', 'lc'].forEach(id => $('#' + id).oninput = calc); calc();
+}
+const EDA_LABS = [
+  { id: 'width', name: '载流线宽', sub: 'IPC-2221 · 温升与铜厚', run: labWidth },
+  { id: 'via', name: '过孔载流', sub: '镀铜截面 · 电阻 · 孔数', run: labVia },
+  { id: 'drop', name: '走线压降', sub: '电阻 · 压降 · 功耗', run: labDrop },
+  { id: 'power', name: '电源线压降', sub: '线宽 · 压降 · 余量', run: labPower },
+  { id: 'z0', name: '微带阻抗', sub: 'IPC-2141 · 50Ω 估算', run: labZ0 },
+  { id: 'panel', name: '拼板利用率', sub: '排版 · 数量 · 利用率', run: labPanel },
+  { id: 'unit', name: '单位换算', sub: 'mil / mm / μm / oz', run: labUnit },
+  { id: 'dfm', name: '工艺核对', sub: '线宽 · 间距 · 孔径 · 环宽', run: labDfm }
+];
+
+function labEda() {
+  const qs = new URLSearchParams(location.hash.split('?')[1] || '');
+  const cur = qs.get('tool') || store.get('labTool', 'width');
+  const lab = EDA_LABS.find(x => x.id === cur) || EDA_LABS[0];
+  store.set('labTool', lab.id);
+  $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 交互实验室</div>
+  <h1 class="ph">PCB 工程实验室</h1>
+  <p class="psub">8 个常用估算与核对。输入参数即时计算；结论用于课前估算与自查，投板前以板厂最新工艺表和实测为准。</p>
+  <div class="labtabs">${EDA_LABS.map(x => `<button class="labtab ${x.id === lab.id ? 'on' : ''}" data-lab="${x.id}"><b>${x.name}</b><span>${x.sub}</span></button>`).join('')}</div>
+  <div id="labHost"></div>`;
+  $$('.labtab').forEach(b => b.onclick = () => go('lab?tool=' + b.dataset.lab));
+  lab.run($('#labHost'));
+}
+
+/* 1. 载流线宽 */
+function labWidth(host) {
+  host.innerHTML = `<section class="panel"><div class="tool"><div>
+    <label class="field">电流 I（A）<input id="wI" type="number" value="2" min="0.1" step="0.1"></label>
+    <label class="field">允许温升 ΔT（℃）<input id="wT" type="number" value="10" min="1" step="1"></label>
+    <label class="field">铜厚<select id="wOz"><option value="0.5">0.5 oz（17.5 μm）</option><option value="1" selected>1 oz（35 μm）</option><option value="2">2 oz（70 μm）</option></select></label>
+    <label class="field">走线位置<select id="wK"><option value="0.048">外层（k=0.048）</option><option value="0.024">内层（k=0.024）</option></select></label>
+  </div><div><div class="out" id="wOut"></div>
+    <div class="vbar"><i id="wBar" style="width:0"></i></div>
+    <div class="vscale"><span>0</span><span>1 mm</span><span>2 mm</span></div>
+    <div class="labnote">按 1 mm 参考看线宽占比；实际还要考虑压降、载流均匀性和板厂最小线宽。</div>
+    <div class="doc" style="margin-top:10px"><div class="kp"><span class="t">公式</span><p>A = (I/(k·ΔT<sup>0.44</sup>))<sup>1/0.725</sup>（mil²），W = A/(oz×1.378)，1 mil = 0.0254 mm。</p></div></div>
+  </div></div></section>`;
+  const calc = () => {
+    const I = +$('#wI').value, dT = +$('#wT').value, oz = +$('#wOz').value, k = +$('#wK').value;
+    const A = Math.pow(I / (k * Math.pow(dT, 0.44)), 1 / 0.725);
+    const mil = A / (oz * 1.378), mm = mil * 0.0254, rec = Math.ceil(mm * 1.2 * 10) / 10;
+    $('#wOut').innerHTML = `最小线宽 <b>${mm.toFixed(2)} mm</b><br>≈ ${mil.toFixed(1)} mil · 截面积 ${A.toFixed(1)} mil²<br>建议取 <b>${rec.toFixed(1)} mm</b>（留 20% 余量）`;
+    $('#wBar').style.width = Math.min(100, mm / 2 * 100) + '%';
+  };
+  ['wI', 'wT', 'wOz', 'wK'].forEach(id => $('#' + id).oninput = calc);
+  calc();
+}
+
+/* 2. 过孔载流 */
+function labVia(host) {
+  host.innerHTML = `<section class="panel"><div class="tool"><div>
+    <label class="field">孔径 d（mm）<input id="vD" type="number" value="0.3" min="0.1" max="0.8" step="0.05"></label>
+    <label class="field">孔壁镀铜厚度（μm）<select id="vT"><option value="20">20 μm</option><option value="25" selected>25 μm</option><option value="30">30 μm</option></select></label>
+    <label class="field">孔深 ≈ 板厚（mm）<input id="vL" type="number" value="1.6" min="0.4" max="3" step="0.1"></label>
+    <label class="field">需要通过电流 I（A）<input id="vI" type="number" value="1" min="0.1" step="0.1"></label>
+    <label class="field">允许温升 ΔT（℃）<select id="vDT"><option value="10" selected>10 ℃</option><option value="20">20 ℃</option><option value="30">30 ℃</option></select></label>
+  </div><div><div class="out" id="vOut"></div>
+    <div class="vbar"><i id="vBar" style="width:0"></i></div>
+    <div class="vscale"><span>0</span><span>需求 / 单孔能力</span><span>100%</span></div>
+    <div class="labnote">孔壁镀铜并不均匀，工程上常按 0.5–1 A/孔保守取值；大电流请多孔并联并铺铜。</div>
+    <div class="doc" style="margin-top:10px"><div class="kp"><span class="t">公式</span><p>镀铜截面 A = π·d·t；电阻 R = 0.0172·L/A（mΩ）；载流按 IPC-2221 用同截面积反算。</p></div></div>
+  </div></div></section>`;
+  const calc = () => {
+    const d = +$('#vD').value, t = +$('#vT').value / 1000, L = +$('#vL').value, I = +$('#vI').value, dT = +$('#vDT').value;
+    const A = Math.PI * d * t;
+    const R = A > 0 ? 0.0172 * L / A : 0;
+    const Imax = 0.048 * Math.pow(dT, 0.44) * Math.pow(A * 1550, 0.725);
+    const need = Imax > 0 ? Math.ceil(I / Imax) : 0;
+    $('#vOut').innerHTML = `单孔镀铜截面 <b>${A.toFixed(4)} mm²</b><br>单孔电阻 <b>${R.toFixed(2)} mΩ</b><br>按 ΔT=${dT} ℃ 估算载流 <b>${Imax.toFixed(2)} A/孔</b><br>${I} A 至少 <b>${Math.max(1, need)} 个</b>并联（建议再留 1–2 个）`;
+    $('#vBar').style.width = Math.min(100, I / Math.max(Imax, 0.001) * 100) + '%';
+  };
+  ['vD', 'vT', 'vL', 'vI', 'vDT'].forEach(id => $('#' + id).oninput = calc);
+  calc();
+}
+
+/* 3. 走线压降 */
+function labDrop(host) {
+  host.innerHTML = `<section class="panel"><div class="tool"><div>
+    <label class="field">走线长度 L（mm）<input id="dL" type="number" value="50" min="1" step="1"></label>
+    <label class="field">线宽 w（mm）<input id="dW" type="number" value="0.5" min="0.05" step="0.05"></label>
+    <label class="field">铜厚<select id="dOz"><option value="0.5">0.5 oz（17.5 μm）</option><option value="1" selected>1 oz（35 μm）</option><option value="2">2 oz（70 μm）</option></select></label>
+    <label class="field">电流 I（A）<input id="dI" type="number" value="2" min="0.05" step="0.1"></label>
+  </div><div><div class="out" id="dOut"></div>
+    <div class="vbar"><i id="dBar" style="width:0"></i></div>
+    <div class="vscale"><span>0</span><span>5%</span><span>10%</span></div>
+    <div class="labnote">一般把电源走线压降控制在 3% 以内；超过 5% 时优先加宽、缩短或换 2 oz 铜。</div>
+    <div class="doc" style="margin-top:10px"><div class="kp"><span class="t">公式</span><p>R = 0.0172·L/(w·t)（mΩ，L/w 用 mm，t 用 mm）；ΔV = I·R；P = I²·R。</p></div></div>
+  </div></div></section>`;
+  const calc = () => {
+    const L = +$('#dL').value, w = +$('#dW').value, oz = +$('#dOz').value, I = +$('#dI').value;
+    const t = oz * 0.035, R = 0.0172 * L / Math.max(w * t, 1e-6);
+    const V = I * R, P = I * I * R, pct = V / 1000 / 5 * 100;
+    $('#dOut').innerHTML = `走线电阻 <b>${R.toFixed(1)} mΩ</b><br>压降 <b>${V.toFixed(1)} mV</b>（5 V 的 ${pct.toFixed(2)}%）<br>功耗 <b>${P.toFixed(0)} mW</b><br>${pct > 3 ? '<span style="color:#ffd08a">超过 3%，建议加宽或缩短</span>' : '<span style="color:#9fe3bd">低于 3%，可接受</span>'}`;
+    $('#dBar').style.width = Math.min(100, pct / 10 * 100) + '%';
+  };
+  ['dL', 'dW', 'dOz', 'dI'].forEach(id => $('#' + id).oninput = calc);
+  calc();
+}
+
+/* 4. 微带阻抗 */
+function labZ0(host) {
+  host.innerHTML = `<section class="panel"><div class="tool"><div>
+    <label class="field">线宽 w（mm）<input id="zW" type="number" value="0.2" min="0.05" max="2" step="0.01"></label>
+    <label class="field">介质厚度 h（mm）<input id="zH" type="number" value="0.2" min="0.05" max="1.6" step="0.01"></label>
+    <label class="field">铜厚<select id="zOz"><option value="0.5">0.5 oz</option><option value="1" selected>1 oz</option><option value="2">2 oz</option></select></label>
+    <label class="field">介电常数 εr<select id="zEr"><option value="4.2">FR-4 · 4.2</option><option value="4.4" selected>FR-4 · 4.4</option><option value="4.6">FR-4 · 4.6</option><option value="3.5"> Rogers · 3.5</option></select></label>
+  </div><div><div class="out" id="zOut"></div>
+    <div class="vbar"><i id="zBar" style="width:0"></i></div>
+    <div class="vscale"><span>0 Ω</span><span>50 Ω</span><span>120 Ω</span></div>
+    <div class="labnote">近似公式未计阻焊层与铜箔粗糙度；阻抗线下方必须有完整参考平面，实际以板厂计算与测试为准。</div>
+    <div class="doc" style="margin-top:10px"><div class="kp"><span class="t">公式</span><p>Z₀ ≈ 87/√(εr+1.41) · ln(5.98h/(0.8w+t))（IPC-2141 微带近似）。</p></div></div>
+  </div></div></section>`;
+  const zof = (w, h, t, er) => 87 / Math.sqrt(er + 1.41) * Math.log(5.98 * h / (0.8 * w + t));
+  const calc = () => {
+    const w = +$('#zW').value, h = +$('#zH').value, oz = +$('#zOz').value, er = +$('#zEr').value, t = oz * 0.035;
+    const z = zof(w, h, t, er);
+    let lo = 0.02, hi = 3;
+    for (let i = 0; i < 60; i++) { const mid = (lo + hi) / 2; if (zof(mid, h, t, er) > 50) lo = mid; else hi = mid; }
+    const w50 = (lo + hi) / 2, dev = (z - 50) / 50 * 100;
+    $('#zOut').innerHTML = `特征阻抗 <b>${z.toFixed(1)} Ω</b><br>50 Ω 目标线宽 <b>${w50.toFixed(3)} mm</b><br>当前线宽偏离 50 Ω <b>${dev > 0 ? '+' : ''}${dev.toFixed(1)}%</b><br><span style="color:#9fc0ea">t = ${t.toFixed(3)} mm，h/w = ${(h / w).toFixed(2)}</span>`;
+    $('#zBar').style.width = Math.min(100, z / 120 * 100) + '%';
+  };
+  ['zW', 'zH', 'zOz', 'zEr'].forEach(id => $('#' + id).oninput = calc);
+  calc();
+}
+
+/* 5. 拼板利用率 */
+function labPanel(host) {
+  host.innerHTML = `<section class="panel"><div class="tool"><div>
+    <label class="field">单板长 a（mm）<input id="pA" type="number" value="100" min="5" step="1"></label>
+    <label class="field">单板宽 b（mm）<input id="pB" type="number" value="80" min="5" step="1"></label>
+    <label class="field">板间距 g（mm）<input id="pG" type="number" value="2" min="0" step="0.5"></label>
+    <label class="field">工艺边 e（mm，四边）<input id="pE" type="number" value="5" min="0" step="1"></label>
+    <label class="field">大板长 A（mm）<input id="pPA" type="number" value="300" min="20" step="5"></label>
+    <label class="field">大板宽 B（mm）<input id="pPB" type="number" value="300" min="20" step="5"></label>
+  </div><div><div class="out" id="pOut"></div>
+    <canvas id="pCv" width="640" height="400" aria-label="拼板排版示意"></canvas>
+    <div class="labnote">示意未计 V-cut / 邮票孔与夹持边；实际拼板还要留 MARK 点、定位孔和铣刀路径。</div>
+  </div></div></section>`;
+  const calc = () => {
+    const a = +$('#pA').value, b = +$('#pB').value, g = +$('#pG').value, e = +$('#pE').value, PA = +$('#pPA').value, PB = +$('#pPB').value;
+    const fit = (x, y) => [Math.floor((PA - 2 * e + g) / (x + g)), Math.floor((PB - 2 * e + g) / (y + g))];
+    const [c1, r1] = fit(a, b), [c2, r2] = fit(b, a);
+    const n1 = Math.max(0, c1) * Math.max(0, r1), n2 = Math.max(0, c2) * Math.max(0, r2);
+    const rot = n2 > n1, n = Math.max(n1, n2);
+    const cols = rot ? c2 : c1, rows = rot ? r2 : r1;
+    const util = n * a * b / (PA * PB) * 100;
+    $('#pOut').innerHTML = `可拼 <b>${n} 块</b><br>排列 <b>${cols} × ${rows}</b>${rot ? '（旋转 90°）' : ''}<br>面积利用率 <b>${util.toFixed(1)}%</b><br><span style="color:#9fc0ea">单板 ${a}×${b} mm，大板 ${PA}×${PB} mm</span>`;
+    const cv = $('#pCv'), ctx = cv.getContext('2d'), W = cv.width, H = cv.height;
+    ctx.clearRect(0, 0, W, H);
+    const sc = Math.min((W - 24) / PA, (H - 24) / PB);
+    const pw = PA * sc, ph = PB * sc, ox = (W - pw) / 2, oy = (H - ph) / 2;
+    ctx.fillStyle = '#f8fafc'; ctx.fillRect(ox, oy, pw, ph);
+    ctx.strokeStyle = '#0f2440'; ctx.lineWidth = 2; ctx.strokeRect(ox, oy, pw, ph);
+    const bw = rot ? b : a, bh = rot ? a : b;
+    for (let i = 0; i < cols; i++) for (let j = 0; j < rows; j++) {
+      const x = ox + (e + i * (bw + g)) * sc, y = oy + (e + j * (bh + g)) * sc;
+      ctx.fillStyle = '#bcd7ff'; ctx.fillRect(x, y, bw * sc, bh * sc);
+      ctx.strokeStyle = '#2f6fdb'; ctx.lineWidth = 1; ctx.strokeRect(x, y, bw * sc, bh * sc);
+    }
+    if (!n) { ctx.fillStyle = '#8a95a6'; ctx.font = '14px sans-serif'; ctx.fillText('当前大板放不下，减小单板或工艺边', ox + 8, oy + 24); }
+  };
+  ['pA', 'pB', 'pG', 'pE', 'pPA', 'pPB'].forEach(id => $('#' + id).oninput = calc);
+  calc();
+}
+
+/* 6. 单位换算 */
+function labUnit(host) {
+  host.innerHTML = `<section class="panel"><div class="tool"><div>
+    <label class="field">数值<input id="uV" type="number" value="5" min="0" step="0.1"></label>
+    <label class="field">单位<select id="uU"><option value="mil" selected>mil（毫英寸）</option><option value="mm">mm</option><option value="um">μm</option><option value="oz">oz（铜厚）</option><option value="inch">inch</option></select></label>
+    <div class="chips" style="margin-top:4px">${[['5', 'mil'], ['6', 'mil'], ['8', 'mil'], ['10', 'mil'], ['0.2', 'mm'], ['1', 'oz']].map(([v, u]) => `<button class="chip" data-v="${v}" data-u="${u}">${v} ${u}</button>`).join('')}</div>
+    <div class="labnote" style="margin-top:12px">常用锚点：1 mil = 0.0254 mm = 25.4 μm；1 oz 铜 ≈ 35 μm ≈ 1.38 mil；1 inch = 25.4 mm。</div>
+  </div><div><div class="out" id="uOut"></div>
+    <div class="doc" style="margin-top:10px"><div class="kp"><span class="t">换算表</span><p>线宽/间距看 mil ↔ mm；孔径看 mm ↔ mil；铜厚看 oz ↔ μm。EDA 里混用单位时，先统一到 mm 再核对工艺。</p></div></div>
+  </div></div></section>`;
+  const calc = () => {
+    const v = +$('#uV').value, u = $('#uU').value;
+    const mm = u === 'mil' ? v * 0.0254 : u === 'mm' ? v : u === 'um' ? v / 1000 : u === 'oz' ? v * 0.035 : v * 25.4;
+    const oz = mm / 0.035;
+    $('#uOut').innerHTML = `毫米 <b>${mm.toFixed(4)} mm</b><br>毫英寸 <b>${(mm / 0.0254).toFixed(2)} mil</b><br>微米 <b>${(mm * 1000).toFixed(1)} μm</b><br>英寸 <b>${(mm / 25.4).toFixed(4)} inch</b><br>折合铜厚 <b>${oz.toFixed(2)} oz</b>（仅当输入表示厚度）`;
+  };
+  $('#uV').oninput = calc; $('#uU').onchange = calc;
+  $$('[data-v]').forEach(b => b.onclick = () => { $('#uV').value = b.dataset.v; $('#uU').value = b.dataset.u; calc(); });
+  calc();
+}
+
+/* 7. 板厂工艺核对 */
+function labDfm(host) {
+  host.innerHTML = `<section class="panel"><div class="tool"><div>
+    <label class="field">工艺档位<select id="fP"><option value="std" selected>标准档（常见双面/四层）</option><option value="adv">进阶档（细线细孔）</option></select></label>
+    <label class="field">最小线宽 w（mm）<input id="fW" type="number" value="0.15" min="0.03" step="0.01"></label>
+    <label class="field">最小间距 s（mm）<input id="fS" type="number" value="0.15" min="0.03" step="0.01"></label>
+    <label class="field">最小成品孔径 d（mm）<input id="fD" type="number" value="0.3" min="0.05" step="0.05"></label>
+    <label class="field">过孔环宽 r（mm）<input id="fR" type="number" value="0.15" min="0.02" step="0.01"></label>
+    <label class="field">板厚 T（mm）<input id="fT" type="number" value="1.6" min="0.4" step="0.1"></label>
+    <label class="field">层数<select id="fL"><option value="2">2 层</option><option value="4" selected>4 层</option><option value="6">6 层</option></select></label>
+  </div><div><div class="out" id="fOut"></div>
+    <div class="labnote">这里用常见标准档/进阶档数值做自查，不是板厂承诺；下单前请对照嘉立创最新工艺能力表与报价页。</div>
+    <div class="doc" style="margin-top:10px"><div class="kp"><span class="t">判定项</span><p>线宽、间距、成品孔径、过孔环宽、厚径比（T/d）。任一项不达标，先改设计或换工艺档，不要靠关 DRC 硬布。</p></div></div>
+  </div></div></section>`;
+  const LIM = {
+    std: { w: 0.127, s: 0.127, d: 0.2, r: 0.13, ar: 8, layers: 6, name: '标准档' },
+    adv: { w: 0.1, s: 0.1, d: 0.15, r: 0.1, ar: 10, layers: 8, name: '进阶档' }
+  };
+  const calc = () => {
+    const L = LIM[$('#fP').value];
+    const w = +$('#fW').value, s = +$('#fS').value, d = +$('#fD').value, r = +$('#fR').value, T = +$('#fT').value, layers = +$('#fL').value;
+    const rows = [
+      ['最小线宽', w, L.w, 'mm', w >= L.w],
+      ['最小间距', s, L.s, 'mm', s >= L.s],
+      ['成品孔径', d, L.d, 'mm', d >= L.d],
+      ['过孔环宽', r, L.r, 'mm', r >= L.r],
+      ['厚径比 T/d', T / d, L.ar, '', T / d <= L.ar],
+      ['层数', layers, L.layers, ' 层', layers <= L.layers]
+    ];
+    const bad = rows.filter(x => !x[4]).length;
+    $('#fOut').innerHTML = `${bad ? `<span style="color:#ffd08a">${bad} 项超出${L.name}</span>` : `<span style="color:#9fe3bd">全部满足${L.name}</span>`}
+      <div class="dfm">${rows.map(([n, v, lim, u, ok]) => `<div class="r"><span>${n}</span><span style="color:#9fc0ea">${Number.isInteger(v) ? v : v.toFixed(2)}${u}</span><b class="badge ${ok ? 'g' : 'r'}">${ok ? '通过' : '超限'}</b></div>`).join('')}</div>
+      <div class="labnote" style="color:#c9d8ec">${bad ? '超限项：' + rows.filter(x => !x[4]).map(x => x[0] + '（要求 ' + (x[2] + (x[3] ? ' mm' : '')) + '）').join('、') : '可进入布线/铺铜/DRC 流程；仍要认真核对网络定义与封装。'}</div>`;
+  };
+  ['fP', 'fW', 'fS', 'fD', 'fR', 'fT', 'fL'].forEach(id => $('#' + id).oninput = calc);
+  calc();
+}
+
+/* 8. 电源线与回流线压降 */
+function labPower(host) {
+  host.innerHTML = `<section class="panel">
+    <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:6px">
+      <h3 style="margin:0">电源线 / 回流线压降</h3>
+      <div class="chips">
+        <button class="chip" data-pwmode="check">校核已有线宽</button>
+        <button class="chip" data-pwmode="calc">计算所需线宽</button>
+        <button class="chip" id="pwDemo">载入示例</button>
+      </div>
+    </div>
+    <div class="powergrid">
+      <label class="field">电源端可提供电压（V）<input id="pwVs" type="number" value="3.30" step="0.01" min="0.1"></label>
+      <label class="field">负载最低工作电压（V）<input id="pwVmin" type="number" value="3.25" step="0.01" min="0.1"></label>
+      <label class="field">最大持续电流（A）<input id="pwI" type="number" value="1.00" step="0.1" min="0.01"></label>
+      <label class="field">供电线长度（mm）<input id="pwLs" type="number" value="50" step="1" min="1"></label>
+      <label class="field">回流线长度（mm）<input id="pwLr" type="number" value="50" step="1" min="1"></label>
+      <label class="field">成品铜厚（μm）<input id="pwT" type="number" value="35" step="1" min="5"></label>
+      <label class="field" id="pwWwrap">当前线宽（mm）<input id="pwW" type="number" value="0.50" step="0.05" min="0.05"></label>
+    </div>
+    <label class="checkline"><input type="checkbox" id="pwSame" checked> 回流线与供电线等长（勾选后回流长度跟随供电线）</label>
+    <div id="pwOut" style="margin-top:12px"></div>
+  </section>`;
+
+  let mode = store.get('pwMode', 'check');
+  const RHO = 1.724e-8; // Ω·m，室温铜
+  const GRID = [0.1, 0.15, 0.2, 0.25, 0.3, 0.4, 0.5, 0.6, 0.8, 1.0, 1.2, 1.5, 2.0, 2.5, 3.0, 4.0, 5.0];
+
+  const paint = () => {
+    $$('[data-pwmode]').forEach(b => b.classList.toggle('on', b.dataset.pwmode === mode));
+    $('#pwWwrap').style.display = mode === 'check' ? '' : 'none';
+  };
+
+  const read = () => ({
+    Vs: +$('#pwVs').value, Vmin: +$('#pwVmin').value, I: +$('#pwI').value,
+    Ls: +$('#pwLs').value, Lr: +$('#pwLr').value, t: +$('#pwT').value / 1e6,
+    w0: +$('#pwW').value
+  });
+
+  const calc = () => {
+    const d = read();
+    if (![d.Vs, d.Vmin, d.I, d.Ls, d.Lr, d.t, d.w0].every(Number.isFinite) || d.Vs <= 0 || d.Vmin <= 0 || d.I <= 0 || d.Ls <= 0 || d.Lr <= 0 || d.t <= 0 || (mode === 'check' && d.w0 <= 0)) {
+      $('#pwOut').innerHTML = '<div class="verdict warn">请填写有效的电压、电流、长度、铜厚与线宽（均为正数）。</div>';
+      return;
+    }
+    const allowed = d.Vs - d.Vmin; // V
+    if (allowed <= 0) {
+      $('#pwOut').innerHTML = `<div class="verdict bad"><b>没有可分配给走线的压降余量。</b><br>电源端可保证的 ${d.Vs.toFixed(2)} V 不高于负载最低工作电压 ${d.Vmin.toFixed(2)} V。请先提高电源电压或降低负载最低工作电压，再谈线宽；此时加宽走线也无法让负载端达到要求。</div>
+        <div class="labnote">判断的是铜走线直流压降，不含过孔、连接器、焊盘窄颈、温升和负载瞬态跌落。</div>`;
+      return;
+    }
+    const L = (d.Ls + d.Lr) / 1000; // m
+    const wmin = d.I * RHO * L / (allowed * d.t); // m
+    const wminmm = wmin * 1000;
+    const drop = w => d.I * RHO * L / ((w / 1000) * d.t); // V
+    const targetDrop = allowed * 0.85;
+    const wTarget = d.I * RHO * L / (targetDrop * d.t) * 1000;
+    let rec = GRID.find(g => g >= wTarget);
+    if (!rec) rec = Math.ceil(wTarget / 0.5) * 0.5;
+    const marginAt = w => (d.Vs - drop(w) - d.Vmin) * 1000; // mV
+    const thresh = Math.max(3, allowed * 1000 * 0.15);
+
+    const set = new Set();
+    if (mode === 'check' && d.w0 > 0) set.add(+d.w0.toFixed(3));
+    else set.add(Math.ceil(wminmm * 100) / 100);
+    const below = GRID.filter(g => g >= wminmm && g < rec - 1e-9).pop();
+    if (below) set.add(below);
+    set.add(rec);
+    const above = GRID.find(g => g > rec + 1e-9);
+    if (above) set.add(above);
+    const rows = [...set].sort((a, b) => a - b);
+
+    const judge = m => m < 0 ? ['不达标', 'bad'] : m < thresh ? ['计算达标，余量很小', 'warn'] : m < allowed * 1000 * 0.3 ? ['计算达标，余量较大', 'ok'] : ['计算达标，余量充足', 'ok'];
+    const table = `<div class="tablewrap"><table class="tb pwtb">
+      <thead><tr><th>两条线各自宽度</th><th>往返总压降</th><th>预计负载端电压</th><th>相对 ${d.Vmin.toFixed(2)} V 的余量</th><th>判断</th></tr></thead>
+      <tbody>${rows.map(w => {
+        const dd = drop(w) * 1000, vl = d.Vs - drop(w), m = marginAt(w), j = judge(m);
+        return `<tr class="${Math.abs(w - d.w0) < 1e-9 && mode === 'check' ? 'cur' : ''}">
+          <td data-l="线宽">${w.toFixed(2)} mm</td>
+          <td data-l="往返压降">${dd.toFixed(1)} mV</td>
+          <td data-l="负载端电压">${vl.toFixed(4)} V</td>
+          <td data-l="余量">${m >= 0 ? '+' : ''}${m.toFixed(1)} mV</td>
+          <td data-l="判断"><span class="badge ${j[1] === 'bad' ? 'r' : j[1] === 'warn' ? 'o' : 'g'}">${j[0]}</span></td>
+        </tr>`;
+      }).join('')}</tbody>
+    </table></div>`;
+
+    let verdict = '';
+    let stat4 = '';
+    if (mode === 'check') {
+      const m0 = marginAt(d.w0), v0 = d.Vs - drop(d.w0);
+      stat4 = `<div><small>当前线宽余量</small><b style="color:${m0 < 0 ? '#b91c1c' : m0 < thresh ? '#b45309' : '#15803d'}">${m0 >= 0 ? '+' : ''}${m0.toFixed(1)} mV</b></div>`;
+      if (m0 < 0) {
+        verdict = `<div class="verdict bad"><b>当前线宽不满足要求</b>，预计负载端 ${v0.toFixed(4)} V，比最低工作电压低 ${Math.abs(m0).toFixed(1)} mV。若其他条件不变，可将供电线和回流线各加宽到 <b>${rec.toFixed(2)} mm</b>，预计可留出 ${marginAt(rec).toFixed(1)} mV 余量。</div>`;
+      } else if (m0 < thresh) {
+        verdict = `<div class="verdict warn"><b>计算达标，但余量很小</b>：预计余量 ${m0.toFixed(1)} mV。建议把两条线各加宽到 <b>${rec.toFixed(2)} mm</b>，可留出 ${marginAt(rec).toFixed(1)} mV，给压降和温升留一点空间。</div>`;
+      } else {
+        verdict = `<div class="verdict ok"><b>满足压降要求</b>：预计负载端 ${v0.toFixed(4)} V，比最低工作电压高 ${m0.toFixed(1)} mV。</div>`;
+      }
+    } else {
+      stat4 = `<div><small>建议线宽余量</small><b style="color:#15803d">+${marginAt(rec).toFixed(1)} mV</b></div>`;
+      verdict = `<div class="verdict ${wminmm > 3 ? 'warn' : 'ok'}">两条线各至少 <b>${wminmm.toFixed(3)} mm</b>；建议取 <b>${rec.toFixed(2)} mm</b>，预计往返压降 ${(drop(rec) * 1000).toFixed(1)} mV，负载端 ${(d.Vs - drop(rec)).toFixed(4)} V。${wminmm > 3 ? '所需线宽已超过常规范围，优先考虑提高电源电压、缩短路径或改用铜条/电源平面。' : ''}</div>`;
+    }
+
+    $('#pwOut').innerHTML = `<div class="pwsum">
+      <div><small>允许总压降</small><b>${(allowed * 1000).toFixed(1)} mV</b></div>
+      <div><small>每条线理论下限</small><b>${wminmm.toFixed(3)} mm</b></div>
+      <div><small>建议线宽（留 15%）</small><b>${rec.toFixed(2)} mm</b></div>
+      ${stat4}
+    </div>
+    ${verdict}
+    ${table}
+    <div class="labnote">基础模式假设供电线与回流线同宽同铜厚，只算铜走线直流压降；不含过孔、连接器、焊盘窄颈、温升与负载瞬态。若通过整面地平面回流，不要直接套用等宽走线模型。结果写“满足压降要求”，不等于整板供电安全。</div>`;
+  };
+
+  const syncSame = () => { if ($('#pwSame').checked) { $('#pwLr').value = $('#pwLs').value; $('#pwLr').disabled = true; } else $('#pwLr').disabled = false; };
+  $('#pwSame').onchange = () => { syncSame(); calc(); };
+  $('#pwLs').oninput = () => { syncSame(); calc(); };
+  ['pwVs', 'pwVmin', 'pwI', 'pwLr', 'pwT', 'pwW'].forEach(id => $('#' + id).oninput = calc);
+  $$('[data-pwmode]').forEach(b => b.onclick = () => { mode = b.dataset.pwmode; store.set('pwMode', mode); paint(); calc(); });
+  $('#pwDemo').onclick = () => {
+    mode = 'check'; store.set('pwMode', mode); paint();
+    $('#pwVs').value = '3.30'; $('#pwVmin').value = '3.25'; $('#pwI').value = '1.00';
+    $('#pwLs').value = '50'; $('#pwLr').value = '50'; $('#pwT').value = '35'; $('#pwW').value = '0.50';
+    $('#pwSame').checked = true; syncSame(); calc();
+  };
+  $('#pwSame').checked = true; syncSame(); paint(); calc();
+}
+
+/* ================= 训练场 ================= */
+function code() {
+  if (C.id === 'signals') return codeSignals();
+  if (C.id === 'stm32') return codeStm32();
+  return codeEda();
+}
+function conv(a, b) {
+  const out = Array(a.length + b.length - 1).fill(0);
+  a.forEach((x, i) => b.forEach((y, j) => out[i + j] += x * y));
+  return out;
+}
+function codeSignals() {
+  $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 编程训练场</div>
+  <h1 class="ph">卷积训练场</h1><p class="psub">输入两个有限长序列（逗号分隔），先自己算长度与总和，再运行核对。</p>
+  <div class="panel"><div class="row"><label class="field" style="flex:1">x[k]<input id="cx" value="1,2,3"></label><label class="field" style="flex:1">h[k]<input id="ch" value="1,1"></label><button class="btn pri" id="run">运行卷积</button></div>
+  <div id="cout" style="margin-top:12px"></div></div>
+  <div class="panel"><h3>先预测</h3><div class="row"><label class="field">结果长度<input id="plen" type="number" placeholder="N₁+N₂−1"></label><label class="field">结果总和<input id="psum" type="number" step="any" placeholder="Σx · Σh"></label><button class="btn" id="pcheck">核对预测</button></div><p class="small muted" id="pout"></p></div>`;
+  const run = () => {
+    const a = $('#cx').value.split(/[,，\s]+/).filter(Boolean).map(Number), b = $('#ch').value.split(/[,，\s]+/).filter(Boolean).map(Number);
+    if (a.some(isNaN) || b.some(isNaN) || !a.length || !b.length) { $('#cout').innerHTML = '<p class="muted">请输入数字序列。</p>'; return; }
+    const y = conv(a, b);
+    $('#cout').innerHTML = `<div class="tablewrap"><table class="tb"><tr><th>k</th>${y.map((_, i) => `<th>${i}</th>`).join('')}</tr><tr><th>y[k]</th>${y.map(v => `<td>${v}</td>`).join('')}</tr></table></div>
+      <p class="small">长度 <b>${y.length}</b> · 总和 <b>${y.reduce((s, v) => s + v, 0)}</b> · 首项 ${y[0]} · 末项 ${y[y.length - 1]}</p>`;
+  };
+  $('#run').onclick = run;
+  $('#pcheck').onclick = () => {
+    const a = $('#cx').value.split(/[,，\s]+/).filter(Boolean).map(Number), b = $('#ch').value.split(/[,，\s]+/).filter(Boolean).map(Number);
+    const y = conv(a, b), len = +$('#plen').value, sum = +$('#psum').value;
+    const okL = len === y.length, okS = Math.abs(sum - y.reduce((s, v) => s + v, 0)) < 1e-9;
+    $('#pout').innerHTML = `${okL ? '✓ 长度对' : '✗ 长度应为 ' + y.length}　${okS ? '✓ 总和对' : '✗ 总和应为 ' + y.reduce((s, v) => s + v, 0)}`;
+  };
+  run();
+}
+function codeStm32() {
+  $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 编程训练场</div>
+  <h1 class="ph">GPIO 寄存器计算器</h1><p class="psub">MODER 每引脚 2 位。先算，再核对掩码与写入值。</p>
+  <div class="panel"><div class="row"><label class="field">引脚号（0–15）<input id="cp" type="number" value="5" min="0" max="15"></label>
+    <label class="field">模式<select id="cm"><option value="0">00 输入</option><option value="1">01 输出</option><option value="2">10 复用</option><option value="3">11 模拟</option></select></label>
+    <button class="btn pri" id="cr">计算</button></div><div class="out" id="cout" style="margin-top:12px"></div></div>
+  <div class="panel"><h3>读-改-写</h3><p class="small">正确写法：<code>MODER = (MODER &amp; ~(3 &lt;&lt; 2n)) | (mode &lt;&lt; 2n)</code>，不能直接赋值，否则会冲掉其他引脚。</p></div>`;
+  $('#cr').onclick = () => {
+    const p = +$('#cp').value, m = +$('#cm').value, sh = 2 * p, mask = 3 << sh, val = m << sh;
+    $('#cout').innerHTML = `移位 <b>${sh}</b><br>掩码 <code>0x${mask.toString(16).toUpperCase()}</code><br>写入值 <code>0x${val.toString(16).toUpperCase()}</code><br>寄存器低 16 位示例 <code>0x${(0x28000000 | val).toString(16).toUpperCase().slice(-4)}</code>`;
+  };
+  $('#cr').click();
+}
+function codeEda() {
+  $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 编程训练场</div>
+  <h1 class="ph">铜线电阻计算器</h1><p class="psub">R=ρL/S，ρ=1.72×10⁻⁸ Ω·m。先把单位统一，再代公式。</p>
+  <div class="panel"><div class="row"><label class="field">长度（mm）<input id="cl" type="number" value="50"></label><label class="field">线宽（mm）<input id="cw" type="number" value="0.5" step="0.05"></label><label class="field">铜厚<select id="ct"><option value="35">1 oz / 35 μm</option><option value="70">2 oz / 70 μm</option><option value="17.5">0.5 oz / 17.5 μm</option></select></label><button class="btn pri" id="cr">计算</button></div><div class="out" id="cout" style="margin-top:12px"></div></div>`;
+  $('#cr').onclick = () => {
+    const L = +$('#cl').value, w = +$('#cw').value, t = +$('#ct').value / 1000;
+    const S = w * t, R = 0.0172 * (L / 1000) / (S / 1e6);
+    $('#cout').innerHTML = `截面积 <b>${S.toFixed(4)} mm²</b><br>电阻 <b>${(R * 1000).toFixed(1)} mΩ</b><br>2 A 时压降 ${(R * 2 * 1000).toFixed(1)} mV<br><span style="color:#9fc0ea">R=0.0172×(L/1000)/(S/1e6) Ω</span>`;
+  };
+  $('#cr').click();
+}
+
+/* ================= 公式推导 ================= */
+function formula() {
+  const list = X.formula || [];
+  $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 公式推导中心</div>
+  <h1 class="ph">公式推导中心</h1><p class="psub">每一步先想“为什么能这样写”，再展开下一步；最后再背结论。</p>
+  ${list.map((d, i) => `<section class="panel" data-d="${i}"><h3>${E(d.title)}</h3><p class="muted small">${E(d.q)}</p>
+    <ol class="steps">${d.steps.map((s, j) => `<li data-s="${j}" hidden>${E(s)}</li>`).join('')}</ol>
+    <div class="row"><button class="btn pri" data-next="${i}">显示第 1 步</button><span class="small muted" data-cnt="${i}">0 / ${d.steps.length}</span></div>
+    <div class="tip" data-fin="${i}" hidden style="margin-top:10px"><b>结论：</b>${E(d.final)}</div></section>`).join('')}`;
+  $$('[data-next]').forEach(b => b.onclick = () => {
+    const i = +b.dataset.next, sec = b.closest('section'), steps = $$('li[data-s]', sec), next = steps.find(x => x.hidden);
+    if (next) next.hidden = false;
+    const shown = steps.filter(x => !x.hidden).length;
+    sec.querySelector('[data-cnt]').textContent = `${shown} / ${steps.length}`;
+    b.textContent = shown >= steps.length ? '已显示全部' : `显示第 ${shown + 1} 步`;
+    if (shown >= steps.length) { sec.querySelector('[data-fin]').hidden = false; b.disabled = true; }
+  });
+}
+
+/* ================= 项目实训 ================= */
+function project() {
+  const p = X.project; if (!p) return ($('#main').innerHTML = '<div class="empty">暂无项目</div>');
+  const st = store.get('project', { i: 0 }), i = clamp(st.i || 0, 0, p.steps.length);
+  const done = i >= p.steps.length;
+  $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 项目实训</div>
+  <h1 class="ph">${E(p.name)}</h1><p class="psub">${E(p.desc)}</p>
+  <div class="panel"><div class="chips" style="margin-bottom:10px">${p.steps.map((_, k) => `<span class="chip ${k < i ? 'on' : ''}">阶段 ${k + 1}</span>`).join('')}${done ? '<span class="chip on">完成</span>' : ''}</div>
+  ${done ? `<p><b>项目完成。</b>三步都独立算对，已记入学习报告。</p><div class="row"><a class="btn pri" href="#/report">看报告</a><button class="btn" id="preset">重做一遍</button></div>`
+      : `<p>${E(p.steps[i].ask)}</p><div class="row"><label class="field">答案<input id="pv" type="number" step="any"> <span class="small muted">${E(p.steps[i].unit || '')}</span></label><button class="btn pri" id="pcheck">提交本阶段</button></div><p id="pout" class="small"></p>`}
+  </div>`;
+  if (done) { $('#preset').onclick = () => { store.set('project', { i: 0, done: false }); project(); }; return; }
+  $('#pcheck').onclick = () => {
+    const v = +$('#pv').value, want = +p.steps[i].value;
+    if (!Number.isFinite(v)) return alert('请输入数值');
+    if (Math.abs(v - want) < 1e-6) {
+      const ni = i + 1; store.set('project', { i: ni, done: ni >= p.steps.length });
+      $('#pout').innerHTML = `<span class="badge g">通过</span> ${E(p.steps[i].hint)}`;
+      setTimeout(() => project(), 900);
+    } else {
+      $('#pout').innerHTML = `<span class="badge r">再算一次</span> ${E(p.steps[i].hint)}`;
+    }
+  };
+}
+
+/* ================= 学习路径 ================= */
+function path() {
+  const rows = C.chapters.filter(c => C.bank.some(q => q.ch === c.n)).map(c => {
+    const qs = C.bank.filter(q => q.ch === c.n), done = qs.filter(q => R(q.id).ok).length;
+    const acc = qs.length ? done / qs.length : 0;
+    return { c, qs, done, acc, weak: qs.filter(q => R(q.id).status === 'weak').length };
+  }).sort((a, b) => a.acc - b.acc);
+  const due = BANKS.objective.filter(q => { const r = R(q.id); return r.due && r.due <= Date.now(); }).length;
+  $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 学习路径</div>
+  <h1 class="ph">学习路径</h1><p class="psub">按“薄弱优先 + 到期优先”排序，不按章节顺序硬推。今天到期 ${due} 题。</p>
+  ${rows.map((r, i) => `<div class="panel"><div class="row" style="justify-content:space-between"><h3 style="margin:0">${i + 1}. 第 ${r.c.n} 章 · ${E(r.c.title)}</h3><span class="small muted">掌握 ${r.done}/${r.qs.length}${r.weak ? ' · 待补 ' + r.weak : ''}</span></div>
+    <div class="bar" style="margin:10px 0"><i style="width:${Math.round(r.acc * 100)}%"></i></div>
+    <p class="small muted">${r.acc < .3 ? '还没开始或正确率偏低：先读知识讲解，再做 8 题随堂练习。' : r.acc < .7 ? '有基础但不稳：直接做本章练习，错题回读对应小节。' : '掌握较好：做本章模拟卷，重点练大题表述。'}</p>
+    <div class="row"><a class="btn sm pri" href="#/learn/${r.c.n}">读本章</a><a class="btn sm" href="#/drill?ch=${r.c.n}">随堂练习</a><a class="btn sm" href="#/exam?ch=${r.c.n}">本章模拟卷</a></div></div>`).join('')}`;
+}
+
+/* ================= 学习报告 ================= */
+function report() {
+  const obj = BANKS.objective, wr = BANKS.written;
+  const recs = obj.map(q => ({ q, r: R(q.id) })).filter(x => x.r.tries);
+  const tries = recs.reduce((s, x) => s + x.r.tries, 0), oks = recs.reduce((s, x) => s + (x.r.ok || 0), 0);
+  const acc = tries ? Math.round(oks / tries * 100) : 0;
+  const mastered = obj.filter(q => R(q.id).ok).length;
+  const weak = C.bank.filter(q => R(q.id).status === 'weak').length;
+  const causes = {}; C.bank.forEach(q => { const c = R(q.id).cause; if (c) causes[c] = (causes[c] || 0) + 1; });
+  const days = new Set(Object.values(REC).filter(r => r.last).map(r => new Date(r.last).toDateString())).size;
+  $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 学习报告</div>
+  <h1 class="ph">学习报告</h1><p class="psub">只统计本机真实作答记录。没有记录的项目显示为 0，不做演示数据填充。</p>
+  <div class="grid3">
+    <div class="stat"><small>客观题正确率</small><b>${acc}%</b><span class="small muted">${tries} 次作答</span></div>
+    <div class="stat"><small>已独立答对</small><b>${mastered}<span class="small muted"> / ${obj.length}</span></b><span class="small muted">待补练 ${weak}</span></div>
+    <div class="stat"><small>学习天数</small><b>${days}</b><span class="small muted">有作答记录的天数</span></div>
+    <div class="stat"><small>大题自评通过</small><b>${wr.filter(q => R(q.id).status === 'ok').length}<span class="small muted"> / ${wr.length}</span></b><span class="small muted">按评分点自评</span></div>
+    <div class="stat"><small>模拟考试</small><b>${EXAMS.length}</b><span class="small muted">${EXAMS.length ? '最近 ' + fmtTime(EXAMS[0].time) : '还没有交卷'}</span></div>
+    <div class="stat"><small>收藏</small><b>${C.bank.filter(q => R(q.id).star).length}</b><span class="small muted">可随时重做</span></div>
+  </div>
+  <h2 class="sec">分章正确率</h2><div class="panel"><div class="tablewrap"><table class="tb"><tr><th>章节</th><th>题数</th><th>做过</th><th>答对</th><th>正确率</th></tr>
+    ${C.chapters.map(c => { const qs = obj.filter(q => q.ch === c.n), at = qs.filter(q => R(q.id).tries), ok = qs.filter(q => R(q.id).ok); const t = at.reduce((s, q) => s + R(q.id).tries, 0), o = at.reduce((s, q) => s + (R(q.id).ok || 0), 0); return `<tr><td>第 ${c.n} 章 · ${E(c.title)}</td><td>${qs.length}</td><td>${at.length}</td><td>${ok.length}</td><td>${t ? Math.round(o / t * 100) + '%' : '—'}</td></tr>`; }).join('')}
+  </table></div></div>
+  <h2 class="sec">错因分布与考试记录</h2>
+  <div class="grid2"><div class="panel"><h3>错因</h3>${Object.keys(causes).length ? Object.entries(causes).map(([k, v]) => `<div class="row"><span>${E(k)}</span><b>${v}</b></div>`).join('') : '<p class="muted small">还没有标记错因。答错后点一个错因标签即可累计。</p>'}</div>
+  <div class="panel"><h3>实践与闯关</h3>
+    <div class="row"><span>学习闯关三关通过</span><b>${store.get('passes', 0)} 次</b></div>
+    <div class="row"><span>项目实训</span><b>${(store.get('project', {}) || {}).done ? '已完成' : '未完成'}</b></div>
+    <h3 style="margin-top:14px">最近模拟卷</h3>${EXAMS.length ? EXAMS.slice(0, 5).map(e => `<div class="row"><span>${fmtTime(e.time)} · ${e.ch ? '第 ' + e.ch + ' 章' : '全章'}</span><b>${e.hits}/${e.total}</b></div>`).join('') : '<p class="muted small">还没有交卷记录。</p>'}</div></div>
+  <div class="row"><button class="btn pri" id="rexp">导出学习报告</button><button class="btn" id="rprint">打印 / 存 PDF</button><button class="btn" id="rreset">清空本科记录</button></div>`;
+  $('#rexp').onclick = () => download(`${C.name}_学习报告_${new Date().toISOString().slice(0, 10)}.md`,
+    `# ${C.name} 学习报告\n\n- 客观题正确率：${acc}%（${tries} 次）\n- 已独立答对：${mastered}/${obj.length}\n- 待补练：${weak}\n- 学习天数：${days}\n- 模拟考试：${EXAMS.length} 次\n\n## 分章\n` +
+    C.chapters.map(c => { const qs = obj.filter(q => q.ch === c.n), ok = qs.filter(q => R(q.id).ok).length; return `- 第 ${c.n} 章 ${c.title}：${ok}/${qs.length}`; }).join('\n') +
+    `\n\n## 错因\n${Object.entries(causes).map(([k, v]) => `- ${k}: ${v}`).join('\n') || '- 无'}\n`);
+  $('#rprint').onclick = () => window.print();
+  $('#rreset').onclick = () => { if (confirm('只清空《' + C.name + '》的作答记录与考试记录（笔记、讨论板和草稿保留），其他课程不受影响。确定？')) { REC = {}; store.set('rec', REC); EXAMS = []; store.set('exams', EXAMS); MASTER = []; store.set('master', MASTER); go('report'); } };
+}
+
+/* ================= 学习闯关 ================= */
+function challengeSet() {
+  if (C.id === 'signals') {
+    const fm = pick([2, 3, 4, 5]), a = pick([2, 4, 5]);
+    return [
+      { q: `信号最高频率 ${fm} kHz，奈奎斯特抽样速率至少是多少 kHz？`, v: 2 * fm, u: 'kHz', work: 'f_s≥2f_m' },
+      { q: `δ(${a}t) 与 δ(t) 的系数比是 1/${a}，写成小数是多少？`, v: 1 / a, u: '', work: 'δ(at)=δ(t)/|a|' },
+      { q: '序列长度 N₁=4、N₂=3，卷积和的结果长度是多少？', v: 6, u: '', work: 'N₁+N₂−1=6' }
+    ];
+  }
+  if (C.id === 'stm32') {
+    return [
+      { q: '84 MHz、PSC=83、ARR=999，定时器频率是多少 Hz？', v: 1000, u: 'Hz', work: '84e6/(84×1000)=1000' },
+      { q: 'ADC 时钟 21 MHz、采样时间 480 周期、12 位，转换时间约多少 μs？（保留两位小数）', v: 23.45, u: 'μs', work: '(480+12.5)/21≈23.45' },
+      { q: '4 位优先级、2 位抢占 + 2 位响应，抢占优先级有多少级？', v: 4, u: '级', work: '2²=4' }
+    ];
+  }
+  return [
+    { q: '1 oz 铜的厚度约多少 μm？', v: 35, u: 'μm', work: '1 oz≈35 μm' },
+    { q: '电流 2 A、温升 10 ℃、外层 1 oz，IPC 估算线宽约多少 mm？（保留两位小数）', v: 0.78, u: 'mm', work: 'A=(2/(0.048×10^0.44))^(1/0.725)≈42.3 mil²；W≈30.7 mil≈0.78 mm' },
+    { q: '四层板的内层有几层？', v: 2, u: '层', work: '顶层+2 内层+底层' }
+  ];
+}
+function challenge() {
+  const items = challengeSet(); let i = 0, pass = 0;
+  const draw = () => {
+    if (i >= items.length) {
+      if (pass === 3) { const n = store.get('passes', 0) + 1; store.set('passes', n); }
+      return $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 学习闯关</div>
+        <div class="result"><div class="big">${pass}<small> / 3</small></div><p class="muted">${pass === 3 ? '三关通过，已记入学习报告。' : '未全过：错的那一步回到对应章节重看。'}</p>
+        <div class="row" style="justify-content:center"><button class="btn pri" id="cagain">再来一轮</button><a class="btn" href="#/report">看报告</a></div></div>`;
+    }
+    const it = items[i];
+    $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 学习闯关</div>
+      <h1 class="ph">学习闯关</h1><p class="psub">三关独立计算，不借助解析；错一关就停在这一关重算。</p>
+      <div class="panel"><small class="muted">第 ${i + 1} / 3 关</small><p style="font-size:16px">${E(it.q)}</p>
+      <div class="row"><label class="field">答案<input id="cv" type="number" step="any"> <span class="small muted">${it.u}</span></label><button class="btn pri" id="csub">提交</button></div><p id="cout" class="small"></p></div>`;
+    $('#csub').onclick = () => {
+      const v = +$('#cv').value;
+      if (!Number.isFinite(v)) return alert('请输入数值');
+      if (Math.abs(v - it.v) <= Math.max(0.01, Math.abs(it.v) * 0.01)) { pass++; i++; draw(); }
+      else { $('#cout').innerHTML = `<span class="badge r">未通过</span> ${E(it.work)}——按这个思路重算，再提交。`; }
+    };
+  };
+  draw();
+}
+
+/* ================= 讨论板 ================= */
+function community() {
+  $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 学习讨论板</div>
+  <h1 class="ph">学习讨论板</h1><p class="psub">本机记录，不会发布到网上；可导出与同学交换。</p>
+  <div class="panel"><textarea id="pt" rows="3" placeholder="写下你的问题、解法或易错点"></textarea><div class="row" style="margin-top:8px"><button class="btn pri" id="ppost">发表到本机</button><button class="btn" id="pexp">导出讨论稿</button></div></div>
+  <div class="list">${POSTS.length ? POSTS.map((p, i) => `<div class="li"><span class="no">#${POSTS.length - i}</span><div class="body">${E(p.t)}<br><small class="muted">${fmtTime(p.time)}</small></div><div class="act"><button class="btn sm" data-pd="${i}">删除</button></div></div>`).join('') : '<div class="empty">还没有讨论记录。</div>'}</div>`;
+  $('#ppost').onclick = () => { const t = $('#pt').value.trim(); if (!t) return; POSTS = [{ t, time: Date.now() }, ...POSTS]; store.set('posts', POSTS); community(); };
+  $('#pexp').onclick = () => download(C.name + '_讨论稿.md', POSTS.map(p => `- ${p.t}（${fmtTime(p.time)}）`).join('\n'));
+  $$('[data-pd]').forEach(b => b.onclick = () => { POSTS.splice(+b.dataset.pd, 1); store.set('posts', POSTS); community(); });
+}
+
+/* ================= 闪卡 ================= */
+function flash() {
+  const pool = BANKS.objective;
+  if (!pool.length) return ($('#main').innerHTML = '<div class="empty">暂无闪卡</div>');
+  let q = pick(pool), open = false;
+  const draw = () => {
+    $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 考前闪卡</div>
+      <h1 class="ph">考前闪卡</h1><p class="psub">先遮住答案回忆，再翻面核对。答“记得”会记入已掌握。</p>
+      <div class="flash"><div class="fl">第 ${q.ch} 章 · ${E(q.no)} · ${KIND[q.kind]}</div>
+        <div class="fb doc">${doc(q.stem)}${q.options && q.options.length ? `<div class="opts">${q.options.map(o => `<div class="opt" style="cursor:default"><span class="k">${o.key}</span><span class="oh">${doc(o.html)}</span></div>`).join('')}</div>` : ''}</div>
+        ${open ? `<div class="fa doc"><b>参考答案</b>${doc(q.answer)}${q.why ? '<div class="small muted" style="margin-top:6px">' + doc(q.why) + '</div>' : ''}</div>` : ''}
+        <div class="acts">${open ? `<button class="btn green" id="fok">记得</button><button class="btn" id="fno">不记得</button>` : '<button class="btn pri" id="fflip">翻面核对</button>'}<button class="btn" id="fnext">换一张</button></div></div>`;
+    $('#fflip') && ($('#fflip').onclick = () => { open = true; draw(); });
+    $('#fnext').onclick = () => { q = pick(pool); open = false; draw(); };
+    $('#fok') && ($('#fok').onclick = () => { recordAnswer(q, true); q = pick(pool); open = false; draw(); });
+    $('#fno') && ($('#fno').onclick = () => { setR(q.id, { status: 'weak', due: Date.now() + 864e5 }); q = pick(pool); open = false; draw(); });
+  };
+  draw();
+}
+
+/* ================= 收藏夹 ================= */
+function saved() {
+  const xs = C.bank.filter(q => R(q.id).star);
+  $('#main').innerHTML = `<div class="crumb"><a href="#/home">首页</a> / 收藏夹</div>
+  <h1 class="ph">收藏夹</h1><p class="psub">${xs.length} 道收藏。收藏只标“想再做”，不等于已掌握。</p>
+  ${xs.length ? `<div class="list">${xs.map(q => `<div class="li"><span class="no">${E(q.no)}</span><div class="body"><div class="small muted">第 ${q.ch} 章 · ${KIND[q.kind]}${q.group === 'written' ? ' · 大题' : ''}</div>${E(T(q.stem).slice(0, 90))}</div><div class="act"><a class="btn sm" href="#/bank/${q.group === 'written' ? 'written' : 'objective'}?id=${encodeURIComponent(q.id)}">打开</a><button class="btn sm" data-un="${q.id}">取消</button></div></div>`).join('')}</div>`
+      : '<div class="empty"><p>还没有收藏。</p><a class="btn" href="#/bank/objective">去题库看看</a></div>'}`;
+  $$('[data-un]').forEach(b => b.onclick = () => { setR(b.dataset.un, { star: false }); saved(); });
+}
+</script>
+</body>
+</html>
